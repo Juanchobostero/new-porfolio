@@ -1,0 +1,58 @@
+---
+import JavaScript from "./icons/JavaScript.astro"
+import CSS from "./icons/CSS.astro"
+import PHP from "./icons/PHP.astro"
+
+const TAGS = {
+    JAVASCRIPT: {
+        name: "JavaScript",
+        class: "bg-black text-white",
+        icon: JavaScript
+    },
+    CSS: {
+        name: "CSS",
+        class: "bg-[#696964] text-white",
+        icon: CSS
+    },
+    PHP: {
+        name: "CodeIgniter",
+        class: "bg-[#696964] text-white",
+        icon: PHP
+    }
+}
+const PROJECTS  = [
+    {
+        title: 'JL Herramientas',
+        description: 'Tienda online implementada con CodeIgniter 3, HTML, CSS Grid, JS & más.',
+        link: 'https://jlherramientas.000webhostapp.com/',
+        github: '#',
+        image: '/public/projects/project1.webp',
+        tags: [TAGS.PHP, TAGS.JAVASCRIPT, TAGS.CSS]
+    }
+]
+---
+
+{
+    PROJECTS.map(({ title, description, tags, github, image, link }) => (
+        <article>
+            <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
+            <p class="text-lg mb-4 text-pretty">{description}</p>
+            <ul class="flex gap-x-4 flex-row mb-2">
+                {
+                    tags.map((tag) => (
+                        <li>
+                            <span class={`flex gap-x-1 rounded-full text-sm ${tag.class} py-1 px-2 cursor-pointer`}>
+                                <tag.icon class="size-4 cursor-pointer rounded-full" />
+                                {tag.name}
+                            </span>
+                        </li>
+                    ))
+                }
+            </ul>
+            <img 
+                class="rounded shadow-2xl shadow-white/10"
+                src={image} 
+                alt={`Captura de pantalla del proyecto ${image}`}>
+        </article>
+    ))
+}

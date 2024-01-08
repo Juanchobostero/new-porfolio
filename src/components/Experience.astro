@@ -1,0 +1,32 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCE = [
+    {
+        date: "Actualmente",
+        title: "Desarrollador WEB Full-Stack - SyK S.A. - Corrientes, Argentina.",
+        description: "Mantenimiento de sistema web utilizado por personal de CATASTRO",
+    },
+    {
+        date: "2021 - 2022",
+        title: "Desarrollador WEB Full-Stack - Tecsystems (CL) - Remoto. - Chile.",
+        description: "Mantenimiento y corrección de errores a sistema utilizado para gestionar las pruebas de enlaces de respaldo. Ministerio de Salud (MINSAL).",
+    },
+    {
+        date: "Released on December 2nd, 2021",
+        title: "Flowbite Library v1.2.2",
+        description: "Get started with dozens of web components and interactive elements built on top of Tailwind CSS.",
+        link: 'https://www.olalamayoristas.com'
+    },
+]
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+    {
+        EXPERIENCE.map((experience) => (
+            <li class="mb-10 ms-6">            
+                <ExperienceItem {...experience}/>
+            </li>
+        ))
+    }
+</ol>
+
