@@ -2,11 +2,12 @@
 import JavaScript from "./icons/JavaScript.astro"
 import CSS from "./icons/CSS.astro"
 import PHP from "./icons/PHP.astro"
+import MySQL from "./icons/MySQL.astro"
 
 const TAGS = {
     JAVASCRIPT: {
         name: "JavaScript",
-        class: "bg-black text-white",
+        class: "bg-[#696964] text-white",
         icon: JavaScript
     },
     CSS: {
@@ -18,16 +19,21 @@ const TAGS = {
         name: "CodeIgniter",
         class: "bg-[#696964] text-white",
         icon: PHP
+    },
+    MYSQL: {
+        name: "MySQL",
+        class: "bg-[#696964] text-white",
+        icon: MySQL
     }
 }
 const PROJECTS  = [
     {
-        title: 'JL Herramientas',
-        description: 'Tienda online implementada con CodeIgniter 3, HTML, CSS Grid, JS & más.',
+        title: 'JL Herramientas - Tienda Online para Ferretería (actualmente en desuso)',
+        description: 'Desarrollado con CodeIgniter 3, HTML, CSS Grid, JS & más.',
         link: 'https://jlherramientas.000webhostapp.com/',
         github: '#',
-        image: '/public/projects/project1.webp',
-        tags: [TAGS.PHP, TAGS.JAVASCRIPT, TAGS.CSS]
+        image: '/projects/project1.webp',
+        tags: [TAGS.PHP, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL]
     }
 ]
 ---
