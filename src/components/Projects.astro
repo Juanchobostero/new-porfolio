@@ -3,6 +3,8 @@ import JavaScript from "./icons/JavaScript.astro"
 import CSS from "./icons/CSS.astro"
 import PHP from "./icons/PHP.astro"
 import MySQL from "./icons/MySQL.astro"
+import ReactJS from "./icons/ReactJS.astro"
+import ButtonLinkPage from "./ButtonLinkPage.astro"
 
 const TAGS = {
     JAVASCRIPT: {
@@ -24,26 +26,56 @@ const TAGS = {
         name: "MySQL",
         class: "bg-[#696964] text-white",
         icon: MySQL
+    },
+    REACTJS: {
+        name: "ReactJS",
+        class: "bg-[#696964] text-white",
+        icon: ReactJS
     }
 }
 const PROJECTS  = [
     {
-        title: 'JL Herramientas - Tienda Online para Ferretería (actualmente en desuso)',
+        title: 'JL Herramientas - Tienda Online para Ferretería.',
         description: 'Desarrollado con CodeIgniter 3, HTML, CSS Grid, JS & más.',
         link: 'https://jlherramientas.000webhostapp.com/',
         github: '#',
         image: '/projects/project1.webp',
         tags: [TAGS.PHP, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL]
+    },
+    {
+        title: `O'lalá Mayoristas - Tienda Online para Joyería.`,
+        description: 'Desarrollado con CodeIgniter 3, HTML, CSS Grid, JS & más.',
+        link: 'https://olalamayoristas.com/',
+        github: '#',
+        image: '/projects/olala.webp',
+        tags: [TAGS.PHP, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL]
+    },
+    {
+        title: 'Ecommerce - Tienda Online conectada con API de MERCADO PAGO.',
+        description: 'Desarrollado con stack MERN, Redux, & más.',
+        link: 'https://ecommerce-reactjs-chi.vercel.app/',
+        github: '#',
+        image: '/projects/ecommerce.webp',
+        tags: [TAGS.REACTJS, TAGS.CSS]
+    },
+    {
+        title: 'Cotizador de Criptomonedas.',
+        description: 'Desarrollado con ReactJS.',
+        link: 'https://stoic-ptolemy-95b2df.netlify.app/',
+        github: '#',
+        image: '/projects/cotizador.webp',
+        tags: [TAGS.REACTJS, TAGS.CSS]
     }
 ]
 ---
 
 {
     PROJECTS.map(({ title, description, tags, github, image, link }) => (
-        <article>
+        <article class="mb-10">
             <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
-            <ul class="flex gap-x-4 flex-row mb-2">
+            <ButtonLinkPage href={link} rel="noopener noreferrer" target="_blank"/>
+            <ul class="flex gap-x-4 flex-row mb-2 mt-6">
                 {
                     tags.map((tag) => (
                         <li>
