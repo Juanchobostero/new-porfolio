@@ -5,6 +5,11 @@ import PHP from "./icons/PHP.astro"
 import MySQL from "./icons/MySQL.astro"
 import ReactJS from "./icons/ReactJS.astro"
 import ButtonLinkPage from "./ButtonLinkPage.astro"
+import MercadoPago from "./icons/MercadoPago.astro"
+import HTML from "./icons/HTML.astro"
+import Mongo from "./icons/Mongo.astro"
+import Node from "./icons/Node.astro"
+import Express from "./icons/Express.astro"
 
 const TAGS = {
     JAVASCRIPT: {
@@ -31,32 +36,58 @@ const TAGS = {
         name: "ReactJS",
         class: "bg-[#696964] text-white",
         icon: ReactJS
+    },
+    MERCADOPAGO: {
+        name: "MercadoPago",
+        class: "bg-[#696964] text-white",
+        icon: MercadoPago
+    },
+    HTML: {
+        name: "HTML",
+        class: "bg-[#696964] text-white",
+        icon: HTML
+    },
+    MONGO: {
+        name: "MongoDB",
+        class: "bg-[#696964] text-white",
+        icon: Mongo
+    },
+    NODE: {
+        name: "NodeJS",
+        class: "bg-[#696964] text-white",
+        icon: Node
+    }, 
+    EXPRESS: {
+        name: "Express",
+        class: "bg-[#696964] text-white",
+        icon: Express
     }
 }
 const PROJECTS  = [
     {
-        title: 'JL Herramientas - Tienda Online para Ferretería.',
-        description: 'Desarrollado con CodeIgniter 3, HTML, CSS Grid, JS & más.',
+        title: 'JL Herramientas - Tienda Online para Ferretería - Desarrollo para SoftCre.',
+        description: `Desarrollo de frontend y funcionalidades con conexión a backend (Carrito, formularios, checkout, etc).
+        Se implementó pasarela de pagos con API de MERCADO PAGO.`,
         link: 'https://jlherramientas.000webhostapp.com/',
         github: '#',
         image: '/projects/project1.webp',
-        tags: [TAGS.PHP, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL]
+        tags: [TAGS.PHP, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL, TAGS.MERCADOPAGO]
     },
     {
-        title: `O'lalá Mayoristas - Tienda Online para Joyería.`,
-        description: 'Desarrollado con CodeIgniter 3, HTML, CSS Grid, JS & más.',
+        title: `Tienda Online para Joyería "O'lalá Mayoristas" - Corrientes, Argentina - Desarrollo para SoftCre.`,
+        description: `Desarrollo de frontend (aplicándose un rediseño general del sitio previamente requerido) y funcionalidades con conexión a backend (Carrito, formularios, etc).`,
         link: 'https://olalamayoristas.com/',
         github: '#',
         image: '/projects/olala.webp',
-        tags: [TAGS.PHP, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL]
+        tags: [TAGS.PHP, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL]
     },
     {
-        title: 'Ecommerce - Tienda Online conectada con API de MERCADO PAGO.',
-        description: 'Desarrollado con stack MERN, Redux, & más.',
+        title: 'Ecommerce - Stack MERN.',
+        description: 'Desarrollo basado en curso de stack MERN en plataforma UDEMY. Se implementó pasarela de pagos utilizando API de MERCADO PAGO',
         link: 'https://ecommerce-reactjs-chi.vercel.app/',
         github: '#',
         image: '/projects/ecommerce.webp',
-        tags: [TAGS.REACTJS, TAGS.CSS]
+        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.MERCADOPAGO]
     },
     {
         title: 'Cotizador de Criptomonedas.',
@@ -64,7 +95,7 @@ const PROJECTS  = [
         link: 'https://stoic-ptolemy-95b2df.netlify.app/',
         github: '#',
         image: '/projects/cotizador.webp',
-        tags: [TAGS.REACTJS, TAGS.CSS]
+        tags: [TAGS.REACTJS, TAGS.HTML, TAGS.CSS]
     }
 ]
 ---
@@ -75,12 +106,12 @@ const PROJECTS  = [
             <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
             <ButtonLinkPage href={link} rel="noopener noreferrer" target="_blank"/>
-            <ul class="flex gap-x-4 flex-row mb-2 mt-6">
+            <ul class="flex gap-x-4 gap-y-2 flex-row mb-2 mt-6 flex-wrap">
                 {
                     tags.map((tag) => (
                         <li>
                             <span class={`flex gap-x-1 rounded-full text-sm ${tag.class} py-1 px-2 cursor-pointer`}>
-                                <tag.icon class="size-4 cursor-pointer rounded-full" />
+                                <tag.icon class="size-5 cursor-pointer rounded-full" />
                                 {tag.name}
                             </span>
                         </li>
