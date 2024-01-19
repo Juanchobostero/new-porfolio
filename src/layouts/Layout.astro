@@ -16,7 +16,7 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Porfolio de Juan Cruz Martinez desarrollado con ASTRO." />
 		<meta name="viewport" content="width=device-width" />
-		<link class="rounded rounded-full" rel="icon" type="image/svg+xml" href="/photo.jpeg" />
+		<link class="rounded-full" rel="icon" type="image/svg+xml" href="/photo.jpeg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -44,6 +44,7 @@ const { title } = Astro.props;
 		flex-direction: column;
 		justify-content: center;
 		min-height: 100vh;
+		overflow-x: hidden;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
