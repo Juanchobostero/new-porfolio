@@ -14,6 +14,9 @@ dependencies:
   '@fontsource-variable/onest':
     specifier: ^5.0.2
     version: 5.0.2
+  '@fontsource/space-mono':
+    specifier: ^5.0.18
+    version: 5.0.18
   astro:
     specifier: ^4.0.8
     version: 4.0.8(typescript@5.3.3)
@@ -616,6 +619,10 @@ packages:
 
   /@fontsource-variable/onest@5.0.2:
     resolution: {integrity: sha512-XsH6q+/OyO0Oba4OB/NkiQu3ON93U2Kx+1YxKpNZMuS+a+WvxipwhO8Und2CC0mLI33xOZzTWUk4wtnsUJzjCQ==}
+    dev: false
+
+  /@fontsource/space-mono@5.0.18:
+    resolution: {integrity: sha512-2GKT0pokkncXbYF675JcxexjTwVGD2jX+a9rof9wgI+IuyMk0CNsZFBNuSDDsJoTfZpJjA2GCVaEr7f/bgp35A==}
     dev: false
 
   /@img/sharp-darwin-arm64@0.33.1:
