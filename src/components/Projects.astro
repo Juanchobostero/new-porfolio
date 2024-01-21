@@ -4,12 +4,14 @@ import CSS from "./icons/CSS.astro"
 import PHP from "./icons/PHP.astro"
 import MySQL from "./icons/MySQL.astro"
 import ReactJS from "./icons/ReactJS.astro"
-import ButtonLinkPage from "./ButtonLinkPage.astro"
 import MercadoPago from "./icons/MercadoPago.astro"
 import HTML from "./icons/HTML.astro"
 import Mongo from "./icons/Mongo.astro"
 import Node from "./icons/Node.astro"
 import Express from "./icons/Express.astro"
+import LinkButton from "./LinkButton.astro"
+import GitHub from "./icons/GitHub.astro"
+import Web from "./icons/Web.astro"
 
 const TAGS = {
     JAVASCRIPT: {
@@ -100,12 +102,12 @@ const PROJECTS  = [
 ]
 ---
 
+<section class="flex flex-col gap-y-16">
 {
     PROJECTS.map(({ title, description, tags, github, image, link }) => (
         <article class="mb-10">
             <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
-            <ButtonLinkPage href={link} rel="noopener noreferrer" target="_blank"/>
             <ul class="flex gap-x-4 gap-y-2 flex-row mb-2 mt-6 flex-wrap">
                 {
                     tags.map((tag) => (
@@ -121,7 +123,23 @@ const PROJECTS  = [
             <img 
                 class="rounded shadow-2xl shadow-white/10"
                 src={image} 
-                alt={`Captura de pantalla del proyecto ${image}`}>
+                alt={`Captura de pantalla del proyecto ${image}`} 
+            />
+
+            <footer class="flex gap-x-4 items-end justify-start mt-4">
+                {github && (
+                    <LinkButton href={github}>
+                    <GitHub class="size-6" />
+                    Ver código fuente
+                    </LinkButton>
+                )}
+                <LinkButton href={link}>
+                    <Web class="sixe-6" />
+                    Ir al sitio web
+                </LinkButton>
+            </footer>
         </article>
     ))
 }
+
+</section>

@@ -1,0 +1,37 @@
+---
+import Badge from "@/components/Badge.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import Layout from "@/layouts/Layout.astro";
+import LinkedinIcon from "@/components/icons/Linkedin.astro";
+---
+
+<Layout 
+    title="Design System Porfolio Juan Cruz Martinez"
+    description="El catálogo de componentes de nuestro porfolio"
+>
+<SectionContainer class="py-44 pb-32">
+    <h1 class="text-white text-2xl lg:text-5xl font-bold pb-6 lg:pb-10">
+      Components
+    </h1>
+    <div class="flex flex-row gap-x-10">
+      <article class="mb-10 border rounded-md border-gray-400 p-4">
+        <h1 class="mb-4 font-bold">&lt;Badge / &gt;</h1>
+        <Badge>Trabajando</Badge>
+      </article>
+  
+      <article class="mb-10 border rounded-md border-gray-400 p-4">
+        <h1 class="mb-4 font-bold">&lt;SocialPill / &gt;</h1>
+        <div class="flex">
+          <SocialPill>
+            <LinkedinIcon class="size-4 md:size-6" />
+            LinkedIn
+          </SocialPill>
+        </div>
+      </article>
+    </div>
+  </SectionContainer>
+  
+    
+</Layout>
+
