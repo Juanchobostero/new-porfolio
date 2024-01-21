@@ -10,14 +10,19 @@ import Experience from '../components/Experience.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/Code.astro'
 import Projects from '../components/Projects.astro';
+import Profile from '@/components/icons/Profile.astro';
+import AboutMe from "@/components/AboutMe.astro"
 ---
 
-<Layout title="Porfolio de Juan Cruz Martinez - Desarrollador y Programador WEB">
+<Layout 
+	title="Porfolio de Juan Cruz Martinez - Desarrollador y Programador WEB"
+	description="Pagina principal del porfolio de Juan Cruz Martinez - Desarrollador Web Full-Stack"	
+>
 	<main class="px-2 tracking-tight">
 		<SectionContainer class="py-32 pb-24">
 			<img
 				class="rounded-full size-14 mb-4" 
-				src="/photo.jpeg" 
+				src="/photo.webp" 
 				alt="juancruz photo" />
 			<h1 class="text-white text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
 				Hola, soy Juan Cruz 
@@ -65,8 +70,16 @@ import Projects from '../components/Projects.astro';
 				<CodeIcon class="size-7"/>	
 				Proyectos
 			</h2>
-
 			<Projects />
+		</SectionContainer>
+
+		<SectionContainer id="sobre-mi">
+			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+				<Profile class="size-7"/>	
+				Sobre mi
+			</h2>
+			
+			<AboutMe />
 		</SectionContainer>
 	</main>
 </Layout>
