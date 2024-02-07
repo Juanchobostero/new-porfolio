@@ -1,3 +1,31 @@
+<style>
+  /* Initial opacity for body content */
+  body {
+    transition: opacity 0.3s linear;
+  }
+  /* Blurred background */
+  .blur-background {
+    pointer-events: none;
+    opacity: 0.7; /* Adjust the opacity as needed */
+  }
+
+  /* Define clases para colores de botones */
+  .green-button {
+    background-color: green;
+    color: white;
+  }
+  
+  .blue-button {
+    background-color: blue;
+    color: white;
+  }
+  
+  .red-button {
+    background-color: red;
+    color: white;
+  }
+</style>
+
 <header
   class={`
     flex justify-center items-center
@@ -28,8 +56,51 @@
     <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#sobre-mi"
       >Bio</a
     >
-    <a class="hover:bg-white/10 rounded-full px-3 transition" href="/#contacto"
+    <a 
+      class="hover:bg-white/10 rounded-full px-3 transition" 
+      href="/#contacto"
+      id="contacto-link"
       >Contacto</a
     >
   </nav>
 </header>
+
+<script>
+  import Swal from "sweetalert2";
+  // Find the "Contacto" link by its id
+  var contactoLink = document.getElementById("contacto-link");
+  
+  // Check if the contactoLink exists before adding the event listener
+  if (contactoLink) {
+    // Add a click event listener to the "Contacto" link
+    contactoLink.addEventListener("click", function(event) {
+      // Prevent the default action of the link
+      event.preventDefault();
+      
+      // Add the CSS class to blur the background content
+      document.body.classList.add('blur-background');
+      // Show a SweetAlert con botones en el cuerpo
+      Swal.fire({
+        title: 'Contacto',
+        text: 'Selecciona una opción:',
+        focusConfirm: false,
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        showCloseButton: true,
+        html: `
+          <button id="button1" class="swal2-confirm swal2-styled">Botón 1</button>
+          <button id="button2" class="swal2-confirm swal2-styled">Botón 2</button>
+          <button id="button3" class="swal2-confirm swal2-styled">Botón 3</button>
+          <hr></hr>
+        `,
+        preConfirm: (value) => {
+          // Maneja la lógica cuando el usuario hace clic en los botones
+          console.log('Botón seleccionado:', value);
+        }
+      }).then((result) => {
+        // Remueve la clase CSS cuando se cierra el SweetAlert
+        document.body.classList.remove('blur-background');
+      });
+    });
+  }
+</script>

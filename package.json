@@ -15,6 +15,7 @@
     "@fontsource-variable/onest": "^5.0.2",
     "@fontsource/space-mono": "^5.0.18",
     "astro": "^4.0.8",
+    "sweetalert2": "^11.10.5",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.3"
   }
