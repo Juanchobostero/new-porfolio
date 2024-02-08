@@ -6,23 +6,18 @@
   /* Blurred background */
   .blur-background {
     pointer-events: none;
-    opacity: 0.7; /* Adjust the opacity as needed */
+    opacity: 1; /* Adjust the opacity as needed */
   }
 
-  /* Define clases para colores de botones */
-  .green-button {
-    background-color: green;
+  .test {
+    width: fit-content;
+    height: auto;
+    background-color: #025709;
     color: white;
   }
-  
-  .blue-button {
-    background-color: blue;
-    color: white;
-  }
-  
-  .red-button {
-    background-color: red;
-    color: white;
+
+  .swal2-html-container {
+    height: 20vh;
   }
 </style>
 
@@ -67,40 +62,50 @@
 
 <script>
   import Swal from "sweetalert2";
-  // Find the "Contacto" link by its id
   var contactoLink = document.getElementById("contacto-link");
   
-  // Check if the contactoLink exists before adding the event listener
   if (contactoLink) {
-    // Add a click event listener to the "Contacto" link
-    contactoLink.addEventListener("click", function(event) {
-      // Prevent the default action of the link
-      event.preventDefault();
-      
-      // Add the CSS class to blur the background content
-      document.body.classList.add('blur-background');
-      // Show a SweetAlert con botones en el cuerpo
-      Swal.fire({
-        title: 'Contacto',
-        text: 'Selecciona una opción:',
-        focusConfirm: false,
-        showCancelButton: true,
-        cancelButtonText: 'Cancelar',
+    contactoLink.addEventListener("click", function() {
+
+      const phone = '+543794065380'
+
+      console.log(phone)
+
+      return Swal.fire({
+        title: "Contactame",
+        color: "#fff",
+        showConfirmButton: false,
+        showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        },
         showCloseButton: true,
+        background: "rgba(0, 0, 0, 0.9)",
         html: `
-          <button id="button1" class="swal2-confirm swal2-styled">Botón 1</button>
-          <button id="button2" class="swal2-confirm swal2-styled">Botón 2</button>
-          <button id="button3" class="swal2-confirm swal2-styled">Botón 3</button>
-          <hr></hr>
+            <div>
+              <a 
+                aria-label="Mensaje"
+                style="width: fit-content;
+                  height: auto;
+                  background-color: #025709;
+                  padding: 0.2rem;
+                  border-radius: 0.5rem;
+                  color: white;" 
+                href="https://wa.me/${phone}">Chatear en WhatsApp
+              <a />
+            </div>
         `,
-        preConfirm: (value) => {
-          // Maneja la lógica cuando el usuario hace clic en los botones
-          console.log('Botón seleccionado:', value);
-        }
-      }).then((result) => {
-        // Remueve la clase CSS cuando se cierra el SweetAlert
-        document.body.classList.remove('blur-background');
       });
-    });
-  }
+  });
+}
 </script>
