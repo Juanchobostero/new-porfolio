@@ -6,7 +6,7 @@
   /* Blurred background */
   .blur-background {
     pointer-events: none;
-    opacity: 1; /* Adjust the opacity as needed */
+    opacity: .5 !important; /* Adjust the opacity as needed */
   }
 
   .test {
@@ -16,9 +16,6 @@
     color: white;
   }
 
-  .swal2-html-container {
-    height: 20vh;
-  }
 </style>
 
 <header
@@ -62,12 +59,14 @@
 
 <script>
   import Swal from "sweetalert2";
+  
   var contactoLink = document.getElementById("contacto-link");
   
   if (contactoLink) {
     contactoLink.addEventListener("click", function() {
-
       const phone = '+543794065380'
+      const instagram = 'https://www.instagram.com/_juancruzmartinez/'
+      const facebook = 'https://www.facebook.com/juaanchhoo/'
 
       console.log(phone)
 
@@ -90,19 +89,57 @@
           `
         },
         showCloseButton: true,
-        background: "rgba(0, 0, 0, 0.9)",
+        background: "rgba(0, 0, 0, 0.7)",
         html: `
-            <div>
+            <div style="height: 35vh; padding: 0.5rem; display: flex; flex-direction: column; justify-content: space-around; align-items: center; border: 1px solid white; border-radius: 0.5rem;">
               <a 
-                aria-label="Mensaje"
-                style="width: fit-content;
+                aria-label="Chatear en WhatsApp"
+                style="width: 90%;
                   height: auto;
-                  background-color: #025709;
-                  padding: 0.2rem;
+                  background-color: #25D366;
+                  padding: 0.5rem;
                   border-radius: 0.5rem;
-                  color: white;" 
-                href="https://wa.me/${phone}">Chatear en WhatsApp
-              <a />
+                  color: white;
+                  text-align: center;
+                  text-decoration: none;
+                  font-weight: bold;" 
+                href="https://wa.me/${phone}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Chatear en WhatsApp
+              </a>
+              <a 
+                aria-label="Ir a Instagram"
+                style="width: 90%;
+                  height: auto;
+                  background-color: #C13584;
+                  padding: 0.5rem;
+                  border-radius: 0.5rem;
+                  color: white;
+                  text-align: center;
+                  text-decoration: none;
+                  font-weight: bold;
+                  margin-top: 0.5rem;"
+                  href="${instagram}"
+                  target="_blank"
+                  rel="noopener noreferrer">Instagram
+              </a>
+              <a 
+                aria-label="Ir a Facebook"
+                style="width: 90%;
+                  height: auto;
+                  background-color: #1877F2;
+                  padding: 0.5rem;
+                  border-radius: 0.5rem;
+                  color: white;
+                  text-align: center;
+                  text-decoration: none;
+                  font-weight: bold;
+                  margin-top: 0.5rem;" 
+                  href="${facebook}"
+                  target="_blank"
+                  rel="noopener noreferrer">Facebook
+              </a>
             </div>
         `,
       });
