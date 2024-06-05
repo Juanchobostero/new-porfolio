@@ -12,6 +12,7 @@ import CodeIcon from '../components/icons/Code.astro'
 import Projects from '../components/Projects.astro';
 import Profile from '@/components/icons/Profile.astro';
 import AboutMe from "@/components/AboutMe.astro"
+import WorkWithMe from '@/components/WorkWithMe.astro';
 ---
 
 <Layout 
@@ -25,7 +26,7 @@ import AboutMe from "@/components/AboutMe.astro"
 				src="/photo.webp" 
 				alt="juancruz photo" />
 			<h1 class="text-white text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
-				Hola, soy Juan Cruz 
+				Juan Cruz Martínez. 
 				<a 
 					href="https://www.linkedin.com/in/martinezjc93/" 
 					target="_blank" 
@@ -63,6 +64,10 @@ import AboutMe from "@/components/AboutMe.astro"
 				<Briefcase class="size-7"/>	
 				Experiencia Laboral</h2>
 			<Experience />
+		</SectionContainer>
+
+		<SectionContainer id="trabaja-conmigo">
+			<WorkWithMe />
 		</SectionContainer>
 
 		<SectionContainer id="proyectos">
