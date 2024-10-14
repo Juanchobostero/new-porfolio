@@ -27,7 +27,7 @@ import ThreeJSBadge from '@/components/ThreeJSBadge.astro';
 				src="/photo.webp" 
 				alt="juancruz photo" />
 			<h1 class="text-white text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
-				<span class="text-sky-400">Juan Cruz</span> Martínez.
+				<span class="text-sky-400 whitespace-nowrap">Juan Cruz</span> Martínez.
 				<a 
 					href="https://www.linkedin.com/in/martinezjc93/" 
 					target="_blank" 
@@ -37,6 +37,7 @@ import ThreeJSBadge from '@/components/ThreeJSBadge.astro';
 					<ThreeJSBadge>Trabajando</ThreeJSBadge>
 				</a>
 			</h1>
+				
 			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
 				<span>+4 años de experiencia.</span> 
 				<span class="text-yellow-200/90">Desarrollador Web.</span> 
@@ -106,6 +107,10 @@ import ThreeJSBadge from '@/components/ThreeJSBadge.astro';
 		animation: reveal both;
 		animation-timeline: view();
 		animation-range: entry 20% cover 30%;
+	}
+
+	h1 {
+		text-wrap: balance;
 	}
 </style>
 
