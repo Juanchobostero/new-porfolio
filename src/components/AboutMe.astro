@@ -6,7 +6,7 @@ const unne = 'https://www.unne.edu.ar/'
     <div 
         class="[&>p]:mb-4 [&>p>strong]:text-yellow-400 [&>p>strong]:font-semibold text-pretty order-2 md:order-1">
         <p>
-            Me llamo Juan Cruz Martinez, pero mis amigos me dicen Juancho, JuanX, J, & más.
+            Me llamo Juan Cruz Martinez.
             Empecé en la programación realizando ejercicios con Geany en la facultad (antes de eso solamente usaba la compu para jugar, escuchar musica & chatear).
             <strong>En Julio/2023 me he graduado de Lic. en Sistemas en la <a class="text-sky-500 text-decoration-line: none; hover:text-sky-200/90 transition" href=`${unne}` target="_blank" rel="noopener noreferrer">UNNE</a>. Hoy día estoy formando parte de un gran equipo de trabajo, permitiendome continuar reforzando mi aprendizaje y habilidades. Me gusta JavaScript y todo lo referido a la comunidad de la programación, asi como tambien estar al tanto de las novedades.</strong>
         </p>
@@ -26,3 +26,22 @@ const unne = 'https://www.unne.edu.ar/'
         class="rounded-full size-64 order-1 md:order-2"
     />
 </section>
+
+<style>
+    @keyframes reveal {
+		from {
+			opacity: 0;
+			transform: 0 100px;
+		}
+		to {
+			opacity: 1;
+			transform: 0 0;
+		}
+	}
+
+	section {
+		animation: reveal both;
+		animation-timeline: view();
+		animation-range: entry 20% cover 30%;
+	}
+</style>

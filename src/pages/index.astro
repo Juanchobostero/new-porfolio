@@ -13,6 +13,7 @@ import Projects from '../components/Projects.astro';
 import Profile from '@/components/icons/Profile.astro';
 import AboutMe from "@/components/AboutMe.astro"
 import WorkWithMe from '@/components/WorkWithMe.astro';
+import ThreeJSBadge from '@/components/ThreeJSBadge.astro';
 ---
 
 <Layout 
@@ -33,7 +34,7 @@ import WorkWithMe from '@/components/WorkWithMe.astro';
 					rel="noopener" 
 					class="flex justify-center items-center"
 				>
-					<Badge>Trabajando</Badge>
+					<ThreeJSBadge>Trabajando</ThreeJSBadge>
 				</a>
 			</h1>
 			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
@@ -88,4 +89,23 @@ import WorkWithMe from '@/components/WorkWithMe.astro';
 		</SectionContainer>
 	</main>
 </Layout>
+
+<style>
+	@keyframes reveal {
+		from {
+			opacity: 0;
+			transform: 0 100px;
+		}
+		to {
+			opacity: 1;
+			transform: 0 0;
+		}
+	}
+
+	h2 {
+		animation: reveal both;
+		animation-timeline: view();
+		animation-range: entry 20% cover 30%;
+	}
+</style>
 

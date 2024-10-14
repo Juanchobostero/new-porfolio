@@ -6,6 +6,14 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "jsx": "preserve",
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["astro/client"],
+    "skipLibCheck": true
   }
 }
