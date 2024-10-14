@@ -28,7 +28,7 @@ const { title, description } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="bg-cyan-900">
-		<button id="myBtn" title="Go to top">
+		<button class="bg-black/50" id="myBtn" title="Go to top">
 			<i class="fas fa-arrow-up"></i>
 		</button>
 		<Header />
@@ -61,7 +61,6 @@ const { title, description } = Astro.props;
 		z-index: 99; /* Make sure it does not overlap */
 		border: none; /* Remove borders */
 		outline: none; /* Remove outline */
-		background-color: rgb(0, 140, 255); /* Set a background color */
 		color: white; /* Text color */
 		cursor: pointer; /* Add a mouse pointer on hover */
 		padding: 15px; /* Some padding */
