@@ -25,7 +25,8 @@ import ThreeJSBadge from '@/components/ThreeJSBadge.astro';
 			<img
 				class="rounded-full size-14 mb-4" 
 				src="/photo.webp" 
-				alt="juancruz photo" />
+				alt="juancruz photo" 
+			/>
 			<h1 class="text-white text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
 				<span class="text-sky-400 whitespace-nowrap">Juan Cruz</span> Martínez.
 				<a 
@@ -111,6 +112,14 @@ import ThreeJSBadge from '@/components/ThreeJSBadge.astro';
 
 	h1 {
 		text-wrap: balance;
+	}
+
+	img.rounded-full {
+		transition: transform 0.3s ease-in-out;
+	}
+
+	img.rounded-full:hover {
+		transform: scale(1.5);
 	}
 </style>
 
