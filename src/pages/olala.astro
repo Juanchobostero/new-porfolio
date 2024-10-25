@@ -1,0 +1,32 @@
+---
+import SectionContainer from "@components/SectionContainer.astro";
+import ThreeJSBadge from "@components/ThreeJSBadge.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout 
+    title="Porfolio de Juan Cruz Martinez - Desarrollador WEB" 
+    description="Pagina principal del porfolio de Juan Cruz Martinez - Desarrollador Web Full-Stack"
+>
+    <main class="px-2 tracking-tight">
+        <SectionContainer class="py-32 pb-24">
+            <h1 class="text-white text-xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
+				<span class="text-sky-400 whitespace-nowrap">O'LALÁ</span> Mayoristas.
+				<a 
+					href="https://www.linkedin.com/in/martinezjc93/" 
+					target="_blank" 
+					rel="noopener" 
+					class="flex justify-center items-center"
+				>
+					<ThreeJSBadge>offline</ThreeJSBadge>
+				</a>
+			</h1>
+        </SectionContainer>
+    </main>
+</Layout>
+
+<style>
+    main {
+        min-height: 100vh;
+    }
+</style>

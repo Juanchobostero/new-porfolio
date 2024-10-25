@@ -3,6 +3,8 @@
 import '@fontsource/space-mono';
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import { ViewTransitions } from 'astro:transitions'
+
 interface Props {
 	title: string;
 	description: string;
@@ -10,15 +12,17 @@ interface Props {
 
 const { title, description } = Astro.props;
 
+const MAINTENANCE = false;
+
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Porfolio de Juan Cruz Martinez desarrollado con ASTRO." />
 		<meta name="viewport" content="width=device-width" />
-		<link class="rounded-full" rel="icon" type="image/svg+xml" href="/photo.jpeg" />
+		<link class="rounded-full" rel="icon" type="image/svg+xml" href="/photo.webp" />
 		<meta name="generator" content={Astro.generator} />
 		<link
 			rel="stylesheet"
@@ -26,14 +30,17 @@ const { title, description } = Astro.props;
 		/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body class="bg-cyan-900">
-		<button class="bg-black/50" id="myBtn" title="Go to top">
-			<i class="fas fa-arrow-up"></i>
-		</button>
-		<Header />
-		<slot />
-		<Footer />
+		{
+			MAINTENANCE ? null : <button class="bg-black/50" id="myBtn" title="Go to top">
+				<i class="fas fa-arrow-up"></i>
+			</button>
+		}
+		{MAINTENANCE ? null : <Header />}
+			<slot />
+		{MAINTENANCE ? null : <Footer />}
 	</body>
 </html>
 <style is:global>

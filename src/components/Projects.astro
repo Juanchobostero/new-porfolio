@@ -66,45 +66,40 @@ const TAGS = {
     }
 }
 const PROJECTS  = [
-    {
-        title: 'JL Herramientas - Tienda Online para Ferretería - Desarrollo para SoftCre.',
-        description: `Desarrollo de frontend y funcionalidades con conexión a backend (Carrito, formularios, checkout, etc).
-        Se implementó pasarela de pagos con API de MERCADO PAGO.`,
-        link: 'https://jlherramientas.000webhostapp.com/',
-        github: '#',
-        image: '/projects/project1.webp',
-        tags: [TAGS.PHP, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL, TAGS.MERCADOPAGO]
-    },
-    {
-        title: `Tienda Online para Joyería "O'lalá Mayoristas" - Corrientes, Argentina - Desarrollo para SoftCre.`,
-        description: `Desarrollo de frontend (aplicándose un rediseño general del sitio previamente requerido) y funcionalidades con conexión a backend (Carrito, formularios, etc).`,
-        link: 'https://olalamayoristas.com/',
-        github: '#',
-        image: '/projects/olala.webp',
-        tags: [TAGS.PHP, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL]
-    },
+    // {
+    //     title: 'JL Herramientas - Tienda Online para Ferretería - Desarrollo para SoftCre.',
+    //     description: `Desarrollo de frontend y funcionalidades con conexión a backend (Carrito, formularios, checkout, etc).
+    //     Se implementó pasarela de pagos con API de MERCADO PAGO.`,
+    //     link: 'highlight',
+    //     github: 'https://github.com/Juanchobostero/highlight',
+    //     image: '/projects/project1.webp',
+    //     tags: [TAGS.PHP, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL, TAGS.MERCADOPAGO],
+    //     off: true
+    // },
+    // {
+    //     title: `Tienda Online para Joyería "O'lalá Mayoristas" - Corrientes, Argentina - Desarrollo para SoftCre.`,
+    //     description: `Desarrollo de frontend (aplicándose un rediseño general del sitio previamente requerido) y funcionalidades con conexión a backend (Carrito, formularios, etc).`,
+    //     link: '/olala',
+    //     github: 'https://github.com/softcre/olala',
+    //     image: '/projects/olala.webp',
+    //     tags: [TAGS.PHP, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL],
+    //     off: true
+    // },
     {
         title: 'Ecommerce - Stack MERN.',
         description: 'Desarrollo basado en curso de stack MERN en plataforma UDEMY. Se implementó pasarela de pagos utilizando API de MERCADO PAGO',
         link: 'https://ecommerce-reactjs-chi.vercel.app/',
-        github: '#',
+        github: 'https://github.com/Juanchobostero/ecommerce-reactjs',
         image: '/projects/ecommerce.webp',
-        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.MERCADOPAGO]
+        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.MERCADOPAGO],
+        off: false
     },
-    {
-        title: 'Cotizador de Criptomonedas.',
-        description: 'Desarrollado con ReactJS.',
-        link: 'https://stoic-ptolemy-95b2df.netlify.app/',
-        github: '#',
-        image: '/projects/cotizador.webp',
-        tags: [TAGS.REACTJS, TAGS.HTML, TAGS.CSS]
-    }
 ]
 ---
 
 <section class="flex flex-col gap-y-16">
 {
-    PROJECTS.map(({ title, description, tags, github, image, link }) => (
+    PROJECTS.map(({ title, description, tags, github, image, link, off }) => (
         <article class="mb-10">
             <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
@@ -112,8 +107,8 @@ const PROJECTS  = [
                 {
                     tags.map((tag) => (
                         <li>
-                            <span class={`flex gap-x-1 rounded-full text-sm ${tag.class} py-1 px-2 cursor-pointer`}>
-                                <tag.icon class="size-5 cursor-pointer rounded-full" />
+                            <span class={`flex gap-x-1 rounded-s text-sm ${tag.class} py-1 px-2 cursor-pointer`}>
+                                <tag.icon class="size-5 cursor-pointer rounded-s" />
                                 {tag.name}
                             </span>
                         </li>
@@ -121,7 +116,7 @@ const PROJECTS  = [
                 }
             </ul>
             <img 
-                class="rounded shadow-2xl shadow-white/10"
+                class="rounded shadow-2xl shadow-white/10 object-cover"
                 src={image} 
                 alt={`Captura de pantalla del proyecto ${image}`} 
             />
@@ -133,10 +128,20 @@ const PROJECTS  = [
                     Ver código fuente
                     </LinkButton>
                 )}
-                <LinkButton href={link}>
-                    <Web class="sixe-6" />
-                    Ir al sitio web
-                </LinkButton>
+                {
+                    off ? null : (
+                        <LinkButton href={link}>
+                            <Web class="sixe-6" />
+                            Ir al sitio web
+                        </LinkButton>
+                    )
+                }
+
+                    <LinkButton href={link}>
+                        <Web class="sixe-6" />
+                        Ver más
+                    </LinkButton>
+                
             </footer>
         </article>
     ))
