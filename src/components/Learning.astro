@@ -1,0 +1,60 @@
+---
+import LearningItem from "./LearningItem.astro"
+const LEARNING = [
+    {
+        date: "2019 - 2021",
+        title: "Desarrollador - Municipalidad Ciudad de Corrientes - Argentina",
+        description: "Mantenimiento plataforma SIU-TOBA. Generación y Ejecución de scripts de BD.",
+        current: false
+    },
+    {
+        date: "Actualidad",
+        title: "Desarrollador Web Full-Stack - SyK S.A. - Corrientes, Argentina.",
+        description: "Mantenimiento de sistema web (GIS) utilizado por personal de D.G. CATASTRO, Corrientes - Argentina",
+        current: true
+    },
+    {
+        date: "2021 - 2022",
+        title: "Desarrollador Web Full-Stack - Tecsystems (CL) - Remoto. - Chile.",
+        description: "Mantenimiento y corrección de errores a sistema dashboard utilizado para gestionar las pruebas de enlaces de respaldo. Ministerio de Salud (MINSAL).",
+        current: false
+    },
+    
+    {
+        date: "Actualidad",
+        title: "Desarrollador Web Full-Stack - Softcre - Corrientes, Argentina",
+        description: "Mantenimiento e implementación de funcionalidades/actualizaciones a sitios de clientes.",
+        current: true
+    },
+]
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+    {
+        LEARNING.map((learning) => (
+            <li class="mb-10 ms-6">            
+                <LearningItem {...learning}/>
+            </li>
+        ))
+    }
+</ol>
+
+<style>
+    @keyframes reveal {
+		from {
+			opacity: 0;
+			transform: 0 100px;
+		}
+		to {
+			opacity: 1;
+			transform: 0 0;
+		}
+	}
+
+	li {
+		animation: reveal both;
+		animation-timeline: view();
+		animation-range: entry 20% cover 30%;
+	}
+</style>
+
