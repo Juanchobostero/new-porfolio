@@ -12,6 +12,7 @@ import Express from "./icons/Express.astro"
 import LinkButton from "./LinkButton.astro"
 import GitHub from "./icons/GitHub.astro"
 import Web from "./icons/Web.astro"
+import AstroIcon from "./icons/AstroIcon.astro"
 
 const TAGS = {
     JAVASCRIPT: {
@@ -63,6 +64,11 @@ const TAGS = {
         name: "Express",
         class: "bg-[#696964] text-white",
         icon: Express
+    },
+    ASTRO: {
+        name: "Astro",
+        class: "bg-[#696964] text-white",
+        icon: AstroIcon
     }
 }
 const PROJECTS  = [
@@ -92,6 +98,24 @@ const PROJECTS  = [
         github: 'https://github.com/Juanchobostero/ecommerce-reactjs',
         image: '/projects/ecommerce.webp',
         tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.MERCADOPAGO],
+        off: false
+    },
+    {
+        title: 'STACK GAME 2D',
+        description: 'Desarrollo de juego en 2D basado en app de midudev. Se utilizó el Framework ASTRO para su componentización & despliegue.',
+        link: 'https://stack-game-2d.vercel.app/',
+        github: 'https://github.com/Juanchobostero/stack-game-2d',
+        image: '/projects/stack-game.webp',
+        tags: [TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.ASTRO],
+        off: false
+    },
+    {
+        title: 'Generador código QR',
+        description: 'Desarrollo de generador de código QR, utilizando el Framework ASTRO, Reactjs y TailwindCSS.',
+        link: 'https://qr-code-generator-three-fawn.vercel.app/',
+        github: 'https://github.com/Juanchobostero/qr-code-generator',
+        image: '/projects/qr-generator.webp',
+        tags: [TAGS.NODE, TAGS.REACTJS, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.ASTRO],
         off: false
     },
 ]
