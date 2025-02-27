@@ -13,6 +13,7 @@ import LinkButton from "./LinkButton.astro"
 import GitHub from "./icons/GitHub.astro"
 import Web from "./icons/Web.astro"
 import AstroIcon from "./icons/AstroIcon.astro"
+import VS from "./icons/VS.astro"
 
 const TAGS = {
     JAVASCRIPT: {
@@ -69,32 +70,18 @@ const TAGS = {
         name: "Astro",
         class: "bg-[#696964] text-white",
         icon: AstroIcon
+    },
+    VSCODE: {
+        name: "VSCode",
+        class: "bg-[#696964] text-white",
+        icon: VS
     }
 }
 const PROJECTS  = [
-    // {
-    //     title: 'JL Herramientas - Tienda Online para Ferretería - Desarrollo para SoftCre.',
-    //     description: `Desarrollo de frontend y funcionalidades con conexión a backend (Carrito, formularios, checkout, etc).
-    //     Se implementó pasarela de pagos con API de MERCADO PAGO.`,
-    //     link: 'highlight',
-    //     github: 'https://github.com/Juanchobostero/highlight',
-    //     image: '/projects/project1.webp',
-    //     tags: [TAGS.PHP, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL, TAGS.MERCADOPAGO],
-    //     off: true
-    // },
-    // {
-    //     title: `Tienda Online para Joyería "O'lalá Mayoristas" - Corrientes, Argentina - Desarrollo para SoftCre.`,
-    //     description: `Desarrollo de frontend (aplicándose un rediseño general del sitio previamente requerido) y funcionalidades con conexión a backend (Carrito, formularios, etc).`,
-    //     link: '/olala',
-    //     github: 'https://github.com/softcre/olala',
-    //     image: '/projects/olala.webp',
-    //     tags: [TAGS.PHP, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS, TAGS.MYSQL],
-    //     off: true
-    // },
     {
-        title: 'Ecommerce - Stack MERN.',
-        description: 'Desarrollo basado en curso de stack MERN en plataforma UDEMY. Se implementó pasarela de pagos utilizando API de MERCADO PAGO',
-        link: 'https://ecommerce-reactjs-chi.vercel.app/',
+        title: 'El Promesero - Alfajores Artesanales',
+        description: 'Desarrollo basado en curso de stack MERN en plataforma UDEMY. Se realizó un rediseño adaptando a los requisitos del cliente (imagen de fondo, colores, tipografías, etc).',
+        link: 'https://elpromesero.com',
         github: 'https://github.com/Juanchobostero/ecommerce-reactjs',
         image: '/projects/ecommerce.webp',
         tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.MERCADOPAGO],
@@ -149,21 +136,21 @@ const PROJECTS  = [
                 {github && (
                     <LinkButton href={github}>
                     <GitHub class="size-6" />
-                    Ver código fuente
+                        Ver código fuente
                     </LinkButton>
                 )}
                 {
                     off ? null : (
                         <LinkButton href={link}>
-                            <Web class="sixe-6" />
-                            Ir al sitio web
+                            <Web class="size-6" />
+                                Visitar
                         </LinkButton>
                     )
                 }
 
                     <LinkButton href={link}>
-                        <Web class="sixe-6" />
-                        Ver más
+                        <Web class="size-6" />
+                            Ver más
                     </LinkButton>
                 
             </footer>

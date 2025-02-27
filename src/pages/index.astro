@@ -24,7 +24,7 @@ import Learning from '@components/Learning.astro';
 	<main class="px-2 tracking-tight">
 		<SectionContainer class="py-32 pb-24">
 			<img
-				class="rounded-full size-14 mb-4" 
+				class="rounded-full size-14 mb-4 cursor-pointer" 
 				src="/photo.webp" 
 				alt="juancruz photo" 
 			/>
@@ -40,27 +40,30 @@ import Learning from '@components/Learning.astro';
 				</a>
 			</h1>
 				
-			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-				<span>+4 años de experiencia.</span> 
-				<span class="text-yellow-200/90">Desarrollador Web.</span> 
-				<span class="text-blue-300/90">De Corrientes Capital, Argentina.</span>
-				<span class="text-white">Desarrollador Web Full-Stack, especializado en tecnologías como Codeigniter, .NET, NodeJS & más.</span>
-			</h2>
-
-			<nav class="flex gap-4 mt-8 flex-wrap">
-				<SocialPill href="https://www.linkedin.com/in/martinezjc93/">
-					<LinkedinIcon class="size-4 md:size-6"/>
-					LinkedIn
-				</SocialPill>
-				<SocialPill href="https://github.com/Juanchobostero">
-					<GitHubIcon class="size-4 md:size-6"/>
-					GitHub
-				</SocialPill>
-				<SocialPill href="mailto:juancruzmart93@gmail.com">
-					<MailIcon class="size-4 md:size-6"/>
-					juancruzmart93@gmail.com
-				</SocialPill>
-			</nav>
+			<div class="mt-[-6rem] mb-8 tracking-normal">
+				<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
+					<span class="text-yellow-200/90">Desarrollador Web.</span>
+					<span>+4 años de experiencia.</span> 
+					<span class="text-blue-300/90">De Corrientes Capital, Argentina.</span>
+					<span class="text-white">Especializado en tecnologías como Codeigniter, .NET, NodeJS & más.</span>
+				</h2>
+	
+				<nav class="flex gap-4 mt-8 flex-wrap">
+					<SocialPill href="https://www.linkedin.com/in/martinezjc93/">
+						<LinkedinIcon class="size-4 md:size-6"/>
+						LinkedIn
+					</SocialPill>
+					<SocialPill href="https://github.com/Juanchobostero">
+						<GitHubIcon class="size-4 md:size-6"/>
+						GitHub
+					</SocialPill>
+					<SocialPill href="mailto:juancruzmart93@gmail.com">
+						<MailIcon class="size-4 md:size-6"/>
+						juancruzmart93@gmail.com
+					</SocialPill>
+				</nav>
+			</div>
+			
 		</SectionContainer>
 
 		<SectionContainer id="experiencia">
@@ -81,14 +84,6 @@ import Learning from '@components/Learning.astro';
 			</h2>
 			<Projects />
 		</SectionContainer>
-
-		<!-- <SectionContainer id="aprendizaje">
-			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
-				<CodeIcon class="size-7"/>	
-				Aprendizaje
-			</h2>
-			<Learning />
-		</SectionContainer> -->
 
 		<SectionContainer id="sobre-mi">
 			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">

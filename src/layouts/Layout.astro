@@ -1,6 +1,7 @@
 ---
 // Supports weights 100-900
 import '@fontsource/space-mono';
+import '@fontsource/source-sans-pro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import { ViewTransitions } from 'astro:transitions'
@@ -10,9 +11,7 @@ interface Props {
 	description: string;
 }
 
-const { title, description } = Astro.props;
-
-const MAINTENANCE = false;
+const { title, description } = Astro.props
 
 ---
 
@@ -32,15 +31,18 @@ const MAINTENANCE = false;
 		<title>{title}</title>
 		<ViewTransitions />
 	</head>
-	<body class="bg-cyan-900">
-		{
-			MAINTENANCE ? null : <button class="bg-black/50" id="myBtn" title="Go to top">
-				<i class="fas fa-arrow-up"></i>
-			</button>
-		}
-		{MAINTENANCE ? null : <Header />}
-			<slot />
-		{MAINTENANCE ? null : <Footer />}
+	<body class="relative min-h-screen">
+		<!-- Gradiente de fondo -->
+		<div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_120%_120%_at_50%_-20%,rgba(80,180,255,0.3),rgba(255,255,255,0))]"></div>
+	
+		<!-- Botón de ir arriba -->
+		<button class="bg-black/50 fixed bottom-5 right-5 p-3 rounded-full" id="myBtn" title="Go to top">
+			<i class="fas fa-arrow-up"></i>
+		</button>
+	
+		<Header />
+		<slot />
+		<Footer />
 	</body>
 </html>
 <style is:global>
@@ -48,7 +50,8 @@ const MAINTENANCE = false;
 		color-scheme: dark;
 	}
 	html {
-		font-family: 'Space Mono', sans-serif;
+		font-family: 'Source Sans Pro', sans-serif;
+		letter-spacing: 0.1em;
 		scroll-behavior: smooth;
 	}
 
