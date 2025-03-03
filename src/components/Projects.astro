@@ -83,8 +83,8 @@ const PROJECTS  = [
         description: 'Desarrollo basado en curso de stack MERN en plataforma UDEMY. Se realizó un rediseño adaptando a los requisitos del cliente (imagen de fondo, colores, tipografías, etc).',
         link: 'https://elpromesero.com',
         github: 'https://github.com/Juanchobostero/ecommerce-reactjs',
-        image: '/projects/ecommerce.webp',
-        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.MERCADOPAGO],
+        image: '/projects/elpromesero.webp',
+        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE],
         off: false
     },
     {
@@ -118,8 +118,8 @@ const PROJECTS  = [
                 {
                     tags.map((tag) => (
                         <li>
-                            <span class={`flex gap-x-1 rounded-s text-sm ${tag.class} py-1 px-2 cursor-pointer`}>
-                                <tag.icon class="size-5 cursor-pointer rounded-s" />
+                            <span class={`flex gap-x-1 text-sm ${tag.class} py-1 px-2 cursor-pointer`}>
+                                <tag.icon class="size-5 cursor-pointer" />
                                 {tag.name}
                             </span>
                         </li>

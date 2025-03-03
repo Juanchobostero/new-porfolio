@@ -16,7 +16,7 @@ const { title, description } = Astro.props
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="min-h-screen">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Programador Full-Stack con +4 años de experiencia." />
@@ -33,7 +33,7 @@ const { title, description } = Astro.props
 	</head>
 	<body class="relative min-h-screen">
 		<!-- Gradiente de fondo -->
-		<div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_120%_120%_at_50%_-20%,rgba(80,180,255,0.3),rgba(255,255,255,0))]"></div>
+		<div class="absolute top-0 z-[-2] w-full min-h-full bg-neutral-950 bg-[radial-gradient(ellipse_60%_60%_at_50%_-20%,rgba(80,180,255,0.3),rgba(255,255,255,0))]"></div>
 	
 		<!-- Botón de ir arriba -->
 		<button class="bg-black/50 fixed bottom-5 right-5 p-3 rounded-full" id="myBtn" title="Go to top">
@@ -55,13 +55,13 @@ const { title, description } = Astro.props
 		scroll-behavior: smooth;
 	}
 
-	body {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		min-height: 100vh;
-		overflow-x: hidden;
-	}
+	html, body {
+    height: auto;
+    min-height: 100vh;
+    background-attachment: fixed; /* Hace que el fondo no se corte */
+    background-repeat: no-repeat;
+    background-size: cover; /* Asegura que el fondo cubra todo */
+}
 
 	#myBtn {
 		display: none; /* Hidden by default */
