@@ -22,12 +22,12 @@ import Learning from '@components/Learning.astro';
 	description="Pagina principal del porfolio de Juan Cruz Martinez - Desarrollador Web Full-Stack"	
 >
 	<main class="px-2 tracking-tight">
-		<SectionContainer class="py-32 pb-24">
-			<img
+		<SectionContainer class="py-16 pb-20">
+			<!-- <img
 				class="rounded-full size-14 mb-4 cursor-pointer" 
 				src="/photo.webp" 
 				alt="juancruz photo" 
-			/>
+			/> -->
 			<h1 class="text-white text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
 				<span class="text-sky-400 whitespace-nowrap">Juan Cruz</span> Martínez.
 				<a 
@@ -66,18 +66,26 @@ import Learning from '@components/Learning.astro';
 			
 		</SectionContainer>
 
-		<SectionContainer id="experiencia">
+		<SectionContainer 
+			id="experiencia" 
+			class="p-6 border rounded-lg bg-black dark:border-sky-700 shadow-lg shadow-gray-900/50 dark:shadow-gray-700/50 border-t border-l border-gray-300 border-opacity-50"
+		>
 			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
 				<Briefcase class="size-7"/>	
-				Experiencia Laboral</h2>
+				Experiencia Laboral
+			</h2>
 			<Experience />
 		</SectionContainer>
 
-		<SectionContainer id="trabaja-conmigo">
+
+		<SectionContainer id="trabaja-conmigo" class="p-16">
 			<WorkWithMe />
 		</SectionContainer>
 
-		<SectionContainer id="proyectos">
+		<SectionContainer 
+			id="proyectos"
+			class="mb-16 p-6 border rounded-lg bg-black dark:border-sky-700 shadow-lg shadow-gray-900/50 dark:shadow-gray-700/50 border-t border-l border-gray-300 border-opacity-50"	
+		>
 			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
 				<CodeIcon class="size-7"/>	
 				Proyectos
@@ -124,6 +132,10 @@ import Learning from '@components/Learning.astro';
 
 	img.rounded-full:hover {
 		transform: scale(1.5);
+	}
+
+	#proyectos, #experiencia {
+		border: #38bdf8 1px solid;
 	}
 </style>
 
