@@ -83,7 +83,7 @@ const PROJECTS  = [
         description: 'Desarrollo basado en curso de stack MERN en plataforma UDEMY. Se realizó un rediseño adaptando a los requisitos del cliente (imagen de fondo, colores, tipografías, etc).',
         link: 'https://elpromesero.com',
         github: 'https://github.com/Juanchobostero/ecommerce-reactjs',
-        image: '/projects/elpromesero.webp',
+        image: '/projects/elpromeserobackground.webp',
         tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE],
         off: false
     },
@@ -111,7 +111,7 @@ const PROJECTS  = [
 <section class="flex flex-col gap-y-16">
 {
     PROJECTS.map(({ title, description, tags, github, image, link, off }) => (
-        <article class="mb-10">
+        <article class="mb-5">
             <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
             <ul class="flex gap-x-4 gap-y-2 flex-row mb-2 mt-6 flex-wrap">
