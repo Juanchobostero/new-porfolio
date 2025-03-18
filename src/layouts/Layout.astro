@@ -5,6 +5,7 @@ import '@fontsource/source-sans-pro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import { ViewTransitions } from 'astro:transitions'
+import { injectSpeedInsights } from "@vercel/speed-insights";
 
 interface Props {
 	title: string;
@@ -30,18 +31,18 @@ const { title, description } = Astro.props
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 		<title>{title}</title>
 		<ViewTransitions />
+		{injectSpeedInsights()}
 	</head>
 	<body class="relative min-h-screen">
 		<!-- Gradiente de fondo -->
 		<div class="absolute top-0 z-[-2] w-full min-h-full bg-neutral-950 bg-[radial-gradient(ellipse_60%_60%_at_50%_-20%,rgba(80,180,255,0.3),rgba(255,255,255,0))]"></div>
-
 		<!-- Botón de ir arriba -->
 		<button class="bg-black/50 fixed bottom-5 right-5 p-3 rounded-full" id="myBtn" title="Go to top">
 			<i class="fas fa-arrow-up"></i>
 		</button>
 	
 		<Header />
-		<slot />
+			<slot />
 		<Footer />
 	</body>
 </html>
