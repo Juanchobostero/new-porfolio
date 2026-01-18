@@ -1,0 +1,13 @@
+/* TEAM */
+Developer: Juan Cruz Martínez
+Site: https://juanchodev.com
+LinkedIn: https://www.linkedin.com/in/martinezjc93/
+GitHub: https://github.com/Juanchobostero
+Location: Corrientes Capital, Argentina
+
+/* SITE */
+Last update: 2026/01/17
+Language: Español / Spanish
+Doctype: HTML5
+IDE: Visual Studio Code
+Technologies: Astro, React, Tailwind CSS, TypeScript

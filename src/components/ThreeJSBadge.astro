@@ -34,16 +34,26 @@
     padding: 0.5rem 1rem;
     height: 30px;
     background-color: #000;
-    color: rgba(240, 255, 255, 0.959);
-    border: #38bdf8 1px solid;
+    color: #38bdf8;
+    border: 1px solid #38bdf8;
     border-radius: 5px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.50);
+    box-shadow: 0 0 6px rgba(56, 189, 248, 0.35), 0 10px 15px rgba(0, 0, 0, 0.50);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     margin-top: 0.4rem;
     transition: transform 0.6s, box-shadow 0.6s;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 6px rgba(56, 189, 248, 0.35), 0 10px 15px rgba(0, 0, 0, 0.50);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.6), 0 10px 15px rgba(0, 0, 0, 0.50);
+    }
   }
 
   .card::before {
@@ -67,7 +77,7 @@
     font-family: 'Space Mono', sans-serif;
     font-size: 0.8rem;
     font-weight: normal;
-    color: azure;
+    color: #38bdf8;
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: transform 0.6s;

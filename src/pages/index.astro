@@ -5,6 +5,7 @@ import SectionContainer from '../components/SectionContainer.astro'
 import LinkedinIcon from '../components/icons/Linkedin.astro'
 import GitHubIcon from '../components/icons/GitHub.astro'
 import MailIcon from '../components/icons/Mail.astro'
+import CVIcon from '../components/icons/CV.astro'
 import SocialPill from '../components/SocialPill.astro'
 import Experience from '../components/Experience.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
@@ -17,8 +18,9 @@ import ThreeJSBadge from '../components/ThreeJSBadge.astro';
 ---
 
 <Layout 
-	title="Porfolio de Juan Cruz Martinez - Desarrollador WEB"
-	description="Pagina principal del porfolio de Juan Cruz Martinez - Desarrollador Web Full-Stack"	
+	title="Juan Cruz Martínez - Full Stack Developer | Portfolio"
+	description="Full Stack Web Developer con +6 años de experiencia en Argentina. Especializado en .NET, CodeIgniter, Node.js y React. Disponible para trabajo remoto."
+	keywords="Juan Cruz Martinez, desarrollador full stack, programador Argentina, desarrollador .NET, CodeIgniter developer, Node.js developer, React developer, desarrollador web Corrientes, trabajo remoto Argentina, portfolio desarrollador"
 >
 	<main class="px-2 tracking-tight">
 		<SectionContainer class="py-16 pb-20">
@@ -27,39 +29,50 @@ import ThreeJSBadge from '../components/ThreeJSBadge.astro';
 				src="/photo.webp" 
 				alt="juancruz photo" 
 			/> -->
-			<h1 class="text-white text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
-				<span class="text-sky-400 whitespace-nowrap">Juan Cruz</span> Martínez.
+			<h1 class="text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
+				<span class="text-sky-400 whitespace-nowrap">Juan Cruz</span> 
+				<span class="bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">Martínez.</span>
 				<a 
 					href="https://www.linkedin.com/in/martinezjc93/" 
 					target="_blank" 
 					rel="noopener" 
 					class="flex justify-center items-center"
 				>
-					<ThreeJSBadge>Trabajando</ThreeJSBadge>
+					<ThreeJSBadge>DISPONIBLE</ThreeJSBadge>
 				</a>
 			</h1>
 				
-			<div class="mt-[-6rem] mb-8 tracking-normal">
+			<div class="mt-[-3rem] mb-8 tracking-normal">
 				<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-					<span class="text-yellow-200/90">Desarrollador Web.</span>
-					<span>+5 años de experiencia.</span> 
-					<span class="text-blue-300/90">De Corrientes Capital, Argentina.</span>
-					<span class="text-white">Especializado en tecnologías como Codeigniter, .NET, NodeJS & más.</span>
+					<span class="text-yellow-300 font-semibold">Full Stack Web Developer con +6 años de experiencia.</span>
+					<br>
+					<span class="text-gray-200">Especializado con experiencia en NodeJS, .NET, CodeIgniter.</span>
+					<br>
+					<span class="text-sky-300 font-medium">Corrientes, Argentina · Trabajo remoto.</span>
 				</h2>
 	
-				<nav class="flex gap-4 mt-8 flex-wrap">
+				<nav class="flex gap-4 mt-10 flex-wrap">
 					<SocialPill href="https://www.linkedin.com/in/martinezjc93/">
-						<LinkedinIcon class="size-4 md:size-6"/>
+						<LinkedinIcon class="size-4 md:size-6" aria-hidden="true"/>
 						LinkedIn
 					</SocialPill>
 					<SocialPill href="https://github.com/Juanchobostero">
-						<GitHubIcon class="size-4 md:size-6"/>
+						<GitHubIcon class="size-4 md:size-6" aria-hidden="true"/>
 						GitHub
 					</SocialPill>
 					<SocialPill href="mailto:juancruzmart93@gmail.com">
-						<MailIcon class="size-4 md:size-6"/>
+						<MailIcon class="size-4 md:size-6" aria-hidden="true"/>
 						juancruzmart93@gmail.com
 					</SocialPill>
+					<a 
+						href="#cv" 
+						id="cv-preview-btn"
+						aria-label="Previsualizar curriculum vitae de Juan Cruz Martínez"
+						class="border border-white/20 flex items-center gap-x-2 py-1 px-2 md:py-2 md:px-6 text-xs md:text-sm bg-white/5 hover:scale-105 hover:bg-white/10 hover:border-sky-400/50 hover:shadow-lg hover:shadow-sky-500/30 transition-all duration-300 rounded-full h-[2rem] md:h-[2.5rem] text-center whitespace-nowrap backdrop-blur-sm"
+					>
+						<CVIcon class="size-4 md:size-6" aria-hidden="true"/>
+						Ver CV
+					</a>
 				</nav>
 			</div>
 			
@@ -137,4 +150,92 @@ import ThreeJSBadge from '../components/ThreeJSBadge.astro';
 		border: #38bdf8 1px solid;
 	}
 </style>
+
+<script>
+	import Swal from "sweetalert2";
+	
+	const cvPreviewBtn = document.getElementById("cv-preview-btn");
+	
+	if (cvPreviewBtn) {
+		cvPreviewBtn.addEventListener("click", function (e) {
+			e.preventDefault();
+			
+			Swal.fire({
+				title: "Curriculum Vitae",
+				html: `
+					<style>
+						.cv-container {
+							width: 100%;
+							height: 70vh;
+							display: flex;
+							flex-direction: column;
+							gap: 1rem;
+						}
+						.cv-iframe {
+							width: 100%;
+							height: 100%;
+							border: 1px solid rgba(56, 189, 248, 0.3);
+							border-radius: 0.5rem;
+						}
+						.cv-download-btn {
+							display: inline-flex;
+							align-items: center;
+							justify-content: center;
+							gap: 0.5rem;
+							padding: 0.75rem 1.5rem;
+							background: rgba(56, 189, 248, 0.1);
+							border: 1px solid rgba(56, 189, 248, 0.5);
+							border-radius: 12px;
+							color: #38bdf8;
+							font-weight: 600;
+							text-decoration: none;
+							transition: all 0.3s ease;
+						}
+						.cv-download-btn:hover {
+							background: rgba(56, 189, 248, 0.2);
+							transform: scale(1.05);
+							box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+						}
+					</style>
+					<div class="cv-container">
+						<iframe 
+							src="/cv/CVMARTINEZJUANCRUZ.pdf" 
+							class="cv-iframe"
+							title="Curriculum Vitae"
+						></iframe>
+						<a 
+							href="/cv/CVMARTINEZJUANCRUZ.pdf" 
+							download="CV_JuanCruz_Martinez.pdf"
+							class="cv-download-btn"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+							</svg>
+							Descargar CV
+						</a>
+					</div>
+				`,
+				width: '90%',
+				background: '#000',
+				color: '#fff',
+				showConfirmButton: false,
+				showCloseButton: true,
+				showClass: {
+					popup: `
+						animate__animated
+						animate__fadeInUp
+						animate__faster
+					`,
+				},
+				hideClass: {
+					popup: `
+						animate__animated
+						animate__fadeOutDown
+						animate__faster
+					`,
+				},
+			});
+		});
+	}
+</script>
 

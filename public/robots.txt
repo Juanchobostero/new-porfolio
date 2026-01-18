@@ -1,0 +1,13 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Permitir acceso al CV
+Allow: /cv/
+
+# Disallow archivos innecesarios
+Disallow: /api/
+Disallow: /_astro/
+
+# Sitemap
+Sitemap: https://juanchodev.com/sitemap-index.xml

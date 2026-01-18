@@ -1,0 +1,283 @@
+---
+const githubUsername = "Juanchobostero";
+---
+
+<!-- Botón Flotante -->
+<button 
+    id="github-float-btn"
+    data-username={githubUsername}
+    class="fixed top-24 right-6 z-50 bg-black/80 hover:bg-black border border-white/20 hover:border-sky-400/50 p-3 rounded-full shadow-lg hover:shadow-sky-500/50 transition-all duration-300 hover:scale-110 backdrop-blur-sm group"
+    aria-label="Ver actividad de GitHub"
+>
+    <svg class="size-6 text-white group-hover:text-sky-400 transition-colors" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+    </svg>
+    <span class="absolute -top-1 -right-1 size-3 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></span>
+    
+    <!-- Tooltip -->
+    <span class="tooltip-text" aria-hidden="true">Actividad</span>
+</button>
+
+<script>
+    // @ts-nocheck
+    import Swal from "sweetalert2";
+
+    const githubBtn = document.getElementById('github-float-btn');
+    const githubUsername = githubBtn?.getAttribute('data-username') || 'Juanchobostero';
+
+    async function fetchGitHubData() {
+        try {
+            const userResponse = await fetch(`https://api.github.com/users/${githubUsername}`);
+            const userData = await userResponse.json();
+            
+            const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=100`);
+            const repos = await reposResponse.json() as any[];
+            
+            const totalStars = repos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
+            const recentRepos = repos.slice(0, 4);
+            
+            return {
+                publicRepos: userData.public_repos || 0,
+                followers: userData.followers || 0,
+                totalStars,
+                recentRepos
+            };
+        } catch (error) {
+            console.error('Error fetching GitHub data:', error);
+            return null;
+        }
+    }
+
+    if (githubBtn) {
+        githubBtn.addEventListener('click', async function () {
+            // Mostrar loading
+            Swal.fire({
+                title: 'Cargando actividad...',
+                html: '<div class="text-sky-400">Obteniendo datos de GitHub</div>',
+                background: '#000',
+                color: '#fff',
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            const data = await fetchGitHubData();
+
+            if (!data) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'No se pudo cargar la información de GitHub',
+                    icon: 'error',
+                    background: '#000',
+                    color: '#fff'
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: 'Actividad en GitHub',
+                html: `
+                    <style>
+                        .github-modal-content {
+                            text-align: left;
+                        }
+                        .stat-grid {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 1rem;
+                            margin-bottom: 1.5rem;
+                        }
+                        .stat-card-modal {
+                            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(56, 189, 248, 0.05));
+                            padding: 1rem;
+                            border-radius: 0.5rem;
+                            border: 1px solid rgba(56, 189, 248, 0.3);
+                            text-align: center;
+                            transition: transform 0.2s;
+                        }
+                        .stat-card-modal:hover {
+                            transform: translateY(-3px);
+                            border-color: rgba(56, 189, 248, 0.5);
+                        }
+                        .stat-value {
+                            font-size: 2rem;
+                            font-weight: bold;
+                            color: #38bdf8;
+                            margin-bottom: 0.25rem;
+                        }
+                        .stat-label {
+                            font-size: 0.75rem;
+                            color: #9ca3af;
+                        }
+                        .repo-list {
+                            display: grid;
+                            gap: 0.75rem;
+                            margin-top: 1rem;
+                        }
+                        .repo-item {
+                            background: rgba(255, 255, 255, 0.05);
+                            padding: 0.75rem;
+                            border-radius: 0.5rem;
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                            transition: all 0.2s;
+                        }
+                        .repo-item:hover {
+                            background: rgba(255, 255, 255, 0.1);
+                            border-color: rgba(56, 189, 248, 0.5);
+                            transform: translateX(5px);
+                        }
+                        .repo-name {
+                            color: #38bdf8;
+                            font-weight: 600;
+                            margin-bottom: 0.25rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                        }
+                        .repo-desc {
+                            font-size: 0.875rem;
+                            color: #9ca3af;
+                            margin-bottom: 0.5rem;
+                        }
+                        .repo-meta {
+                            display: flex;
+                            gap: 1rem;
+                            font-size: 0.75rem;
+                            color: #6b7280;
+                        }
+                        .github-link {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                            margin-top: 1rem;
+                            padding: 0.5rem 1rem;
+                            background: rgba(56, 189, 248, 0.1);
+                            border: 1px solid rgba(56, 189, 248, 0.3);
+                            border-radius: 9999px;
+                            color: #38bdf8;
+                            text-decoration: none;
+                            transition: all 0.2s;
+                        }
+                        .github-link:hover {
+                            background: rgba(56, 189, 248, 0.2);
+                            border-color: rgba(56, 189, 248, 0.5);
+                            transform: scale(1.05);
+                        }
+                    </style>
+                    <div class="github-modal-content">
+                        <div class="stat-grid">
+                            <div class="stat-card-modal">
+                                <div class="stat-value">${data.publicRepos}</div>
+                                <div class="stat-label">Repositorios</div>
+                            </div>
+                            <div class="stat-card-modal">
+                                <div class="stat-value">${data.followers}</div>
+                                <div class="stat-label">Seguidores</div>
+                            </div>
+                            <div class="stat-card-modal">
+                                <div class="stat-value">${data.totalStars}</div>
+                                <div class="stat-label">Estrellas</div>
+                            </div>
+                        </div>
+                        
+                        <h3 style="color: #e5e7eb; font-weight: 600; margin-bottom: 0.75rem; font-size: 1rem;">
+                            📁 Últimos Repos Actualizados
+                        </h3>
+                        
+                        <div class="repo-list">
+                            ${data.recentRepos.map((repo: any) => `
+                                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-item">
+                                    <div class="repo-name">
+                                        ${repo.name}
+                                        <span style="color: #fbbf24; font-size: 0.875rem;">⭐ ${repo.stargazers_count}</span>
+                                    </div>
+                                    <div class="repo-desc">${repo.description || 'Sin descripción'}</div>
+                                    <div class="repo-meta">
+                                        ${repo.language ? `<span>💻 ${repo.language}</span>` : ''}
+                                        <span>📅 ${new Date(repo.updated_at).toLocaleDateString('es-AR')}</span>
+                                    </div>
+                                </a>
+                            `).join('')}
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <a href="https://github.com/${githubUsername}" target="_blank" rel="noopener noreferrer" class="github-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                Ver Perfil Completo
+                            </a>
+                        </div>
+                    </div>
+                `,
+                width: '700px',
+                background: '#000',
+                color: '#fff',
+                showConfirmButton: false,
+                showCloseButton: true,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInUp animate__faster'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutDown animate__faster'
+                }
+            });
+        });
+    }
+</script>
+
+<style>
+    #github-float-btn {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    #github-float-btn:hover {
+        animation: none;
+    }
+
+    /* Tooltip moderno */
+    .tooltip-text {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.95));
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Flecha del tooltip */
+    .tooltip-text::after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-bottom-color: rgba(0, 0, 0, 0.95);
+    }
+
+    /* Animar tooltip en hover */
+    #github-float-btn:hover .tooltip-text {
+        transform: translateX(-50%) translateY(4px) scale(1.05);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+    }
+</style>

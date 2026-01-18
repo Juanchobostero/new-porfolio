@@ -1,18 +1,89 @@
 ---
+import ASPNET from './icons/ASPNET.astro';
+import JavaScript from './icons/JavaScript.astro';
+import Postgre from './icons/Postgre.astro';
+import Node from './icons/Node.astro';
+import NestJS from './icons/NestJS.astro';
+import Vue from './icons/Vue.astro';
+import HTML from './icons/HTML.astro';
+import CSS from './icons/CSS.astro';
+import PHP from './icons/PHP.astro';
+import Python from './icons/Python.astro';
+import MySQL from './icons/MySQL.astro';
+import Git from './icons/Git.astro';
+import Mongo from './icons/Mongo.astro';
+import ReactJS from './icons/ReactJS.astro';
+import Express from './icons/Express.astro';
+import GCP from './icons/GCP.astro';
+
 export interface Props {
     title: string,
     description: string,
     link?: string,
     date: string,
-    current: boolean
+    current: boolean,
+    technologies?: string[]
 }
-const { title, description, link, date, current } = Astro.props
+const { title, description, link, date, current, technologies = [] } = Astro.props
+
+// Mapeo de tecnologías a componentes de iconos y URLs
+const techData: Record<string, { icon: any, name: string, url: string }> = {
+    '.net': { icon: ASPNET, name: '.NET', url: 'https://dotnet.microsoft.com/' },
+    'js': { icon: JavaScript, name: 'JavaScript', url: 'https://developer.mozilla.org/es/docs/Web/JavaScript' },
+    'javascript': { icon: JavaScript, name: 'JavaScript', url: 'https://developer.mozilla.org/es/docs/Web/JavaScript' },
+    'postgresql': { icon: Postgre, name: 'PostgreSQL', url: 'https://www.postgresql.org/' },
+    'node': { icon: Node, name: 'Node.js', url: 'https://nodejs.org/' },
+    'nestjs': { icon: NestJS, name: 'NestJS', url: 'https://nestjs.com/' },
+    'vue': { icon: Vue, name: 'Vue.js', url: 'https://vuejs.org/' },
+    'html': { icon: HTML, name: 'HTML5', url: 'https://developer.mozilla.org/es/docs/Web/HTML' },
+    'css': { icon: CSS, name: 'CSS3', url: 'https://developer.mozilla.org/es/docs/Web/CSS' },
+    'php': { icon: PHP, name: 'PHP', url: 'https://www.php.net/' },
+    'python': { icon: Python, name: 'Python', url: 'https://www.python.org/' },
+    'mysql': { icon: MySQL, name: 'MySQL', url: 'https://www.mysql.com/' },
+    'git': { icon: Git, name: 'Git', url: 'https://git-scm.com/' },
+    'mongodb': { icon: Mongo, name: 'MongoDB', url: 'https://www.mongodb.com/' },
+    'react': { icon: ReactJS, name: 'React', url: 'https://react.dev/' },
+    'express': { icon: Express, name: 'Express', url: 'https://expressjs.com/' },
+    'gcp': { icon: GCP, name: 'Google Cloud', url: 'https://cloud.google.com/' },
+}
 ---
 
     <div class="absolute w-3 h-3 bg-sky-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-sky-900 dark:bg-sky-700"></div>
         <time class="mb-1 text-sm font-normal leading-none text-sky-400 dark:text-sky-500">{date}</time>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-yellow-200">{title}</h3>
-        <p class="mb-1 text-base font-normal text-gray-500 dark:text-gray-400">{description}</p>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-yellow-300" style="text-shadow: 0 0 20px rgba(253, 224, 71, 0.3);">{title}</h3>
+        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400" set:html={description}></p>
+        
+        {technologies.length > 0 && (
+            <div class="flex flex-wrap gap-2 mb-4">
+                {technologies.map(tech => {
+                    const techInfo = techData[tech.toLowerCase()];
+                    if (techInfo) {
+                        const IconComponent = techInfo.icon;
+                        return (
+                            <a 
+                                href={techInfo.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="group inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-md hover:border-sky-400/50 hover:bg-white/10 transition-all relative"
+                                title={techInfo.name}
+                                aria-label={`Ir a documentación de ${techInfo.name}`}
+                            >
+                                <IconComponent class="size-5 group-hover:scale-110 transition-transform" />
+                                <span class="tooltip-tech">{techInfo.name}</span>
+                            </a>
+                        );
+                    }
+                    return (
+                        <span class="inline-flex items-center px-2 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-md text-gray-400">
+                            {tech}
+                        </span>
+                    );
+                })}
+            </div>
+        )}
+        <!-- <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+  </svg></a> -->
         <!-- <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">Learn more <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
   </svg></a> -->
@@ -20,14 +91,17 @@ const { title, description, link, date, current } = Astro.props
 {
     link && (
     <a 
-        href={link} 
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Visitar sitio web de ${title.split(' - ')[0]}`}
         class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
 >
     <svg class="w-3.5 h-3.5 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
     <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
     <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
     </svg> 
-        Visitar ...
+        Visitar sitio web
 </a>
     )
 }
@@ -39,6 +113,44 @@ const { title, description, link, date, current } = Astro.props
     }
     .pill:hover {
         opacity: 0.6;
+    }
+
+    /* Tooltip para tecnologías */
+    .tooltip-tech {
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.95));
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 10;
+    }
+
+    /* Flecha del tooltip */
+    .tooltip-tech::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 4px solid transparent;
+        border-top-color: rgba(0, 0, 0, 0.95);
+    }
+
+    /* Mostrar tooltip en hover */
+    a.group:hover .tooltip-tech {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
     }
 </style>
 

@@ -4,15 +4,21 @@ import '@fontsource/space-mono';
 import '@fontsource/source-sans-pro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import GitHubFloatingButton from '../components/GitHubFloatingButton.astro'
 import { ViewTransitions } from 'astro:transitions'
 import { injectSpeedInsights } from "@vercel/speed-insights";
 
 interface Props {
 	title: string;
 	description: string;
+	image?: string;
+	keywords?: string;
 }
 
-const { title, description } = Astro.props
+const { title, description, image = '/photo.webp', keywords = 'desarrollador web, full stack developer, programador Argentina, .NET, CodeIgniter, Node.js, React, desarrollo web' } = Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
 
 ---
 
@@ -20,16 +26,89 @@ const { title, description } = Astro.props
 <html lang="es" class="min-h-screen">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Programador Full-Stack con +5 años de experiencia." />
-		<meta name="viewport" content="width=device-width" />
-		<link class="rounded-full" rel="icon" type="image/svg+xml" href="/photo.webp" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Preload critical fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="author" content="Juan Cruz Martínez" />
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:locale" content="es_AR" />
+		<meta property="og:site_name" content="Portfolio Juan Cruz Martínez" />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImage} />
+		<meta name="twitter:creator" content="@_juancruzmartinez" />
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon" type="image/webp" sizes="32x32" href="/photo.webp" />
+		<link rel="icon" type="image/webp" sizes="192x192" href="/photo.webp" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/photo.webp" />
+		<meta name="theme-color" content="#0f172a" />
+		
+		<!-- Humans -->
+		<link rel="author" href="/humans.txt" />
+		
+		<!-- External Resources -->
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 		/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-		<title>{title}</title>
+		
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Juan Cruz Martínez",
+				"url": "https://juanchodev.com",
+				"jobTitle": "Full Stack Web Developer",
+				"description": "Full Stack Web Developer con +6 años de experiencia. Especializado en .NET, CodeIgniter y Node.js.",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Corrientes Capital",
+					"addressRegion": "Corrientes",
+					"addressCountry": "Argentina"
+				},
+				"alumniOf": {
+					"@type": "EducationalOrganization",
+					"name": "Universidad Nacional del Nordeste",
+					"url": "https://www.unne.edu.ar/"
+				},
+				"knowsAbout": [
+					".NET",
+					"CodeIgniter",
+					"Node.js",
+					"React",
+					"JavaScript",
+					"Full Stack Development",
+					"Web Development"
+				],
+				"sameAs": [
+					"https://www.linkedin.com/in/martinezjc93/",
+					"https://github.com/Juanchobostero"
+				]
+			}
+		</script>
+		
 		<ViewTransitions />
 		{injectSpeedInsights()}
 	</head>
@@ -37,11 +116,12 @@ const { title, description } = Astro.props
 		<!-- Gradiente de fondo -->
 		<div class="absolute top-0 z-[-2] w-full min-h-full bg-neutral-950 bg-[radial-gradient(ellipse_60%_60%_at_50%_-20%,rgba(80,180,255,0.3),rgba(255,255,255,0))]"></div>
 		<!-- Botón de ir arriba -->
-		<button class="bg-black/50 fixed bottom-5 right-5 p-3 rounded-full" id="myBtn" title="Go to top">
-			<i class="fas fa-arrow-up"></i>
+		<button class="bg-black/50 fixed bottom-5 right-5 p-3 rounded-full" id="myBtn" title="Ir arriba" aria-label="Volver arriba">
+			<i class="fas fa-arrow-up" aria-hidden="true"></i>
 		</button>
 	
 		<Header />
+		<GitHubFloatingButton />
 			<slot />
 		<Footer />
 	</body>
