@@ -75,6 +75,11 @@ const TAGS = {
         name: "VSCode",
         class: "bg-blue-600/20 border border-blue-600/50 text-blue-300",
         icon: VS
+    },
+    GITHUB: {
+        name: "GitHub",
+        class: "bg-gray-800/20 border border-gray-800/50 text-gray-300",
+        icon: GitHub
     }
 }
 const PROJECTS  = [
@@ -94,6 +99,15 @@ const PROJECTS  = [
         github: 'https://github.com/Juanchobostero/conteo-elecciones',
         image: '/projects/carga-elecciones.webp',
         tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.ASTRO],
+        off: false
+    },
+    {
+        title: "Colaboración a Proyecto de la comunidad <a href='https://svgl.app/' target='_blank' rel='noopener noreferrer' aria-label='Visitar web de svgl' class='text-sky-400 hover:text-sky-300 underline transition-colors'>SVGL</a>",
+        description: "Se realizó un Fork del proyecto y se implementó una mejora en la accesibilidad de 90 a 95, con la posterior revisión y aprobación de la PR por parte del propietario <a href='https://github.com/pheralb' target='_blank' rel='noopener noreferrer' aria-label='Visitar repositorio de Pablo Hdez' class='text-sky-400 hover:text-sky-300 underline transition-colors'>Pablo Hdez</a>. <a href='https://github.com/Juanchobostero/svgl/commits/main/' target='_blank' rel='noopener noreferrer' aria-label='Visitar commits del repositorio' class='text-sky-400 hover:text-sky-300 underline transition-colors'>Link del commit</a>",
+        link: 'https://svgl.app/',
+        github: 'https://github.com/Juanchobostero/svgl',
+        image: '/projects/svgl.webp',
+        tags: [TAGS.NODE, TAGS.GITHUB],
         off: false
     },
     {
@@ -121,8 +135,8 @@ const PROJECTS  = [
 {
     PROJECTS.map(({ title, description, tags, github, image, link, off }) => (
         <article class="mb-5">
-            <h3 class="text-2xl font-semibold text-yellow-300 mb-2 hover:text-yellow-200 transition-colors duration-300">{title}</h3>
-            <p class="text-lg mb-4 text-pretty">{description}</p>
+            <h3 class="text-2xl font-semibold text-yellow-300 mb-2 hover:text-yellow-200 transition-colors duration-300" set:html={title}></h3>
+            <p class="text-lg mb-4 text-pretty" set:html={description}></p>
             <ul class="flex gap-x-4 gap-y-2 flex-row mb-2 mt-6 flex-wrap">
                 {
                     tags.map((tag) => (
