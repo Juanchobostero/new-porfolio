@@ -24,6 +24,7 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@types/three": "^0.169.0"
+    "@types/three": "^0.169.0",
+    "terser": "^5.46.1"
   }
 }
