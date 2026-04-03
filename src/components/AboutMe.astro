@@ -2,9 +2,9 @@
 const unne = 'https://www.unne.edu.ar/'
 ---
 
-<section class="flex flex-col md:flex-row gap-8 justify-center items-center">
+<section class="flex flex-col md:flex-row gap-12 justify-center items-center">
     <div 
-        class="[&>p]:mb-4 [&>p>strong]:text-yellow-400 [&>p>strong]:font-semibold text-pretty order-2 md:order-1">
+        class="[&>p]:mb-5 [&>p]:leading-relaxed [&>p>strong]:text-yellow-400 [&>p>strong]:font-semibold [&>p>strong>a]:hover:text-sky-300 [&>p>strong>a]:transition-colors text-pretty order-2 md:order-1">
         <p>
             Me llamo Juan Cruz Martínez. <strong>Software Engineer con +6 años de experiencia</strong> especializado en 
             <strong>desarrollo y mantenimiento de aplicaciones web</strong>, trabajando tanto en <strong>frontend como backend</strong> 
@@ -13,7 +13,7 @@ const unne = 'https://www.unne.edu.ar/'
 
         <p>
             Graduado como 
-            <strong><a class="text-yellow-400 text-decoration-line: none; hover:text-sky-200/90 transition" href=`${unne}` target="_blank" rel="noopener noreferrer">Lic. en Sistemas por la UNNE</a></strong>, 
+            <strong><a class="text-yellow-400 text-decoration-line: none; hover:text-sky-300 transition-colors duration-300" href=`${unne}` target="_blank" rel="noopener noreferrer">Lic. en Sistemas por la UNNE</a></strong>, 
             he desarrollado <strong>múltiples proyectos desde cero</strong> y me especializo en tecnologías como 
             <strong>.NET, CodeIgniter y Node.js</strong>. Actualmente enfocado en <strong><em class="italic">mejorar procesos y reglas de negocio</em> para aumentar ganancias y reducir costos.</strong> <strong><em class="italic">Trabajo remoto</em></strong> para equipos globales y locales.
         </p>
@@ -22,7 +22,7 @@ const unne = 'https://www.unne.edu.ar/'
     <img 
         src="/photo.webp" 
         alt="Foto de perfil de Juan Cruz Martínez - Software Engineer"
-        class="rounded-full size-64 order-1 md:order-2"
+        class="rounded-full size-64 order-1 md:order-2 shadow-2xl shadow-yellow-400/20 ring-2 ring-yellow-400/30 hover:shadow-yellow-400/40 transition-all duration-300"
         width="256"
         height="256"
         loading="lazy"
@@ -34,17 +34,17 @@ const unne = 'https://www.unne.edu.ar/'
     @keyframes reveal {
 		from {
 			opacity: 0;
-			transform: 0 100px;
+			transform: translateY(30px);
 		}
 		to {
 			opacity: 1;
-			transform: 0 0;
+			transform: translateY(0);
 		}
 	}
 
 	section {
 		animation: reveal both;
 		animation-timeline: view();
-		animation-range: entry 20% cover 30%;
+		animation-range: entry 20% cover 40%;
 	}
 </style>

@@ -3,12 +3,12 @@ import SocialPill from "./SocialPill.astro";
 import Mail from "./icons/Mail.astro";
 ---
 
-<section class="flex flex-row md:flex-row gap-8 justify-start m-1">
+<section id="contacto" class="flex flex-row md:flex-row gap-8 justify-start m-1">
     <div class="p-1 flex flex-row gap-2">
-        <h1 class="text-2xl"><span class="text-sky-400 font-bold">Tenes un Proyecto? </span><span class="text-gray-100">Trabajemos juntos.</span></h1>
+        <h2 class="text-2xl"><span class="text-sky-400 font-bold">¿Tenés un Proyecto? </span><span class="text-gray-100">Trabajemos juntos.</span></h2>
         &nbsp;&nbsp;
-        <SocialPill href="mailto:juancruzmart93@gmail.com">
-            <Mail class="size-4 md:size-6"/>
+        <SocialPill href="mailto:juancruzmart93@gmail.com" aria-label="Contacto por email: juancruzmart93@gmail.com">
+            <Mail class="size-4 md:size-6" aria-hidden="true"/>
             	Contactame
         </SocialPill>
     </div>

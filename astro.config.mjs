@@ -6,5 +6,18 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://juanchodev.com',
   integrations: [tailwind()],
-  sitemap: true
+  sitemap: {
+    filter: (page) => page !== 'https://juanchodev.com/components/',
+    entryLimit: 45000,
+    changefreq: 'weekly',
+    priority: 0.7,
+    lastmod: new Date()
+  },
+  trailingSlash: 'never',
+  compressHTML: true,
+  vite: {
+    build: {
+      minify: 'terser'
+    }
+  }
 });

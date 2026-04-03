@@ -1,13 +1,30 @@
 /* TEAM */
 Developer: Juan Cruz Martínez
+Email: juancruzmart93@gmail.com
 Site: https://juanchodev.com
 LinkedIn: https://www.linkedin.com/in/martinezjc93/
 GitHub: https://github.com/Juanchobostero
-Location: Corrientes Capital, Argentina
+Twitter: https://twitter.com/_juancruzmartinez
+Location: Corrientes Capital, Corrientes, Argentina
 
 /* SITE */
-Last update: 2026/01/17
+Last update: 2026/04/03
 Language: Español / Spanish
 Doctype: HTML5
 IDE: Visual Studio Code
-Technologies: Astro, React, Tailwind CSS, TypeScript
+Framework: Astro v4.0+
+CSS Framework: Tailwind CSS v3.4+
+Package Manager: pnpm
+Technologies: Astro, React, TypeScript, Tailwind CSS, Node.js, NestJS, Vue.js
+Status: Portfolio activo y en continuo desarrollo
+Accessibility: WCAG 2.1 AA
+
+/* SOCIAL */
+LinkedIn: https://www.linkedin.com/in/martinezjc93/
+GitHub: https://github.com/Juanchobostero
+Twitter: https://twitter.com/_juancruzmartinez
+
+/* BUILD */
+Builder: Astro Static Site Generator
+Hosted: Vercel
+Building Tool: pnpm

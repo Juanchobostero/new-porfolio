@@ -134,14 +134,14 @@ const PROJECTS  = [
 <section class="flex flex-col gap-y-16">
 {
     PROJECTS.map(({ title, description, tags, github, image, link, off }) => (
-        <article class="mb-5">
-            <h3 class="text-2xl font-semibold text-yellow-300 mb-2 hover:text-yellow-200 transition-colors duration-300" set:html={title}></h3>
-            <p class="text-lg mb-4 text-pretty" set:html={description}></p>
-            <ul class="flex gap-x-4 gap-y-2 flex-row mb-2 mt-6 flex-wrap">
+        <article class="mb-5 group">
+            <h3 class="text-2xl font-semibold text-yellow-300 mb-3 hover:text-yellow-200 transition-colors duration-300" set:html={title}></h3>
+            <p class="text-lg mb-4 text-pretty leading-relaxed text-gray-300" set:html={description}></p>
+            <ul class="flex gap-x-4 gap-y-2 flex-row mb-4 mt-6 flex-wrap">
                 {
                     tags.map((tag) => (
                         <li>
-                            <span class={`flex gap-x-1 text-sm ${tag.class} py-1 px-2 rounded-md cursor-pointer hover:scale-105 transition-transform duration-200`}>
+                            <span class={`flex gap-x-1 text-sm ${tag.class} py-1 px-2.5 rounded-md cursor-pointer hover:scale-110 transition-all duration-200 hover:shadow-lg`}>
                                 <tag.icon class="size-5" />
                                 {tag.name}
                             </span>
@@ -150,15 +150,16 @@ const PROJECTS  = [
                 }
             </ul>
             <img 
-                class="rounded shadow-2xl shadow-white/10 object-cover hover:scale-[1.02] transition-transform duration-300 border border-white/10"
+                class="rounded-lg shadow-2xl shadow-white/10 object-cover hover:shadow-white/20 transition-all duration-300 border border-white/10 group-hover:border-white/20"
                 src={image} 
-                alt={`Captura de pantalla del proyecto ${title} - Portfolio Juan Cruz Martínez`}
+                alt={`${title} - Portfolio Juan Cruz Martínez | Desarrollador Full Stack`}
                 loading="lazy"
                 width="800"
                 height="450"
+                decoding="async"
             />
 
-            <footer class="flex gap-x-4 items-end justify-start mt-4">
+            <footer class="flex gap-x-4 items-end justify-start mt-6">
                 {github && (
                     <LinkButton href={github}>
                     <GitHub class="size-6" />
@@ -190,17 +191,18 @@ const PROJECTS  = [
     @keyframes reveal {
 		from {
 			opacity: 0;
-			transform: 0 100px;
+			transform: translateY(20px);
 		}
 		to {
 			opacity: 1;
-			transform: 0 0;
+			transform: translateY(0);
 		}
 	}
 
 	article {
 		animation: reveal both;
 		animation-timeline: view();
-		animation-range: entry 20% cover 30%;
+		animation-range: entry 20% cover 40%;
+		transition: opacity 0.3s ease;
 	}
 </style>

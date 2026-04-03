@@ -1,13 +1,32 @@
 # https://www.robotstxt.org/robotstxt.html
+# Especificaciones para todos los buscadores
 User-agent: *
 Allow: /
 
-# Permitir acceso al CV
+# Permitir acceso a recursos importantes
 Allow: /cv/
+Allow: /projects/
 
-# Disallow archivos innecesarios
+# Disallow recursos innecesarios
 Disallow: /api/
 Disallow: /_astro/
+Disallow: /node_modules/
+Disallow: /.
+
+# Velocidad de rastreo
+Crawl-delay: 1
+Request-rate: 1/10s
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
 
 # Sitemap
 Sitemap: https://juanchodev.com/sitemap-index.xml
+Sitemap: https://juanchodev.com/sitemap-0.xml

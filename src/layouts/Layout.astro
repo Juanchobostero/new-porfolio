@@ -5,6 +5,7 @@ import '@fontsource/source-sans-pro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import GitHubFloatingButton from '../components/GitHubFloatingButton.astro'
+import WhatsAppChat from '../components/WhatsAppChat.astro'
 import { ViewTransitions } from 'astro:transitions'
 import { injectSpeedInsights } from "@vercel/speed-insights";
 
@@ -15,7 +16,7 @@ interface Props {
 	keywords?: string;
 }
 
-const { title, description, image = '/photo.webp', keywords = 'desarrollador web, full stack developer, programador Argentina, .NET, CodeIgniter, Node.js, React, desarrollo web' } = Astro.props
+const { title, description, image = '/preview.webp', keywords = 'desarrollador web, full stack developer, programador Argentina, .NET, CodeIgniter, Node.js, React, desarrollo web' } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
@@ -37,7 +38,15 @@ const socialImage = new URL(image, Astro.site);
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
 		<meta name="author" content="Juan Cruz Martínez" />
+		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="bingbot" content="index, follow" />
+		<meta name="revisit-after" content="7 days" />
+		<meta name="language" content="es-AR" />
+		<meta name="audience" content="all" />
 		<link rel="canonical" href={canonicalURL} />
+		<link rel="alternate" hreflang="es-AR" href={canonicalURL} />
+		<link rel="alternate" hreflang="es" href={canonicalURL} />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
@@ -48,10 +57,16 @@ const socialImage = new URL(image, Astro.site);
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content="Juan Cruz Martínez - Full Stack Developer" />
+		<meta property="og:locale" content="es_AR" />
+		<meta property="og:site_name" content="Juan Cruz Martínez - Software Engineer" />
+		
+		<!-- Twitter / X -->
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={socialImage} />
 		<meta name="twitter:creator" content="@_juancruzmartinez" />
+		<meta name="twitter:site" content="@_juancruzmartinez" />
 		
 		<!-- Favicon -->
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -76,33 +91,63 @@ const socialImage = new URL(image, Astro.site);
 				"@context": "https://schema.org",
 				"@type": "Person",
 				"name": "Juan Cruz Martínez",
+				"alternateName": ["Juan Martínez", "Juancho Developer"],
 				"url": "https://juanchodev.com",
 				"jobTitle": "Full Stack Web Developer",
 				"description": "Full Stack Web Developer con +6 años de experiencia. Especializado en .NET, CodeIgniter y Node.js.",
+				"image": "https://juanchodev.com/photo.webp",
+				"email": "mailto:juancruzmart93@gmail.com",
+				"telephone": "+54",
 				"address": {
 					"@type": "PostalAddress",
+					"streetAddress": "Corrientes",
 					"addressLocality": "Corrientes Capital",
 					"addressRegion": "Corrientes",
-					"addressCountry": "Argentina"
+					"postalCode": "3400",
+					"addressCountry": "AR"
 				},
-				"alumniOf": {
+				"sameAs": [
+					"https://www.linkedin.com/in/martinezjc93/",
+					"https://github.com/Juanchobostero",
+					"https://twitter.com/_juancruzmartinez"
+				],
+				"alumniOf": [{
 					"@type": "EducationalOrganization",
 					"name": "Universidad Nacional del Nordeste",
-					"url": "https://www.unne.edu.ar/"
-				},
+					"url": "https://www.unne.edu.ar/",
+					"location": {
+						"@type": "Place",
+						"name": "Corrientes, Argentina"
+					}
+				}],
 				"knowsAbout": [
 					".NET",
 					"CodeIgniter",
 					"Node.js",
 					"React",
 					"JavaScript",
+					"TypeScript",
+					"Vue.js",
+					"NestJS",
 					"Full Stack Development",
-					"Web Development"
+					"Web Development",
+					"PostgreSQL",
+					"MongoDB",
+					"MySQL"
 				],
-				"sameAs": [
-					"https://www.linkedin.com/in/martinezjc93/",
-					"https://github.com/Juanchobostero"
-				]
+				"hasOccupation": [{
+					"@type": "Occupation",
+					"name": "Full Stack Developer",
+					"description": "Desarrollo de aplicaciones web completas con tecnologías modernas",
+					"experienceRequirements": {
+						"@type": "Text",
+						"text": "+6 años de experiencia"
+					}
+				}],
+				"workLocation": {
+					"@type": "Place",
+					"name": "Remoto"
+				}
 			}
 		</script>
 		
@@ -113,12 +158,13 @@ const socialImage = new URL(image, Astro.site);
 		<!-- Gradiente de fondo -->
 		<div class="absolute top-0 z-[-2] w-full min-h-full bg-neutral-950 bg-[radial-gradient(ellipse_60%_60%_at_50%_-20%,rgba(80,180,255,0.3),rgba(255,255,255,0))]"></div>
 		<!-- Botón de ir arriba -->
-		<button class="bg-black/50 fixed bottom-5 right-5 p-3 rounded-full" id="myBtn" title="Ir arriba" aria-label="Volver arriba">
-			<i class="fas fa-arrow-up" aria-hidden="true"></i>
-		</button>
+	<button class="fixed bottom-6 right-24 w-14 h-14 bg-yellow-400 hover:bg-yellow-500 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center text-black z-50 hover:scale-110" id="myBtn" title="Ir arriba" aria-label="Volver arriba">
+		<i class="fas fa-arrow-up text-lg" aria-hidden="true"></i>
+	</button>
 	
 		<Header />
 		<GitHubFloatingButton />
+		<WhatsAppChat />
 			<slot />
 		<Footer />
 	</body>
@@ -129,8 +175,14 @@ const socialImage = new URL(image, Astro.site);
 	}
 	html {
 		font-family: 'Source Sans Pro', sans-serif;
-		letter-spacing: 0.1em;
+		letter-spacing: 0.05em;
 		scroll-behavior: smooth;
+		font-size: 16px;
+	}
+
+	body {
+		line-height: 1.6;
+		color: #e5e7eb;
 	}
 
 	html, body {
@@ -143,21 +195,22 @@ const socialImage = new URL(image, Astro.site);
 
 	#myBtn {
 		display: none; /* Hidden by default */
-		position: fixed; /* Fixed/sticky position */
-		bottom: 20px; /* Place the button at the bottom of the page */
-		right: 30px; /* Place the button 30px from the right */
+		width: 48px;
+		height: 48px;
 		z-index: 99; /* Make sure it does not overlap */
 		border: none; /* Remove borders */
 		outline: none; /* Remove outline */
-		color: white; /* Text color */
 		cursor: pointer; /* Add a mouse pointer on hover */
-		padding: 15px; /* Some padding */
-		border-radius: 10px; /* Rounded corners */
-		font-size: 18px; /* Increase font size */
+		transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	#myBtn:hover {
-		background-color: #555; /* Add a dark-grey background on hover */
+		transform: translateY(-3px) scale(1.08);
+		box-shadow: 0 12px 24px rgba(250, 204, 21, 0.4);
+	}
+
+	#myBtn:active {
+		transform: translateY(-1px) scale(1.05);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

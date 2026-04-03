@@ -46,10 +46,10 @@ const EXPERIENCE = [
 ]
 ---
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700">
+<ol class="relative border-s border-gray-700 dark:border-gray-600">
     {
         EXPERIENCE.map((experience) => (
-            <li class="mb-10 ms-4">            
+            <li class="mb-12 ms-4">            
                 <ExperienceItem {...experience}/>
             </li>
         ))
@@ -60,18 +60,18 @@ const EXPERIENCE = [
     @keyframes reveal {
 		from {
 			opacity: 0;
-			transform: 0 100px;
+			transform: translateY(20px);
 		}
 		to {
 			opacity: 1;
-			transform: 0 0;
+			transform: translateY(0);
 		}
 	}
 
 	li {
 		animation: reveal both;
 		animation-timeline: view();
-		animation-range: entry 20% cover 30%;
+		animation-range: entry 20% cover 40%;
 	}
 </style>
 

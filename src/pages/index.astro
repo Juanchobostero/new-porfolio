@@ -15,6 +15,10 @@ import Profile from '../components/icons/Profile.astro';
 import AboutMe from "../components/AboutMe.astro"
 import WorkWithMe from '../components/WorkWithMe.astro';
 import ThreeJSBadge from '../components/ThreeJSBadge.astro';
+import { generateBreadcrumbSchema, generateOrganizationSchema } from '../utils/projectSchema';
+
+const breadcrumbSchema = generateBreadcrumbSchema();
+const organizationSchema = generateOrganizationSchema();
 ---
 
 <Layout 
@@ -46,7 +50,7 @@ import ThreeJSBadge from '../components/ThreeJSBadge.astro';
 				<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
 					<span class="text-yellow-300 font-semibold">Software Engineer con +6 años de experiencia.</span>
 					<br>
-					<span class="text-gray-200">Especializado con experiencia en NodeJS, .NET, CodeIgniter.</span>
+					<span class="text-gray-200">Experiencia en tecnologías como NodeJS, .NET, CodeIgniter.</span>
 					<br>
 					<span class="text-sky-300 font-medium">Corrientes, Argentina · Trabajo remoto.</span>
 				</h2>
@@ -114,6 +118,10 @@ import ThreeJSBadge from '../components/ThreeJSBadge.astro';
 			<AboutMe />
 		</SectionContainer>
 	</main>
+
+	<!-- Structured Data JSON-LD -->
+	<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+	<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 </Layout>
 
 <style>
