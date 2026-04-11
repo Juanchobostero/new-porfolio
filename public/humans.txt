@@ -1,7 +1,7 @@
 /* TEAM */
 Developer: Juan Cruz Martínez
 Email: juancruzmart93@gmail.com
-Site: https://juanchodev.com
+Site: https://jotadev.com.ar
 LinkedIn: https://www.linkedin.com/in/martinezjc93/
 GitHub: https://github.com/Juanchobostero
 Twitter: https://twitter.com/_juancruzmartinez

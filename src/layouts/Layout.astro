@@ -16,7 +16,7 @@ interface Props {
 	keywords?: string;
 }
 
-const { title, description, image = '/preview.webp', keywords = 'desarrollador web, full stack developer, programador Argentina, .NET, CodeIgniter, Node.js, React, desarrollo web' } = Astro.props
+const { title, description, image = '/photo.png', keywords = 'desarrollador web, full stack developer, programador Argentina, .NET, CodeIgniter, Node.js, React, desarrollo web' } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
@@ -92,10 +92,10 @@ const socialImage = new URL(image, Astro.site);
 				"@type": "Person",
 				"name": "Juan Cruz Martínez",
 				"alternateName": ["Juan Martínez", "Juancho Developer"],
-				"url": "https://juanchodev.com",
+				"url": "https://jotadev.com.ar",
 				"jobTitle": "Full Stack Web Developer",
 				"description": "Full Stack Web Developer con +6 años de experiencia. Especializado en .NET, CodeIgniter y Node.js.",
-				"image": "https://juanchodev.com/photo.webp",
+				"image": "https://jotadev.com.ar/photo.png",
 				"email": "mailto:juancruzmart93@gmail.com",
 				"telephone": "+54",
 				"address": {

@@ -28,5 +28,5 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://juanchodev.com/sitemap-index.xml
-Sitemap: https://juanchodev.com/sitemap-0.xml
+Sitemap: https://jotadev.com.ar/sitemap-index.xml
+Sitemap: https://jotadev.com.ar/sitemap-0.xml

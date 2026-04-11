@@ -4,10 +4,10 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://juanchodev.com',
+  site: 'https://jotadev.com.ar',
   integrations: [tailwind()],
   sitemap: {
-    filter: (page) => page !== 'https://juanchodev.com/components/',
+    filter: (page) => page !== 'https://jotadev.com.ar/components/',
     entryLimit: 45000,
     changefreq: 'weekly',
     priority: 0.7,

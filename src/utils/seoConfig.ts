@@ -7,8 +7,8 @@ export const SEO_CONFIG = {
   site: {
     name: "Juan Cruz Martínez - Software Engineer",
     description: "Software Engineer con +6 años de experiencia especializado en desarrollo full stack",
-    url: "https://juanchodev.com",
-    logo: "https://juanchodev.com/photo.webp",
+    url: "https://jotadev.com.ar",
+    logo: "https://jotadev.com.ar/photo.png",
     ogLocale: "es_AR",
     twitter: "@_juancruzmartinez",
   },

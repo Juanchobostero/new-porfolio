@@ -17,7 +17,7 @@ export function generateProjectSchema(projects: ProjectSchema[]) {
     "@type": "ItemList",
     "name": "Proyectos de Juan Cruz Martínez",
     "description": "Portafolio de proyectos desarrollados por Juan Cruz Martínez, Software Engineer Full Stack",
-    "url": "https://juanchodev.com",
+    "url": "https://jotadev.com.ar",
     "itemListElement": projects.map((project, index) => ({
       "@type": "CreativeWork",
       "@context": "https://schema.org",
@@ -25,11 +25,11 @@ export function generateProjectSchema(projects: ProjectSchema[]) {
       "name": project.title,
       "description": project.description,
       "url": project.link,
-      "image": `https://juanchodev.com${project.image}`,
+      "image": `https://jotadev.com.ar${project.image}`,
       "author": {
         "@type": "Person",
         "name": "Juan Cruz Martínez",
-        "url": "https://juanchodev.com"
+        "url": "https://jotadev.com.ar"
       },
       "inLanguage": "es-AR",
       "datePublished": new Date().toISOString().split("T")[0],
@@ -47,25 +47,25 @@ export function generateBreadcrumbSchema() {
         "@type": "ListItem",
         "position": 1,
         "name": "Inicio",
-        "item": "https://juanchodev.com"
+        "item": "https://jotadev.com.ar"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Experiencia",
-        "item": "https://juanchodev.com/#experiencia"
+        "item": "https://jotadev.com.ar/#experiencia"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Proyectos",
-        "item": "https://juanchodev.com/#proyectos"
+        "item": "https://jotadev.com.ar/#proyectos"
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": "Sobre mi",
-        "item": "https://juanchodev.com/#sobre-mi"
+        "item": "https://jotadev.com.ar/#sobre-mi"
       }
     ]
   };
@@ -76,8 +76,8 @@ export function generateOrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Juan Cruz Martínez Portfolio",
-    "url": "https://juanchodev.com",
-    "logo": "https://juanchodev.com/photo.webp",
+    "url": "https://jotadev.com.ar",
+    "logo": "https://jotadev.com.ar/photo.webp",
     "sameAs": [
       "https://www.linkedin.com/in/martinezjc93/",
       "https://github.com/Juanchobostero",
