@@ -14,6 +14,11 @@ import GitHub from "./icons/GitHub.astro"
 import Web from "./icons/Web.astro"
 import AstroIcon from "./icons/AstroIcon.astro"
 import VS from "./icons/VS.astro"
+import Supabase from "./icons/Supabase.astro"
+import GoogleSearchConsole from "./icons/GoogleSearchConsole.astro"
+import Notification from "./icons/Notification.astro"
+import PDF from "./icons/PDF.astro"
+import StatusBadge from "./StatusBadge.astro"
 
 const TAGS = {
     JAVASCRIPT: {
@@ -80,17 +85,51 @@ const TAGS = {
         name: "GitHub",
         class: "bg-gray-800/20 border border-gray-800/50 text-gray-300",
         icon: GitHub
+    },
+    SUPABASE: {
+        name: "Supabase",
+        class: "bg-emerald-500/20 border border-emerald-500/50 text-emerald-300",
+        icon: Supabase
+    },
+    SEARCH_CONSOLE: {
+        name: "Search Console",
+        class: "bg-blue-500/20 border border-blue-500/50 text-blue-300",
+        icon: GoogleSearchConsole
+    },
+    NOTIFICATIONS: {
+        name: "Notificaciones",
+        class: "bg-amber-500/20 border border-amber-500/50 text-amber-300",
+        icon: Notification
+    },
+    PDF: {
+        name: "PDF",
+        class: "bg-rose-500/20 border border-rose-500/50 text-rose-300",
+        icon: PDF
     }
 }
 const PROJECTS  = [
     {
+        title: 'Taita Soluciones - Plataforma para contratación de servicios técnicos a domicilio',
+        description: 'Diseño e implementación de una plataforma web para la contratación de servicios técnicos a domicilio, con pagos integrados vía Mercado Pago, notificaciones para técnicos y clientes, y seguimiento de posicionamiento SEO con Google Search Console.',
+        link: 'https://www.taitasoluciones.com.ar/',
+        image: '/projects/taita.webp',
+        tags: [TAGS.ASTRO, TAGS.NODE, TAGS.SUPABASE, TAGS.SEARCH_CONSOLE, TAGS.MERCADOPAGO, TAGS.NOTIFICATIONS],
+        status: 'En producción · Mejoras continuas'
+    },
+    {
+        title: 'NICA Agrimensura - Plataforma de gestión de expedientes',
+        description: 'Diseño e implementación de una plataforma web para la gestión de expedientes de agrimensura (mensuras, deslindes, divisiones), con generación automática de documentos en PDF y backend sobre Supabase/PostgreSQL.',
+        link: 'https://nica-two.vercel.app',
+        image: '/projects/nica.webp',
+        tags: [TAGS.ASTRO, TAGS.NODE, TAGS.SUPABASE, TAGS.PDF],
+        status: 'En producción · Uso privado'
+    },
+    {
         title: 'OHM Ingeniería Electromecánica - Sitio Web Institucional',
         description: 'Diseño e Implementación completa de landing page para empresa de ingeniería electromecánica.',
         link: 'https://www.ohmingelectromecanica.com.ar/',
-        github: 'https://github.com/Juanchobostero/ohm-web',
         image: '/projects/ohm.webp',
-        tags: [TAGS.ASTRO, TAGS.NODE],
-        off: false
+        tags: [TAGS.ASTRO, TAGS.NODE]
     },
     {
         title: 'Renamify - Renombrador de archivos masivo',
@@ -98,26 +137,14 @@ const PROJECTS  = [
         link: 'https://renamify.vercel.app/',
         github: 'https://github.com/Juanchobostero/renamify',
         image: '/projects/renamify.webp',
-        tags: [TAGS.ASTRO, TAGS.NODE],
-        off: false
-    },
-    {
-        title: 'El Promesero - Alfajores Artesanales',
-        description: 'Diseño e Implementación completa de sistema para gestión de alfajores artesanales de la empresa El Promesero.',
-        link: 'https://ecommerce-reactjs-chi.vercel.app/',
-        github: 'https://github.com/Juanchobostero/ecommerce-reactjs',
-        image: '/projects/elpromesero.webp',
-        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE],
-        off: false
+        tags: [TAGS.ASTRO, TAGS.NODE]
     },
     {
         title: 'Carga y visualización de resultados de elecciones 2025 - Corrientes, Argentina',
         description: 'Desarrollo de sistema de carga de resultados electorales, utilizada por gente de un partido en específico.',
         link: 'https://conteo-elecciones-app.vercel.app/',
-        github: 'https://github.com/Juanchobostero/conteo-elecciones',
         image: '/projects/carga-elecciones.webp',
-        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.ASTRO],
-        off: false
+        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.ASTRO]
     },
     {
         title: "Colaboración a Proyecto de la comunidad <a href='https://svgl.app/' target='_blank' rel='noopener noreferrer' aria-label='Visitar web de svgl' class='text-sky-400 hover:text-sky-300 underline transition-colors'>SVGL</a>",
@@ -125,8 +152,7 @@ const PROJECTS  = [
         link: 'https://svgl.app/',
         github: 'https://github.com/Juanchobostero/svgl',
         image: '/projects/svgl.webp',
-        tags: [TAGS.NODE, TAGS.GITHUB],
-        off: false
+        tags: [TAGS.NODE, TAGS.GITHUB]
     },
     {
         title: 'Generador código QR',
@@ -134,8 +160,7 @@ const PROJECTS  = [
         link: 'https://qr-code-generator-three-fawn.vercel.app/',
         github: 'https://github.com/Juanchobostero/qr-code-generator',
         image: '/projects/qr-generator.webp',
-        tags: [TAGS.NODE, TAGS.REACTJS, TAGS.CSS, TAGS.ASTRO],
-        off: false
+        tags: [TAGS.NODE, TAGS.REACTJS, TAGS.CSS, TAGS.ASTRO]
     },
     {
         title: 'STACK GAME 2D',
@@ -143,17 +168,19 @@ const PROJECTS  = [
         link: 'https://stack-game-2d.vercel.app/',
         github: 'https://github.com/Juanchobostero/stack-game-2d',
         image: '/projects/stack-game.webp',
-        tags: [TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.ASTRO],
-        off: false
+        tags: [TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.ASTRO]
     },
 ]
 ---
 
 <section class="flex flex-col gap-y-16">
 {
-    PROJECTS.map(({ title, description, tags, github, image, link, off }) => (
+    PROJECTS.map(({ title, description, tags, github, image, link, status }) => (
         <article class="mb-5 group">
-            <h3 class="text-2xl font-semibold text-yellow-300 mb-3 hover:text-yellow-200 transition-colors duration-300" set:html={title}></h3>
+            <div class="flex items-center gap-3 flex-wrap mb-3">
+                <h3 class="text-2xl font-semibold text-yellow-300 hover:text-yellow-200 transition-colors duration-300" set:html={title}></h3>
+                {status && <StatusBadge label={status} />}
+            </div>
             <p class="text-lg mb-4 text-pretty leading-relaxed text-gray-300" set:html={description}></p>
             <ul class="flex gap-x-4 gap-y-2 flex-row mb-4 mt-6 flex-wrap">
                 {
@@ -167,10 +194,10 @@ const PROJECTS  = [
                     ))
                 }
             </ul>
-            <img 
+            <img
                 class="rounded-lg shadow-2xl shadow-white/10 object-cover hover:shadow-white/20 transition-all duration-300 border border-white/10 group-hover:border-white/20"
-                src={image} 
-                alt={`${title} - Portfolio Juan Cruz Martínez | Desarrollador Full Stack`}
+                src={image}
+                alt={`${title.replace(/<[^>]*>/g, '')} - Portfolio Juan Cruz Martínez | Desarrollador Full Stack`}
                 loading="lazy"
                 width="800"
                 height="450"
@@ -178,26 +205,16 @@ const PROJECTS  = [
             />
 
             <footer class="flex gap-x-4 items-end justify-start mt-6">
+                <LinkButton href={link} variant="primary">
+                    <Web class="size-6" />
+                        Visitar sitio
+                </LinkButton>
                 {github && (
-                    <LinkButton href={github}>
+                    <LinkButton href={github} variant="secondary">
                     <GitHub class="size-6" />
                         Ver código fuente
                     </LinkButton>
                 )}
-                {
-                    off ? null : (
-                        <LinkButton href={link}>
-                            <Web class="size-6" />
-                                Visitar
-                        </LinkButton>
-                    )
-                }
-
-                    <LinkButton href={link}>
-                        <Web class="size-6" />
-                            Ver más
-                    </LinkButton>
-                
             </footer>
         </article>
     ))

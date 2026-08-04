@@ -15,6 +15,8 @@ import Mongo from './icons/Mongo.astro';
 import ReactJS from './icons/ReactJS.astro';
 import Express from './icons/Express.astro';
 import GCP from './icons/GCP.astro';
+import Angular from './icons/Angular.astro';
+import Code from './icons/Code.astro';
 
 export interface Props {
     title: string,
@@ -28,7 +30,11 @@ const { title, description, link, date, current, technologies = [] } = Astro.pro
 
 // Mapeo de tecnologías a componentes de iconos y URLs
 const techData: Record<string, { icon: any, name: string, url: string }> = {
-    '.net': { icon: ASPNET, name: '.NET', url: 'https://dotnet.microsoft.com/' },
+    '.net': { icon: ASPNET, name: 'ASP.NET Core', url: 'https://dotnet.microsoft.com/' },
+    'angular': { icon: Angular, name: 'Angular', url: 'https://angular.dev/' },
+    'solr': { icon: Code, name: 'Apache Solr', url: 'https://solr.apache.org/' },
+    'postman': { icon: Code, name: 'Postman', url: 'https://www.postman.com/' },
+    'ionic': { icon: Code, name: 'Ionic', url: 'https://ionicframework.com/' },
     'js': { icon: JavaScript, name: 'JavaScript', url: 'https://developer.mozilla.org/es/docs/Web/JavaScript' },
     'javascript': { icon: JavaScript, name: 'JavaScript', url: 'https://developer.mozilla.org/es/docs/Web/JavaScript' },
     'postgresql': { icon: Postgre, name: 'PostgreSQL', url: 'https://www.postgresql.org/' },
