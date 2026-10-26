@@ -111,8 +111,8 @@ const STATUS = {
         dot: "bg-jota-cyan",
         live: true
     },
-    BETA: {
-        label: "Beta privada",
+    FINAL_STAGE: {
+        label: "Etapa final",
         class: "text-jota-yellow border-jota-yellow/50",
         dot: "bg-jota-yellow",
         live: true
@@ -150,6 +150,24 @@ const PROJECTS  = [
         tags: [TAGS.ASTRO, TAGS.NODE, TAGS.SUPABASE, TAGS.PDF],
         status: STATUS.PRODUCTION,
         statusNote: 'Uso privado'
+    },
+    {
+        title: 'Sinergia Pro - Sitio Web Institucional',
+        description: 'Diseño e implementación del sitio de Sinergia Pro, empresa de ingeniería, construcción y energía solar del NEA: servicios, equipo, obras realizadas con mapa y pedido de presupuesto. Imágenes optimizadas automáticamente (AVIF/WebP) y obras administrables en Markdown.',
+        link: 'https://sinergia-pro.vercel.app/',
+        image: '/projects/sinergia-pro.webp',
+        tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.CSS],
+        status: STATUS.FINAL_STAGE,
+        statusNote: 'Pendiente de vincular sinergiapro.com.ar'
+    },
+    {
+        title: 'AF Studio Creativo - Sitio Web de Fotografía',
+        description: 'Diseño e implementación del sitio de Andrea Fredes · AF Studio Creativo, estudio de fotografía en Corrientes: portada animada, servicios con precios, historias por tipo de sesión, preguntas frecuentes y reservas por WhatsApp. Contenido administrable en Markdown.',
+        link: '',
+        image: '/projects/af-studio.webp',
+        tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.CSS],
+        status: STATUS.FINAL_STAGE,
+        statusNote: 'Pendiente de vincular andreafredes.com.ar'
     },
     {
         title: 'OHM Ingeniería Electromecánica - Sitio Web Institucional',
@@ -253,10 +271,12 @@ const PROJECTS  = [
                         </ul>
 
                         <footer class="card-actions flex gap-x-3 items-end justify-start mt-auto">
-                            <LinkButton href={link} variant="primary">
-                                <Web class="size-5" />
-                                Visitar sitio
-                            </LinkButton>
+                            {link && (
+                                <LinkButton href={link} variant="primary">
+                                    <Web class="size-5" />
+                                    Visitar sitio
+                                </LinkButton>
+                            )}
                             {github && (
                                 <LinkButton href={github} variant="secondary">
                                     <GitHub class="size-5" />
