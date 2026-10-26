@@ -69,11 +69,10 @@ const socialImage = new URL(image, Astro.site);
 		<meta name="twitter:site" content="@_juancruzmartinez" />
 		
 		<!-- Favicon -->
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="icon" type="image/webp" sizes="32x32" href="/photo.webp" />
-		<link rel="icon" type="image/webp" sizes="192x192" href="/photo.webp" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/photo.webp" />
-		<meta name="theme-color" content="#0f172a" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="theme-color" content="#0b1424" />
 		
 		<!-- Humans -->
 		<link rel="author" href="/humans.txt" />
@@ -154,11 +153,12 @@ const socialImage = new URL(image, Astro.site);
 		<ViewTransitions />
 		{injectSpeedInsights()}
 	</head>
-	<body class="relative min-h-screen">
+	<body class="relative min-h-screen overflow-x-clip">
 		<!-- Gradiente de fondo -->
-		<div class="absolute top-0 z-[-2] w-full min-h-full bg-neutral-950 bg-[radial-gradient(ellipse_60%_60%_at_50%_-20%,rgba(80,180,255,0.3),rgba(255,255,255,0))]"></div>
+		<div class="fixed inset-0 z-[-2] bg-jota-night bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(96,165,250,0.28),transparent),radial-gradient(ellipse_40%_40%_at_90%_60%,rgba(20,184,166,0.10),transparent)]"></div>
+		<div class="circuit-bg fixed inset-0 z-[-1] pointer-events-none" aria-hidden="true"></div>
 		<!-- Botón de ir arriba -->
-	<button class="fixed bottom-6 right-24 w-14 h-14 bg-yellow-400 hover:bg-yellow-500 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center text-black z-50 hover:scale-110" id="myBtn" title="Ir arriba" aria-label="Volver arriba">
+	<button class="fixed bottom-6 right-24 w-14 h-14 bg-jota-yellow hover:bg-yellow-500 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center text-black z-50 hover:scale-110" id="myBtn" title="Ir arriba" aria-label="Volver arriba">
 		<i class="fas fa-arrow-up text-lg" aria-hidden="true"></i>
 	</button>
 	
@@ -183,6 +183,19 @@ const socialImage = new URL(image, Astro.site);
 	body {
 		line-height: 1.6;
 		color: #e5e7eb;
+		background-color: #070d19;
+	}
+
+	::selection {
+		background: rgba(250, 204, 21, 0.85);
+		color: #0b1424;
+	}
+
+	/* Trazos de circuito como en el fondo del logo */
+	.circuit-bg {
+		opacity: 0.35;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' fill='none' stroke='%231e3a5f' stroke-width='1.5'%3E%3Cpath d='M0 40h60l20 20v60M80 120h-20M240 80h-50l-30-30V0M160 50h-20M120 240v-50l40-40h80M160 150v30M30 240v-60l-30-30M200 240v-20l20-20'/%3E%3Cg fill='%23070d19'%3E%3Ccircle cx='60' cy='120' r='4'/%3E%3Ccircle cx='140' cy='50' r='4'/%3E%3Ccircle cx='160' cy='180' r='4'/%3E%3Ccircle cx='220' cy='200' r='4'/%3E%3C/g%3E%3C/svg%3E");
+		mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 100%);
 	}
 
 	html, body {

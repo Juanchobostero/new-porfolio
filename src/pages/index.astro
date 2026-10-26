@@ -15,6 +15,7 @@ import Profile from '../components/icons/Profile.astro';
 import AboutMe from "../components/AboutMe.astro"
 import WorkWithMe from '../components/WorkWithMe.astro';
 import ThreeJSBadge from '../components/ThreeJSBadge.astro';
+import HeroScene from '../components/HeroScene.astro';
 import { generateBreadcrumbSchema, generateOrganizationSchema } from '../utils/projectSchema';
 
 const breadcrumbSchema = generateBreadcrumbSchema();
@@ -27,33 +28,44 @@ const organizationSchema = generateOrganizationSchema();
 	keywords="Juan Cruz Martinez, desarrollador full stack, programador Argentina, desarrollador .NET, CodeIgniter developer, Node.js developer, React developer, desarrollador web Corrientes, trabajo remoto Argentina, portfolio desarrollador"
 >
 	<main class="px-2 tracking-tight">
+		<div class="relative isolate -mt-24 pt-24">
+		<HeroScene />
 		<SectionContainer class="py-16 pb-20">
-			<!-- <img
-				class="rounded-full size-14 mb-4 cursor-pointer" 
-				src="/photo.webp" 
-				alt="juancruz photo" 
-			/> -->
-			<h1 class="text-2xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
-				<span class="text-sky-400 whitespace-nowrap">Juan Cruz</span> 
-				<span class="bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">Martínez.</span>
-				<a 
-					href="https://www.linkedin.com/in/martinezjc93/" 
-					target="_blank" 
-					rel="noopener" 
-					class="flex justify-center items-center"
+			<div class="flex items-center gap-x-4 mb-6">
+				<img
+					src="/logo.webp"
+					alt="Logo JOTADEV"
+					width="96"
+					height="96"
+					class="hero-logo size-16 lg:size-24 rounded-full ring-2 ring-jota-teal/70"
+				/>
+				<a
+					href="https://www.linkedin.com/in/martinezjc93/"
+					target="_blank"
+					rel="noopener"
+					class="flex items-center h-10 [&_.credential-container]:!h-10"
 				>
 					<ThreeJSBadge>DISPONIBLE</ThreeJSBadge>
 				</a>
+			</div>
+			<h1 class="text-3xl lg:text-5xl font-bold flex flex-wrap gap-x-4 pb-4">
+				<span class="text-jota-steel whitespace-nowrap">Juan Cruz</span>
+				<span class="bg-gradient-to-r from-jota-ice to-gray-300 bg-clip-text text-transparent">Martínez<span class="text-jota-yellow">.</span></span>
 			</h1>
-				
-			<div class="mt-[-3rem] mb-8 tracking-normal">
-				<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
-					<span class="text-yellow-300 font-semibold">Software Engineer con +6 años de experiencia.</span>
-					<br>
-					<span class="text-gray-200">Experiencia en tecnologías como NodeJS, .NET.</span>
-					<br>
-					<span class="text-sky-300 font-medium">Corrientes, Argentina · Trabajo remoto.</span>
+			<p class="font-mono text-jota-cyan text-sm lg:text-base mb-6">
+				<span class="text-jota-yellow">&lt;</span>jotadev<span class="text-jota-yellow"> /&gt;</span>
+			</p>
+
+			<div class="mb-8 tracking-normal">
+				<h2 class="text-2xl lg:text-3xl font-semibold text-jota-yellow text-balance max-w-[700px] mb-3">
+					Construyo sistemas web que se usan en producción.
 				</h2>
+				<p class="text-lg lg:text-xl text-gray-200 text-pretty max-w-[640px] mb-3">
+					Software Engineer con +6 años creando apps full stack con Node.js, .NET, React y Supabase, desde la idea hasta el deploy.
+				</p>
+				<p class="text-base lg:text-lg text-jota-cyan font-medium">
+					Corrientes, Argentina · Trabajo remoto con equipos de todo el mundo.
+				</p>
 	
 				<nav class="flex gap-4 mt-10 flex-wrap">
 					<SocialPill href="https://www.linkedin.com/in/martinezjc93/">
@@ -79,33 +91,38 @@ const organizationSchema = generateOrganizationSchema();
 					</a>
 				</nav>
 			</div>
-			
+
 		</SectionContainer>
+		</div>
 
 		<SectionContainer 
 			id="experiencia" 
-			class="p-6 border rounded-lg bg-black dark:border-sky-700 shadow-lg shadow-gray-900/50 dark:shadow-gray-700/50 border-t border-l border-gray-300 border-opacity-50"
+			class="p-4 sm:p-6 rounded-2xl bg-jota-navy/60 backdrop-blur-sm shadow-lg shadow-black/40"
 		>
 			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
-				<Briefcase class="size-7"/>	
+				<Briefcase class="size-7 text-jota-yellow"/>
 				Experiencia Laboral
 			</h2>
 			<Experience />
 		</SectionContainer>
 
 
-		<SectionContainer id="trabaja-conmigo" class="p-16">
+		<SectionContainer id="trabaja-conmigo" class="p-6 sm:p-16">
 			<WorkWithMe />
 		</SectionContainer>
 
-		<SectionContainer 
+		<SectionContainer
 			id="proyectos"
-			class="mb-16 p-6 border rounded-lg bg-black dark:border-sky-700 shadow-lg shadow-gray-900/50 dark:shadow-gray-700/50 border-t border-l border-gray-300 border-opacity-50"	
+			wide
+			class="mb-16 p-4 sm:p-6 rounded-2xl bg-jota-navy/60 backdrop-blur-sm shadow-lg shadow-black/40"
 		>
-			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
-				<CodeIcon class="size-7"/>	
+			<h2 class="text-3xl font-semibold mb-2 flex gap-x-3 items-center">
+				<CodeIcon class="size-7 text-jota-yellow"/>
 				Proyectos
 			</h2>
+			<p class="text-sm text-gray-400 mb-8 font-mono">
+				Estado de cada proyecto verificado en octubre 2026.
+			</p>
 			<Projects />
 		</SectionContainer>
 
@@ -146,16 +163,21 @@ const organizationSchema = generateOrganizationSchema();
 		text-wrap: balance;
 	}
 
-	img.rounded-full {
-		transition: transform 0.3s ease-in-out;
+	.hero-logo {
+		box-shadow: 0 0 30px rgba(20, 184, 166, 0.35);
+		animation: float 6s ease-in-out infinite;
 	}
 
-	img.rounded-full:hover {
-		transform: scale(1.5);
+	@keyframes float {
+		50% { transform: translateY(-6px); }
 	}
 
 	#proyectos, #experiencia {
-		border: #38bdf8 1px solid;
+		border: 1px solid rgba(20, 184, 166, 0.35);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-logo { animation: none; }
 	}
 </style>
 

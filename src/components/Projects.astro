@@ -1,19 +1,17 @@
 ---
 import JavaScript from "./icons/JavaScript.astro"
 import CSS from "./icons/CSS.astro"
-import PHP from "./icons/PHP.astro"
-import MySQL from "./icons/MySQL.astro"
 import ReactJS from "./icons/ReactJS.astro"
-import MercadoPago from "./icons/MercadoPago.astro"
 import HTML from "./icons/HTML.astro"
 import Mongo from "./icons/Mongo.astro"
 import Node from "./icons/Node.astro"
 import Express from "./icons/Express.astro"
+import Postgre from "./icons/Postgre.astro"
+import MercadoPago from "./icons/MercadoPago.astro"
 import LinkButton from "./LinkButton.astro"
 import GitHub from "./icons/GitHub.astro"
 import Web from "./icons/Web.astro"
 import AstroIcon from "./icons/AstroIcon.astro"
-import VS from "./icons/VS.astro"
 
 const TAGS = {
     JAVASCRIPT: {
@@ -21,30 +19,23 @@ const TAGS = {
         class: "bg-yellow-500/20 border border-yellow-500/50 text-yellow-300",
         icon: JavaScript
     },
+    TYPESCRIPT: {
+        name: "TypeScript",
+        class: "bg-blue-500/20 border border-blue-500/50 text-blue-300",
+    },
     CSS: {
         name: "CSS",
         class: "bg-blue-500/20 border border-blue-500/50 text-blue-300",
         icon: CSS
     },
-    PHP: {
-        name: "CodeIgniter",
-        class: "bg-red-500/20 border border-red-500/50 text-red-300",
-        icon: PHP
-    },
-    MYSQL: {
-        name: "MySQL",
+    TAILWIND: {
+        name: "Tailwind",
         class: "bg-cyan-500/20 border border-cyan-500/50 text-cyan-300",
-        icon: MySQL
     },
     REACTJS: {
         name: "ReactJS",
         class: "bg-sky-500/20 border border-sky-500/50 text-sky-300",
         icon: ReactJS
-    },
-    MERCADOPAGO: {
-        name: "MercadoPago",
-        class: "bg-blue-400/20 border border-blue-400/50 text-blue-300",
-        icon: MercadoPago
     },
     HTML: {
         name: "HTML",
@@ -60,21 +51,26 @@ const TAGS = {
         name: "NodeJS",
         class: "bg-green-600/20 border border-green-600/50 text-green-400",
         icon: Node
-    }, 
+    },
     EXPRESS: {
         name: "Express",
         class: "bg-gray-500/20 border border-gray-500/50 text-gray-300",
         icon: Express
     },
+    SUPABASE: {
+        name: "Supabase",
+        class: "bg-emerald-500/20 border border-emerald-500/50 text-emerald-300",
+        icon: Postgre
+    },
+    MERCADOPAGO: {
+        name: "MercadoPago",
+        class: "bg-blue-400/20 border border-blue-400/50 text-blue-300",
+        icon: MercadoPago
+    },
     ASTRO: {
         name: "Astro",
         class: "bg-purple-500/20 border border-purple-500/50 text-purple-300",
         icon: AstroIcon
-    },
-    VSCODE: {
-        name: "VSCode",
-        class: "bg-blue-600/20 border border-blue-600/50 text-blue-300",
-        icon: VS
     },
     GITHUB: {
         name: "GitHub",
@@ -82,7 +78,63 @@ const TAGS = {
         icon: GitHub
     }
 }
+
+// Estado real de cada proyecto (verificado en octubre 2026)
+const STATUS = {
+    PRODUCTION: {
+        label: "En producción",
+        class: "text-emerald-300 border-emerald-400/50",
+        dot: "bg-emerald-400",
+        live: true
+    },
+    ONLINE: {
+        label: "Online",
+        class: "text-jota-cyan border-jota-cyan/50",
+        dot: "bg-jota-cyan",
+        live: true
+    },
+    BETA: {
+        label: "Beta privada",
+        class: "text-jota-yellow border-jota-yellow/50",
+        dot: "bg-jota-yellow",
+        live: true
+    },
+    FINISHED: {
+        label: "Finalizado",
+        class: "text-gray-300 border-gray-400/40",
+        dot: "bg-gray-400",
+        live: false
+    },
+    MERGED: {
+        label: "PR aceptada",
+        class: "text-purple-300 border-purple-400/50",
+        dot: "bg-purple-400",
+        live: false
+    }
+}
+
 const PROJECTS  = [
+    {
+        title: 'Taita Soluciones - Plataforma de servicios técnicos',
+        description: 'Plataforma que conecta personas con técnicos locales verificados. Paneles para cliente, técnico y administrador, autenticación por rol, búsqueda con command palette (Ctrl+K) y pagos con MercadoPago.',
+        link: 'https://www.taitasoluciones.com.ar/',
+        github: 'https://github.com/Juanchobostero/taita',
+        image: '/projects/taita.webp',
+        tags: [TAGS.ASTRO, TAGS.REACTJS, TAGS.TYPESCRIPT, TAGS.SUPABASE, TAGS.TAILWIND, TAGS.MERCADOPAGO],
+        status: STATUS.PRODUCTION,
+        statusNote: 'Lanzada con dominio propio',
+        featured: true
+    },
+    {
+        title: 'NICA - Sistema de Gestión de Mensuras',
+        description: 'Sistema a medida para un estudio de agrimensura: carga de expedientes de mensura y generación automática de los PDF oficiales (Nota de Elevación, Acta de Mensura, Citación a Linderos).',
+        link: 'https://nica-two.vercel.app/',
+        github: 'https://github.com/Juanchobostero/nica',
+        image: '/projects/nica.webp',
+        tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.SUPABASE],
+        status: STATUS.BETA,
+        statusNote: 'En uso por el cliente · acceso con login'
+    },
     {
         title: 'OHM Ingeniería Electromecánica - Sitio Web Institucional',
         description: 'Diseño e Implementación completa de landing page para empresa de ingeniería electromecánica.',
@@ -90,7 +142,8 @@ const PROJECTS  = [
         github: 'https://github.com/Juanchobostero/ohm-web',
         image: '/projects/ohm.webp',
         tags: [TAGS.ASTRO, TAGS.NODE],
-        off: false
+        status: STATUS.PRODUCTION,
+        statusNote: 'Dominio propio del cliente'
     },
     {
         title: 'Renamify - Renombrador de archivos masivo',
@@ -99,16 +152,18 @@ const PROJECTS  = [
         github: 'https://github.com/Juanchobostero/renamify',
         image: '/projects/renamify.webp',
         tags: [TAGS.ASTRO, TAGS.NODE],
-        off: false
+        status: STATUS.ONLINE,
+        statusNote: 'Gratuito · sin registro'
     },
     {
         title: 'El Promesero - Alfajores Artesanales',
         description: 'Diseño e Implementación completa de sistema para gestión de alfajores artesanales de la empresa El Promesero.',
-        link: 'https://ecommerce-reactjs-chi.vercel.app/',
+        link: 'https://elpromesero.com/',
         github: 'https://github.com/Juanchobostero/ecommerce-reactjs',
         image: '/projects/elpromesero.webp',
         tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE],
-        off: false
+        status: STATUS.PRODUCTION,
+        statusNote: 'Dominio propio del cliente'
     },
     {
         title: 'Carga y visualización de resultados de elecciones 2025 - Corrientes, Argentina',
@@ -117,16 +172,8 @@ const PROJECTS  = [
         github: 'https://github.com/Juanchobostero/conteo-elecciones',
         image: '/projects/carga-elecciones.webp',
         tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.ASTRO],
-        off: false
-    },
-    {
-        title: "Colaboración a Proyecto de la comunidad <a href='https://svgl.app/' target='_blank' rel='noopener noreferrer' aria-label='Visitar web de svgl' class='text-sky-400 hover:text-sky-300 underline transition-colors'>SVGL</a>",
-        description: "Se realizó un Fork del proyecto y se implementó una mejora en la accesibilidad de 90 a 95, con la posterior revisión y aprobación de la PR por parte del propietario <a href='https://github.com/pheralb' target='_blank' rel='noopener noreferrer' aria-label='Visitar repositorio de Pablo Hdez' class='text-sky-400 hover:text-sky-300 underline transition-colors'>Pablo Hdez</a>. <a href='https://github.com/Juanchobostero/svgl/commits/main/' target='_blank' rel='noopener noreferrer' aria-label='Visitar commits del repositorio' class='text-sky-400 hover:text-sky-300 underline transition-colors'>Link del commit</a>",
-        link: 'https://svgl.app/',
-        github: 'https://github.com/Juanchobostero/svgl',
-        image: '/projects/svgl.webp',
-        tags: [TAGS.NODE, TAGS.GITHUB],
-        off: false
+        status: STATUS.FINISHED,
+        statusNote: 'Utilizado en las elecciones 2025'
     },
     {
         title: 'Generador código QR',
@@ -135,7 +182,7 @@ const PROJECTS  = [
         github: 'https://github.com/Juanchobostero/qr-code-generator',
         image: '/projects/qr-generator.webp',
         tags: [TAGS.NODE, TAGS.REACTJS, TAGS.CSS, TAGS.ASTRO],
-        off: false
+        status: STATUS.ONLINE
     },
     {
         title: 'STACK GAME 2D',
@@ -143,66 +190,83 @@ const PROJECTS  = [
         link: 'https://stack-game-2d.vercel.app/',
         github: 'https://github.com/Juanchobostero/stack-game-2d',
         image: '/projects/stack-game.webp',
-        tags: [TAGS.NODE, TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.ASTRO],
-        off: false
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.ASTRO],
+        status: STATUS.ONLINE
+    },
+    {
+        title: "Colaboración a Proyecto de la comunidad <a href='https://svgl.app/' target='_blank' rel='noopener noreferrer' aria-label='Visitar web de svgl' class='text-jota-steel hover:text-jota-ice underline transition-colors'>SVGL</a>",
+        description: "Se realizó un Fork del proyecto y se implementó una mejora en la accesibilidad de 90 a 95, con la posterior revisión y aprobación de la PR por parte del propietario <a href='https://github.com/pheralb' target='_blank' rel='noopener noreferrer' aria-label='Visitar repositorio de Pablo Hdez' class='text-jota-steel hover:text-jota-ice underline transition-colors'>Pablo Hdez</a>. <a href='https://github.com/Juanchobostero/svgl/commits/main/' target='_blank' rel='noopener noreferrer' aria-label='Visitar commits del repositorio' class='text-jota-steel hover:text-jota-ice underline transition-colors'>Link del commit</a>",
+        link: 'https://svgl.app/',
+        github: 'https://github.com/Juanchobostero/svgl',
+        image: '/projects/svgl.webp',
+        tags: [TAGS.NODE, TAGS.GITHUB],
+        status: STATUS.MERGED,
+        statusNote: 'Proyecto open source'
     },
 ]
 ---
 
-<section class="flex flex-col gap-y-16">
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 {
-    PROJECTS.map(({ title, description, tags, github, image, link, off }) => (
-        <article class="mb-5 group">
-            <h3 class="text-2xl font-semibold text-yellow-300 mb-3 hover:text-yellow-200 transition-colors duration-300" set:html={title}></h3>
-            <p class="text-lg mb-4 text-pretty leading-relaxed text-gray-300" set:html={description}></p>
-            <ul class="flex gap-x-4 gap-y-2 flex-row mb-4 mt-6 flex-wrap">
-                {
-                    tags.map((tag) => (
-                        <li>
-                            <span class={`flex gap-x-1 text-sm ${tag.class} py-1 px-2.5 rounded-md cursor-pointer hover:scale-110 transition-all duration-200 hover:shadow-lg`}>
-                                <tag.icon class="size-5" />
-                                {tag.name}
+    PROJECTS.map(({ title, description, tags, github, image, link, status, statusNote, featured }) => (
+        <article class:list={["project", { "md:col-span-2": featured }]}>
+            <div class="tilt-card group" data-tilt>
+                <div class:list={["card-content flex flex-col", { "md:grid md:grid-cols-2 md:gap-6 md:items-center": featured }]}>
+                    <div class="card-media relative">
+                        <img
+                            class="w-full aspect-video rounded-xl object-cover object-top border border-white/10"
+                            src={image}
+                            alt={`${title.replace(/<[^>]+>/g, '')} - Portfolio Juan Cruz Martínez | Desarrollador Full Stack`}
+                            loading="lazy"
+                            width="800"
+                            height="450"
+                            decoding="async"
+                        />
+                        <span class={`status-badge absolute top-3 left-3 inline-flex items-center gap-x-2 rounded-full border px-3 py-1 text-xs font-semibold bg-jota-night/85 backdrop-blur-md shadow-lg shadow-black/40 ${status.class}`}>
+                            <span class="relative flex size-2">
+                                {status.live && <span class={`absolute inline-flex size-full rounded-full opacity-75 animate-ping ${status.dot}`}></span>}
+                                <span class={`relative inline-flex size-2 rounded-full ${status.dot}`}></span>
                             </span>
-                        </li>
-                    ))
-                }
-            </ul>
-            <img 
-                class="rounded-lg shadow-2xl shadow-white/10 object-cover hover:shadow-white/20 transition-all duration-300 border border-white/10 group-hover:border-white/20"
-                src={image} 
-                alt={`${title} - Portfolio Juan Cruz Martínez | Desarrollador Full Stack`}
-                loading="lazy"
-                width="800"
-                height="450"
-                decoding="async"
-            />
+                            {status.label}
+                        </span>
+                    </div>
 
-            <footer class="flex gap-x-4 items-end justify-start mt-6">
-                {github && (
-                    <LinkButton href={github}>
-                    <GitHub class="size-6" />
-                        Ver código fuente
-                    </LinkButton>
-                )}
-                {
-                    off ? null : (
-                        <LinkButton href={link}>
-                            <Web class="size-6" />
+                    <div class="card-body flex flex-col pt-5">
+                        <h3 class="text-xl lg:text-2xl font-semibold text-jota-yellow mb-1 text-balance" set:html={title}></h3>
+                        {statusNote && <p class="font-mono text-xs text-jota-cyan/80 mb-3">// {statusNote}</p>}
+                        <p class="text-base mb-4 text-pretty leading-relaxed text-gray-300" set:html={description}></p>
+                        <ul class="card-tags flex gap-2 flex-row mb-5 flex-wrap">
+                            {
+                                tags.map((tag) => (
+                                    <li>
+                                        <span class={`flex items-center gap-x-1 text-xs ${tag.class} py-1 px-2 rounded-md`}>
+                                            {"icon" in tag && <tag.icon class="size-4" />}
+                                            {tag.name}
+                                        </span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+
+                        <footer class="card-actions flex gap-x-3 items-end justify-start mt-auto">
+                            {github && (
+                                <LinkButton href={github}>
+                                    <GitHub class="size-5" />
+                                    Código
+                                </LinkButton>
+                            )}
+                            <LinkButton href={link}>
+                                <Web class="size-5" />
                                 Visitar
-                        </LinkButton>
-                    )
-                }
-
-                    <LinkButton href={link}>
-                        <Web class="size-6" />
-                            Ver más
-                    </LinkButton>
-                
-            </footer>
+                            </LinkButton>
+                        </footer>
+                    </div>
+                </div>
+                <div class="card-glare" aria-hidden="true"></div>
+            </div>
         </article>
     ))
 }
-
 </section>
 
 <style>
@@ -217,10 +281,105 @@ const PROJECTS  = [
 		}
 	}
 
-	article {
+	.project {
+		perspective: 1200px;
 		animation: reveal both;
 		animation-timeline: view();
-		animation-range: entry 20% cover 40%;
-		transition: opacity 0.3s ease;
+		animation-range: entry 10% cover 30%;
+	}
+
+	.tilt-card {
+		--rx: 0deg;
+		--ry: 0deg;
+		--gx: 50%;
+		--gy: 50%;
+		position: relative;
+		height: 100%;
+		padding: 1rem;
+		border-radius: 1.25rem;
+		border: 1px solid rgba(30, 58, 95, 0.9);
+		background: linear-gradient(160deg, rgba(17, 28, 51, 0.95), rgba(7, 13, 25, 0.95));
+		box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.8);
+		transform: rotateX(var(--rx)) rotateY(var(--ry));
+		transform-style: preserve-3d;
+		transition: transform 0.4s ease-out, border-color 0.3s, box-shadow 0.3s;
+		will-change: transform;
+	}
+
+	.tilt-card:hover {
+		border-color: rgba(20, 184, 166, 0.7);
+		box-shadow: 0 30px 60px -20px rgba(20, 184, 166, 0.25), 0 0 0 1px rgba(250, 204, 21, 0.08);
+	}
+
+	.tilt-card.is-tilting {
+		transition: transform 0.08s linear, border-color 0.3s, box-shadow 0.3s;
+	}
+
+	.card-content {
+		height: 100%;
+		transform-style: preserve-3d;
+	}
+
+	/* Capas con profundidad: se "despegan" de la tarjeta al hacer hover */
+	.card-media,
+	.card-body,
+	.card-tags,
+	.card-actions,
+	.status-badge {
+		transition: transform 0.4s ease-out;
+	}
+
+	.tilt-card:hover .card-media { transform: translateZ(40px); }
+	.tilt-card:hover .card-body { transform: translateZ(25px); }
+	.tilt-card:hover .status-badge { transform: translateZ(30px); }
+	.tilt-card:hover .card-actions { transform: translateZ(15px); }
+
+	.card-glare {
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		pointer-events: none;
+		opacity: 0;
+		background: radial-gradient(circle at var(--gx) var(--gy), rgba(219, 234, 254, 0.14), transparent 45%);
+		transition: opacity 0.3s;
+	}
+
+	.tilt-card:hover .card-glare { opacity: 1; }
+
+	@media (prefers-reduced-motion: reduce) {
+		.tilt-card,
+		.tilt-card:hover .card-media,
+		.tilt-card:hover .card-body,
+		.tilt-card:hover .status-badge,
+		.tilt-card:hover .card-actions {
+			transform: none;
+		}
 	}
 </style>
+
+<script>
+	const MAX_TILT = 8;
+	const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+	if (!reduceMotion) {
+		document.querySelectorAll<HTMLElement>("[data-tilt]").forEach((card) => {
+			card.addEventListener("pointermove", (e) => {
+				if (e.pointerType !== "mouse") return;
+				const rect = card.getBoundingClientRect();
+				const x = (e.clientX - rect.left) / rect.width;
+				const y = (e.clientY - rect.top) / rect.height;
+				card.classList.add("is-tilting");
+				card.style.setProperty("--ry", `${(x - 0.5) * MAX_TILT * 2}deg`);
+				card.style.setProperty("--rx", `${(0.5 - y) * MAX_TILT * 2}deg`);
+				card.style.setProperty("--gx", `${x * 100}%`);
+				card.style.setProperty("--gy", `${y * 100}%`);
+			});
+
+			card.addEventListener("pointerleave", () => {
+				card.classList.remove("is-tilting");
+				card.style.setProperty("--rx", "0deg");
+				card.style.setProperty("--ry", "0deg");
+			});
+		});
+	}
+</script>

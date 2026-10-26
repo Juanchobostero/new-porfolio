@@ -1,0 +1,141 @@
+---
+// Fondo 3D del hero: red de nodos tipo circuito con los colores del logo
+---
+
+<canvas id="hero-scene" class="absolute inset-0 -z-10 size-full opacity-0 transition-opacity duration-1000" aria-hidden="true"></canvas>
+
+<script>
+  const canvas = document.getElementById("hero-scene") as HTMLCanvasElement | null;
+
+  // three.js se carga en un chunk aparte, sin bloquear el render inicial
+  async function init(canvas: HTMLCanvasElement) {
+    const THREE = await import("three");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const COUNT = window.innerWidth < 768 ? 45 : 80;
+    const LINK_DISTANCE = 2.2;
+    const BOUNDS = { x: 7, y: 3.5, z: 2 };
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
+    camera.position.z = 7;
+
+    const positions = new Float32Array(COUNT * 3);
+    const colors = new Float32Array(COUNT * 3);
+    const velocities: InstanceType<typeof THREE.Vector3>[] = [];
+    const steel = new THREE.Color("#60a5fa");
+    const teal = new THREE.Color("#14b8a6");
+    const yellow = new THREE.Color("#facc15");
+
+    for (let i = 0; i < COUNT; i++) {
+      positions[i * 3] = (Math.random() * 2 - 1) * BOUNDS.x;
+      positions[i * 3 + 1] = (Math.random() * 2 - 1) * BOUNDS.y;
+      positions[i * 3 + 2] = (Math.random() * 2 - 1) * BOUNDS.z;
+      velocities.push(new THREE.Vector3(
+        (Math.random() - 0.5) * 0.006,
+        (Math.random() - 0.5) * 0.006,
+        (Math.random() - 0.5) * 0.002,
+      ));
+      const color = i % 9 === 0 ? yellow : i % 3 === 0 ? teal : steel;
+      color.toArray(colors, i * 3);
+    }
+
+    const pointsGeometry = new THREE.BufferGeometry();
+    pointsGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    pointsGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    const points = new THREE.Points(pointsGeometry, new THREE.PointsMaterial({
+      size: 0.07,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.9,
+    }));
+
+    const maxSegments = (COUNT * (COUNT - 1)) / 2;
+    const linePositions = new Float32Array(maxSegments * 6);
+    const lineGeometry = new THREE.BufferGeometry();
+    lineGeometry.setAttribute("position", new THREE.BufferAttribute(linePositions, 3));
+    const lines = new THREE.LineSegments(lineGeometry, new THREE.LineBasicMaterial({
+      color: "#1e3a5f",
+      transparent: true,
+      opacity: 0.8,
+    }));
+
+    const group = new THREE.Group();
+    group.add(points, lines);
+    scene.add(group);
+
+    const pointer = { x: 0, y: 0 };
+    window.addEventListener("pointermove", (e) => {
+      pointer.x = e.clientX / window.innerWidth - 0.5;
+      pointer.y = e.clientY / window.innerHeight - 0.5;
+    }, { passive: true });
+
+    function resize() {
+      const { clientWidth, clientHeight } = canvas;
+      renderer.setSize(clientWidth, clientHeight, false);
+      camera.aspect = clientWidth / clientHeight;
+      camera.updateProjectionMatrix();
+    }
+
+    function updateLinks() {
+      let segment = 0;
+      for (let a = 0; a < COUNT; a++) {
+        for (let b = a + 1; b < COUNT; b++) {
+          const dx = positions[a * 3] - positions[b * 3];
+          const dy = positions[a * 3 + 1] - positions[b * 3 + 1];
+          const dz = positions[a * 3 + 2] - positions[b * 3 + 2];
+          if (dx * dx + dy * dy + dz * dz > LINK_DISTANCE * LINK_DISTANCE) continue;
+          linePositions.set(positions.subarray(a * 3, a * 3 + 3), segment * 6);
+          linePositions.set(positions.subarray(b * 3, b * 3 + 3), segment * 6 + 3);
+          segment++;
+        }
+      }
+      lineGeometry.setDrawRange(0, segment * 2);
+      lineGeometry.attributes.position.needsUpdate = true;
+    }
+
+    function step() {
+      for (let i = 0; i < COUNT; i++) {
+        const v = velocities[i];
+        positions[i * 3] += v.x;
+        positions[i * 3 + 1] += v.y;
+        positions[i * 3 + 2] += v.z;
+        if (Math.abs(positions[i * 3]) > BOUNDS.x) v.x *= -1;
+        if (Math.abs(positions[i * 3 + 1]) > BOUNDS.y) v.y *= -1;
+        if (Math.abs(positions[i * 3 + 2]) > BOUNDS.z) v.z *= -1;
+      }
+      pointsGeometry.attributes.position.needsUpdate = true;
+      updateLinks();
+
+      group.rotation.y += (pointer.x * 0.35 - group.rotation.y) * 0.04;
+      group.rotation.x += (pointer.y * 0.2 - group.rotation.x) * 0.04;
+      renderer.render(scene, camera);
+    }
+
+    let visible = true;
+    function loop() {
+      if (visible) step();
+      requestAnimationFrame(loop);
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }).observe(canvas);
+
+    if (reduceMotion) {
+      updateLinks();
+      renderer.render(scene, camera);
+    } else {
+      loop();
+    }
+    canvas.classList.replace("opacity-0", "opacity-100");
+  }
+
+  if (canvas) {
+    const start = () => init(canvas);
+    if ("requestIdleCallback" in window) requestIdleCallback(start);
+    else setTimeout(start, 200);
+  }
+</script>
