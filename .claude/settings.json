@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add *)",
+      "Bash(pnpm run *)",
+      "Bash(grep -qE \"ELIFECYCLE|Complete|error|\\\\\\\\$\" \"C:\\\\Users\\\\Admin\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Admin-Documents-ASTRO-PROJECTS-new-porfolio\\\\6e61f2c0-cfb3-4a58-b426-61628a15b091\\\\tasks\\\\bf7ehth87.output\")",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Id 10388 -Force -ErrorAction SilentlyContinue)",
+      "Bash(echo \"EXIT_CODE=$?\")",
+      "Bash(cd \"c:/Users/Admin/Documents/ASTRO-PROJECTS/new-porfolio\")",
+      "Bash(echo BUILD_EXIT=__TRACKED_VAR__)",
+      "Bash(wc -l \"C:/Users/Admin/AppData/Local/Temp/claude/c--Users-Admin-Documents-ASTRO-PROJECTS-new-porfolio/6e61f2c0-cfb3-4a58-b426-61628a15b091/scratchpad/build4.log\")",
+      "Bash(echo \"INSTALL_EXIT=$?\")",
+      "Bash(echo \"BUILD_EXIT=$?\")",
+      "PowerShell(Get-Process node,pnpm -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Force -ErrorAction SilentlyContinue)",
+      "PowerShell(\"DONE\")",
+      "PowerShell(Stop-Process -Id 7340,15320,17912 -Force -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

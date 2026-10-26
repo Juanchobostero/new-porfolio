@@ -6,8 +6,11 @@ import HTML from "./icons/HTML.astro"
 import Mongo from "./icons/Mongo.astro"
 import Node from "./icons/Node.astro"
 import Express from "./icons/Express.astro"
-import Postgre from "./icons/Postgre.astro"
 import MercadoPago from "./icons/MercadoPago.astro"
+import Supabase from "./icons/Supabase.astro"
+import GoogleSearchConsole from "./icons/GoogleSearchConsole.astro"
+import Notification from "./icons/Notification.astro"
+import PDF from "./icons/PDF.astro"
 import LinkButton from "./LinkButton.astro"
 import GitHub from "./icons/GitHub.astro"
 import Web from "./icons/Web.astro"
@@ -60,7 +63,22 @@ const TAGS = {
     SUPABASE: {
         name: "Supabase",
         class: "bg-emerald-500/20 border border-emerald-500/50 text-emerald-300",
-        icon: Postgre
+        icon: Supabase
+    },
+    SEARCH_CONSOLE: {
+        name: "Search Console",
+        class: "bg-blue-500/20 border border-blue-500/50 text-blue-300",
+        icon: GoogleSearchConsole
+    },
+    NOTIFICATIONS: {
+        name: "Notificaciones",
+        class: "bg-amber-500/20 border border-amber-500/50 text-amber-300",
+        icon: Notification
+    },
+    PDF: {
+        name: "PDF",
+        class: "bg-rose-500/20 border border-rose-500/50 text-rose-300",
+        icon: PDF
     },
     MERCADOPAGO: {
         name: "MercadoPago",
@@ -115,31 +133,28 @@ const STATUS = {
 
 const PROJECTS  = [
     {
-        title: 'Taita Soluciones - Plataforma de servicios técnicos',
-        description: 'Plataforma que conecta personas con técnicos locales verificados. Paneles para cliente, técnico y administrador, autenticación por rol, búsqueda con command palette (Ctrl+K) y pagos con MercadoPago.',
+        title: 'Taita Soluciones - Plataforma para contratación de servicios técnicos a domicilio',
+        description: 'Diseño e implementación de una plataforma web para la contratación de servicios técnicos a domicilio, con pagos integrados vía Mercado Pago, notificaciones para técnicos y clientes, y seguimiento de posicionamiento SEO con Google Search Console.',
         link: 'https://www.taitasoluciones.com.ar/',
-        github: 'https://github.com/Juanchobostero/taita',
         image: '/projects/taita.webp',
-        tags: [TAGS.ASTRO, TAGS.REACTJS, TAGS.TYPESCRIPT, TAGS.SUPABASE, TAGS.TAILWIND, TAGS.MERCADOPAGO],
+        tags: [TAGS.ASTRO, TAGS.NODE, TAGS.SUPABASE, TAGS.SEARCH_CONSOLE, TAGS.MERCADOPAGO, TAGS.NOTIFICATIONS],
         status: STATUS.PRODUCTION,
-        statusNote: 'Lanzada con dominio propio',
+        statusNote: 'Mejoras continuas',
         featured: true
     },
     {
-        title: 'NICA - Sistema de Gestión de Mensuras',
-        description: 'Sistema a medida para un estudio de agrimensura: carga de expedientes de mensura y generación automática de los PDF oficiales (Nota de Elevación, Acta de Mensura, Citación a Linderos).',
-        link: 'https://nica-two.vercel.app/',
-        github: 'https://github.com/Juanchobostero/nica',
+        title: 'NICA Agrimensura - Plataforma de gestión de expedientes',
+        description: 'Diseño e implementación de una plataforma web para la gestión de expedientes de agrimensura (mensuras, deslindes, divisiones), con generación automática de documentos en PDF y backend sobre Supabase/PostgreSQL.',
+        link: 'https://nica-two.vercel.app',
         image: '/projects/nica.webp',
-        tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.SUPABASE],
-        status: STATUS.BETA,
-        statusNote: 'En uso por el cliente · acceso con login'
+        tags: [TAGS.ASTRO, TAGS.NODE, TAGS.SUPABASE, TAGS.PDF],
+        status: STATUS.PRODUCTION,
+        statusNote: 'Uso privado'
     },
     {
         title: 'OHM Ingeniería Electromecánica - Sitio Web Institucional',
         description: 'Diseño e Implementación completa de landing page para empresa de ingeniería electromecánica.',
         link: 'https://www.ohmingelectromecanica.com.ar/',
-        github: 'https://github.com/Juanchobostero/ohm-web',
         image: '/projects/ohm.webp',
         tags: [TAGS.ASTRO, TAGS.NODE],
         status: STATUS.PRODUCTION,
@@ -156,20 +171,9 @@ const PROJECTS  = [
         statusNote: 'Gratuito · sin registro'
     },
     {
-        title: 'El Promesero - Alfajores Artesanales',
-        description: 'Diseño e Implementación completa de sistema para gestión de alfajores artesanales de la empresa El Promesero.',
-        link: 'https://elpromesero.com/',
-        github: 'https://github.com/Juanchobostero/ecommerce-reactjs',
-        image: '/projects/elpromesero.webp',
-        tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE],
-        status: STATUS.PRODUCTION,
-        statusNote: 'Dominio propio del cliente'
-    },
-    {
         title: 'Carga y visualización de resultados de elecciones 2025 - Corrientes, Argentina',
         description: 'Desarrollo de sistema de carga de resultados electorales, utilizada por gente de un partido en específico.',
         link: 'https://conteo-elecciones-app.vercel.app/',
-        github: 'https://github.com/Juanchobostero/conteo-elecciones',
         image: '/projects/carga-elecciones.webp',
         tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.ASTRO],
         status: STATUS.FINISHED,
@@ -249,16 +253,16 @@ const PROJECTS  = [
                         </ul>
 
                         <footer class="card-actions flex gap-x-3 items-end justify-start mt-auto">
+                            <LinkButton href={link} variant="primary">
+                                <Web class="size-5" />
+                                Visitar sitio
+                            </LinkButton>
                             {github && (
-                                <LinkButton href={github}>
+                                <LinkButton href={github} variant="secondary">
                                     <GitHub class="size-5" />
                                     Código
                                 </LinkButton>
                             )}
-                            <LinkButton href={link}>
-                                <Web class="size-5" />
-                                Visitar
-                            </LinkButton>
                         </footer>
                     </div>
                 </div>

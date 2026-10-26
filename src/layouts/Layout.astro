@@ -16,7 +16,7 @@ interface Props {
 	keywords?: string;
 }
 
-const { title, description, image = '/photo.png', keywords = 'desarrollador web, full stack developer, programador Argentina, .NET, CodeIgniter, Node.js, React, desarrollo web' } = Astro.props
+const { title, description, image = '/photo.png', keywords = 'desarrollador web, full stack developer, programador Argentina, ASP.NET Core, Angular, Node.js, React, desarrollo web' } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
@@ -93,7 +93,7 @@ const socialImage = new URL(image, Astro.site);
 				"alternateName": ["Juan Martínez", "Juancho Developer"],
 				"url": "https://jotadev.com.ar",
 				"jobTitle": "Full Stack Web Developer",
-				"description": "Full Stack Web Developer con +6 años de experiencia. Especializado en .NET, CodeIgniter y Node.js.",
+				"description": "Full Stack Web Developer con +6 años de experiencia. Especializado en ASP.NET Core, Angular y Node.js.",
 				"image": "https://jotadev.com.ar/photo.png",
 				"email": "mailto:juancruzmart93@gmail.com",
 				"telephone": "+54",
@@ -120,8 +120,8 @@ const socialImage = new URL(image, Astro.site);
 					}
 				}],
 				"knowsAbout": [
-					".NET",
-					"CodeIgniter",
+					"ASP.NET Core",
+					"Angular",
 					"Node.js",
 					"React",
 					"JavaScript",
@@ -132,7 +132,8 @@ const socialImage = new URL(image, Astro.site);
 					"Web Development",
 					"PostgreSQL",
 					"MongoDB",
-					"MySQL"
+					"MySQL",
+					"Google Cloud Platform"
 				],
 				"hasOccupation": [{
 					"@type": "Occupation",
