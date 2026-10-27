@@ -4,7 +4,6 @@ import '@fontsource/space-mono';
 import '@fontsource/source-sans-pro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
-import GitHubFloatingButton from '../components/GitHubFloatingButton.astro'
 import WhatsAppChat from '../components/WhatsAppChat.astro'
 import { ViewTransitions } from 'astro:transitions'
 import { injectSpeedInsights } from "@vercel/speed-insights";
@@ -77,12 +76,6 @@ const socialImage = new URL(image, Astro.site);
 		<!-- Humans -->
 		<link rel="author" href="/humans.txt" />
 		
-		<!-- External Resources -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-		/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 		
 		<!-- Structured Data (JSON-LD) -->
 		<script is:inline type="application/ld+json">
@@ -159,12 +152,11 @@ const socialImage = new URL(image, Astro.site);
 		<div class="fixed inset-0 z-[-2] bg-jota-night bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(96,165,250,0.28),transparent),radial-gradient(ellipse_40%_40%_at_90%_60%,rgba(20,184,166,0.10),transparent)]"></div>
 		<div class="circuit-bg fixed inset-0 z-[-1] pointer-events-none" aria-hidden="true"></div>
 		<!-- Botón de ir arriba -->
-	<button class="fixed bottom-6 right-24 w-14 h-14 bg-jota-yellow hover:bg-yellow-500 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center text-black z-50 hover:scale-110" id="myBtn" title="Ir arriba" aria-label="Volver arriba">
-		<i class="fas fa-arrow-up text-lg" aria-hidden="true"></i>
+	<button class="fixed bottom-[92px] right-[30px] items-center justify-center rounded-full border border-jota-teal/50 bg-jota-navy/80 text-jota-steel shadow-lg shadow-black/40 backdrop-blur-md hover:border-jota-teal hover:text-jota-ice" id="myBtn" aria-label="Volver arriba">
+		<svg class="size-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6" /></svg>
 	</button>
 	
 		<Header />
-		<GitHubFloatingButton />
 		<WhatsAppChat />
 			<slot />
 		<Footer />
@@ -209,18 +201,16 @@ const socialImage = new URL(image, Astro.site);
 
 	#myBtn {
 		display: none; /* Hidden by default */
-		width: 48px;
-		height: 48px;
-		z-index: 99; /* Make sure it does not overlap */
-		border: none; /* Remove borders */
-		outline: none; /* Remove outline */
+		width: 44px;
+		height: 44px;
+		z-index: 49; /* Debajo del panel de WhatsApp (z-50) */
 		cursor: pointer; /* Add a mouse pointer on hover */
 		transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	#myBtn:hover {
-		transform: translateY(-3px) scale(1.08);
-		box-shadow: 0 12px 24px rgba(250, 204, 21, 0.4);
+		transform: translateY(-3px);
+		box-shadow: 0 10px 24px rgba(20, 184, 166, 0.3);
 	}
 
 	#myBtn:active {
@@ -254,7 +244,7 @@ const socialImage = new URL(image, Astro.site);
 
     function scrollFunction() {
         if (mybutton && (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)) {
-            mybutton.style.display = "block";
+            mybutton.style.display = "flex";
         } else if (mybutton) {
             mybutton.style.display = "none";
         }

@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => page !== 'https://jotadev.com.ar/components/',
+      filter: (page) => !['/components', '/olala', '/highlight'].some((path) => page.includes(path)),
       entryLimit: 45000,
       changefreq: 'weekly',
       priority: 0.7,

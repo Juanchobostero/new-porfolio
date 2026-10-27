@@ -6,7 +6,6 @@ import LinkedinIcon from '../components/icons/Linkedin.astro'
 import GitHubIcon from '../components/icons/GitHub.astro'
 import MailIcon from '../components/icons/Mail.astro'
 import CVIcon from '../components/icons/CV.astro'
-import SocialPill from '../components/SocialPill.astro'
 import Experience from '../components/Experience.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/Code.astro'
@@ -67,28 +66,44 @@ const organizationSchema = generateOrganizationSchema();
 					Corrientes, Argentina · Trabajo remoto con equipos de todo el mundo.
 				</p>
 	
-				<nav class="flex gap-4 mt-10 flex-wrap">
-					<SocialPill href="https://www.linkedin.com/in/martinezjc93/">
-						<LinkedinIcon class="size-4 md:size-6" aria-hidden="true"/>
-						LinkedIn
-					</SocialPill>
-					<SocialPill href="https://github.com/Juanchobostero">
-						<GitHubIcon class="size-4 md:size-6" aria-hidden="true"/>
-						GitHub
-					</SocialPill>
-					<SocialPill href="mailto:juancruzmart93@gmail.com">
-						<MailIcon class="size-4 md:size-6" aria-hidden="true"/>
-						juancruzmart93@gmail.com
-					</SocialPill>
-					<a 
-						href="#cv" 
-						id="cv-preview-btn"
-						aria-label="Previsualizar curriculum vitae de Juan Cruz Martínez"
-						class="border border-white/20 flex items-center gap-x-2 py-1 px-2 md:py-2 md:px-6 text-xs md:text-sm bg-white/5 hover:scale-105 hover:bg-white/10 hover:border-sky-400/50 hover:shadow-lg hover:shadow-sky-500/30 transition-all duration-300 rounded-full h-[2rem] md:h-[2.5rem] text-center whitespace-nowrap backdrop-blur-sm"
+				<nav class="flex flex-wrap items-center gap-3 mt-10" aria-label="Contacto y redes">
+					<a
+						href="#contacto"
+						data-contact-modal
+						class="inline-flex items-center gap-x-2 rounded-full bg-jota-yellow px-6 py-2.5 font-semibold text-jota-navy shadow-lg shadow-jota-yellow/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-jota-yellow/40"
 					>
-						<CVIcon class="size-4 md:size-6" aria-hidden="true"/>
-						Ver CV
+						Hablemos
+						<svg class="size-4" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0-6-6m6 6-6 6" /></svg>
 					</a>
+					<a
+						href="#proyectos"
+						class="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-6 py-2.5 font-medium backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-jota-teal/60 hover:bg-white/10"
+					>
+						Ver proyectos
+					</a>
+
+					<span class="hidden sm:block h-8 w-px bg-white/15 mx-1" aria-hidden="true"></span>
+
+					<div class="flex items-center gap-2">
+						<a href="https://www.linkedin.com/in/martinezjc93/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" class="hero-icon">
+							<LinkedinIcon class="size-5" aria-hidden="true"/>
+						</a>
+						<a href="https://github.com/Juanchobostero" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" class="hero-icon">
+							<GitHubIcon class="size-5" aria-hidden="true"/>
+						</a>
+						<a href="mailto:juancruzmart93@gmail.com" aria-label="Enviar email a juancruzmart93@gmail.com" title="juancruzmart93@gmail.com" class="hero-icon">
+							<MailIcon class="size-5" aria-hidden="true"/>
+						</a>
+						<a
+							href="#cv"
+							id="cv-preview-btn"
+							aria-label="Previsualizar curriculum vitae de Juan Cruz Martínez"
+							title="Ver CV"
+							class="hero-icon"
+						>
+							<CVIcon class="size-5" aria-hidden="true"/>
+						</a>
+					</div>
 				</nav>
 			</div>
 
@@ -172,6 +187,24 @@ const organizationSchema = generateOrganizationSchema();
 		50% { transform: translateY(-6px); }
 	}
 
+	.hero-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 9999px;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		background: rgba(255, 255, 255, 0.05);
+		transition: all 0.3s ease;
+	}
+
+	.hero-icon:hover {
+		transform: translateY(-2px);
+		border-color: rgba(20, 184, 166, 0.6);
+		background: rgba(255, 255, 255, 0.1);
+	}
+
 	#proyectos, #experiencia {
 		border: 1px solid rgba(20, 184, 166, 0.35);
 	}
@@ -250,20 +283,6 @@ const organizationSchema = generateOrganizationSchema();
 				color: '#fff',
 				showConfirmButton: false,
 				showCloseButton: true,
-				showClass: {
-					popup: `
-						animate__animated
-						animate__fadeInUp
-						animate__faster
-					`,
-				},
-				hideClass: {
-					popup: `
-						animate__animated
-						animate__fadeOutDown
-						animate__faster
-					`,
-				},
 			});
 		});
 	}

@@ -80,6 +80,7 @@
       href="#contacto"
       data-section="contacto"
       id="contacto-link"
+      data-contact-modal
       aria-label="Ir a la sección de Contacto"
       >Contacto</a
     >
@@ -108,10 +109,9 @@
 <script>
   import Swal from "sweetalert2";
   
-  var contactoLink = document.getElementById("contacto-link");
-  
-  if (contactoLink) {
-    contactoLink.addEventListener("click", function () {
+  document.querySelectorAll("[data-contact-modal]").forEach((contactoLink) => {
+    contactoLink.addEventListener("click", function (e) {
+      e.preventDefault();
       const phone = "+543794065380";
       const instagram = "https://www.instagram.com/_juancruzmartinez/";
       const facebook = "https://www.facebook.com/juaanchhoo/";
@@ -120,20 +120,6 @@
         title: "Contactame",
         color: "#fff",
         showConfirmButton: false,
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `,
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `,
-        },
         showCloseButton: true,
         background: "#000",
         html: `
@@ -220,5 +206,5 @@
         `,
       });
     });
-  }
+  });
 </script>

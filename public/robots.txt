@@ -9,7 +9,6 @@ Allow: /projects/
 
 # Disallow recursos innecesarios
 Disallow: /api/
-Disallow: /_astro/
 Disallow: /node_modules/
 Disallow: /.
 

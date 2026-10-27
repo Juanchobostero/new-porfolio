@@ -17,7 +17,7 @@ export const SEO_CONFIG = {
     name: "Juan Cruz Martínez",
     email: "juancruzmart93@gmail.com",
     location: "Corrientes, Argentina",
-    bio: "Full Stack Developer con especialización en .NET, Node.js, CodeIgniter y tecnologías modernas",
+    bio: "Full Stack Developer con especialización en ASP.NET Core, Angular, Node.js y React",
   },
 
   keywords: {
@@ -27,7 +27,7 @@ export const SEO_CONFIG = {
       ".NET developer",
       "Node.js developer",
       "React developer",
-      "CodeIgniter developer",
+      "Angular developer",
       "desarrollador web Argentina",
       "trabajo remoto",
     ],
