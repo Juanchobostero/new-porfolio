@@ -77,7 +77,7 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     "name": "Juan Cruz Martínez Portfolio",
     "url": "https://jotadev.com.ar",
-    "logo": "https://jotadev.com.ar/photo.webp",
+    "logo": "https://jotadev.com.ar/logo.png",
     "sameAs": [
       "https://www.linkedin.com/in/martinezjc93/",
       "https://github.com/Juanchobostero",
