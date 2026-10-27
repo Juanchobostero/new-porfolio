@@ -24,9 +24,12 @@ export interface Props {
     link?: string,
     date: string,
     current: boolean,
+    role: string,
+    summary: string,
+    open?: boolean,
     technologies?: string[]
 }
-const { title, description, link, date, current, technologies = [] } = Astro.props
+const { title, description, link, date, current, role, summary, open = false, technologies = [] } = Astro.props
 
 // Mapeo de tecnologías a componentes de iconos y URLs
 const techData: Record<string, { icon: any, name: string, url: string }> = {
@@ -54,13 +57,30 @@ const techData: Record<string, { icon: any, name: string, url: string }> = {
 }
 ---
 
-    <div class="absolute w-3 h-3 bg-sky-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-sky-900 dark:bg-sky-700"></div>
-        <time class="mb-1 text-sm font-normal leading-none text-sky-400 dark:text-sky-500">{date}</time>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-yellow-300" style="text-shadow: 0 0 20px rgba(253, 224, 71, 0.3);" set:html={title}></h3>
-        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400" set:html={description}></p>
-        
+    <div class:list={[
+        "absolute size-3 rounded-full mt-1.5 -start-1.5 border",
+        current ? "bg-jota-yellow border-jota-yellow/40 shadow-[0_0_10px_rgba(250,204,21,0.6)]" : "bg-jota-circuit border-jota-steel/40"
+    ]}></div>
+        <details class="exp-item group/exp" open={open}>
+            <summary class="cursor-pointer list-none rounded-lg -mx-2 px-2 py-1 hover:bg-white/5 transition-colors">
+                <div class="flex items-center gap-x-2">
+                    <time class="text-sm font-normal leading-none text-jota-cyan">{date}</time>
+                    {current && <span class="text-[10px] font-semibold uppercase tracking-wider text-jota-yellow border border-jota-yellow/40 rounded-full px-2 py-0.5">Actual</span>}
+                </div>
+                <div class="flex items-start justify-between gap-x-3 mt-1">
+                    <div>
+                        <h3 class="text-lg font-semibold text-jota-ice">{role}</h3>
+                        <p class="text-base font-medium text-jota-yellow" set:html={title}></p>
+                    </div>
+                    <svg class="size-5 shrink-0 mt-1 text-gray-400 transition-transform duration-300 group-open/exp:rotate-180" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" /></svg>
+                </div>
+                <p class="text-base text-gray-300 mt-1">{summary}</p>
+            </summary>
+            <p class="mt-3 text-base font-normal text-gray-400 border-l-2 border-jota-teal/40 pl-3" set:html={description}></p>
+        </details>
+
         {technologies.length > 0 && (
-            <div class="flex flex-wrap gap-2 mb-4">
+            <div class="flex flex-wrap gap-2 mt-3">
                 {technologies.map(tech => {
                     const techInfo = techData[tech.toLowerCase()];
                     if (techInfo) {
@@ -70,12 +90,11 @@ const techData: Record<string, { icon: any, name: string, url: string }> = {
                                 href={techInfo.url} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                class="group inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-md hover:border-sky-400/50 hover:bg-white/10 transition-all relative"
-                                title={techInfo.name}
+                                class="group inline-flex items-center gap-1.5 px-2 py-1 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-md hover:border-jota-teal/60 hover:bg-white/10 hover:text-white transition-all"
                                 aria-label={`Ir a documentación de ${techInfo.name}`}
                             >
-                                <IconComponent class="size-5 group-hover:scale-110 transition-transform" />
-                                <span class="tooltip-tech">{techInfo.name}</span>
+                                <IconComponent class="size-4 group-hover:scale-110 transition-transform" />
+                                {techInfo.name}
                             </a>
                         );
                     }
@@ -122,44 +141,10 @@ const techData: Record<string, { icon: any, name: string, url: string }> = {
         transform: translateY(-2px);
     }
 
-    /* Tooltip para tecnologías */
-    .tooltip-tech {
-        position: absolute;
-        bottom: calc(100% + 8px);
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.95));
-        color: white;
-        padding: 0.375rem 0.875rem;
-        border-radius: 0.375rem;
-        font-size: 0.75rem;
-        font-weight: 500;
-        white-space: nowrap;
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        z-index: 10;
-        backdrop-filter: blur(8px);
+    .exp-item summary::-webkit-details-marker {
+        display: none;
     }
 
-    /* Flecha del tooltip */
-    .tooltip-tech::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 4px solid transparent;
-        border-top-color: rgba(0, 0, 0, 0.95);
-    }
-
-    /* Mostrar tooltip en hover */
-    a.group:hover .tooltip-tech {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-4px);
-    }
 </style>
 
 

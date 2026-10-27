@@ -4,6 +4,8 @@ const EXPERIENCE = [
     {
         date: "Jun 2022 - Actualidad",
         title: "SyK S.A. - Corrientes, Argentina.",
+        role: "Full Stack Developer",
+        summary: "Nuevos módulos en ASP.NET Core y Angular para el sistema GIS de Catastro de Corrientes.",
         description: "Mantenimiento y evolución de sistema web (GIS) utilizado por personal de <a href='https://dgc.corrientes.gob.ar/webapp/' target='_blank' rel='noopener noreferrer' aria-label='Visitar sitio web de Dirección General de Catastro Corrientes' class='text-sky-400 hover:text-sky-300 underline transition-colors'>D.G. CATASTRO</a>, Corrientes - Argentina. Desarrollo de nuevos módulos con ASP.NET Core y APIs REST (Auditoría, Saneamiento de Personas) y de un módulo de búsquedas con Angular integrando resultados de Apache Solr. Code reviews en GitHub, soporte técnico al equipo y despliegues a producción mediante Windows IIS.",
         current: true,
         technologies: [".net", "angular", "solr", "postgresql", "mysql", "js", "postman", "git"]
@@ -11,6 +13,8 @@ const EXPERIENCE = [
     {
         date: "Ago 2025 - Ene 2026",
         title: "Barrilete Cósmico Lab (ESP) - Remoto.",
+        role: "Full Stack Developer",
+        summary: "Nuevo frontend en Vue de Hub City Guides, backend en NestJS y deploys en Google Cloud.",
         description: "Desarrollo del nuevo frontend de <a href='https://hubcityguides.com/' target='_blank' rel='noopener noreferrer' aria-label='Visitar sitio web de Hub City Guides' class='text-sky-400 hover:text-sky-300 underline transition-colors'>Hub City Guides</a> (Vue.js, Figma). Integración completa con Google Calendar API en frontend y backend (NestJS). Implementación de inicio automático de tracking de tours con soporte mobile (Ionic + Android Studio). Gestión de despliegues cloud en producción con Google Cloud Platform, Cloud SQL y GitHub Actions.",
         current: false,
         technologies: ["node", "nestjs", "vue", "mysql", "ionic", "gcp", "git"]
@@ -18,6 +22,8 @@ const EXPERIENCE = [
     {
         date: "May 2021 - May 2022",
         title: "TecSystems (CL) - Remoto.",
+        role: "Backend Developer",
+        summary: "Dashboard de enlaces de respaldo para el Ministerio de Salud de Chile.",
         description: "Mantenimiento de dashboard de administración de enlaces de respaldo para el Ministerio de Salud de Chile (MINSAL), en equipo remoto distribuido.",
         current: false,
         technologies: ["python", "html", "css", "js", "postgresql", "git"]
@@ -25,6 +31,8 @@ const EXPERIENCE = [
     {
         date: "Sep 2019 - May 2021",
         title: "Municipalidad de Corrientes - Argentina",
+        role: "Backend Developer",
+        summary: "Liquidación de sueldos en PHP y PostgreSQL, y scripts de datos en Python.",
         description: "Mantenimiento del módulo de liquidación de sueldos y corrección de bugs (PHP, PostgreSQL). Scripts de corrección de datos en producción con Python y creación de informes SQL complejos.",
         current: false,
         technologies: ["php", "postgresql", "python", "git"]
@@ -34,9 +42,9 @@ const EXPERIENCE = [
 
 <ol class="relative border-s border-gray-700 dark:border-gray-600">
     {
-        EXPERIENCE.map((experience) => (
-            <li class="mb-12 ms-4">            
-                <ExperienceItem {...experience}/>
+        EXPERIENCE.map((experience, index) => (
+            <li class="mb-8 ms-4">            
+                <ExperienceItem {...experience} open={index === 0}/>
             </li>
         ))
     }          
