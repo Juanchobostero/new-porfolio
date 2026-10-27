@@ -5,7 +5,6 @@ import '@fontsource/source-sans-pro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import WhatsAppChat from '../components/WhatsAppChat.astro'
-import { ViewTransitions } from 'astro:transitions'
 import { injectSpeedInsights } from "@vercel/speed-insights";
 import { getLangFromUrl, homePath, useTranslations } from '../i18n/ui';
 
@@ -152,8 +151,7 @@ const enURL = new URL(homePath.en, Astro.site);
 				}
 			}
 		</script>
-		
-		<ViewTransitions />
+
 		{injectSpeedInsights()}
 	</head>
 	<body class="relative min-h-screen overflow-x-clip">
