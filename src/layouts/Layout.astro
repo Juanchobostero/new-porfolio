@@ -7,6 +7,7 @@ import Footer from '../components/Footer.astro'
 import WhatsAppChat from '../components/WhatsAppChat.astro'
 import { ViewTransitions } from 'astro:transitions'
 import { injectSpeedInsights } from "@vercel/speed-insights";
+import { getLangFromUrl, homePath, useTranslations } from '../i18n/ui';
 
 interface Props {
 	title: string;
@@ -15,15 +16,20 @@ interface Props {
 	keywords?: string;
 }
 
-const { title, description, image = '/og-image.jpg', keywords = 'desarrollador web, full stack developer, programador Argentina, ASP.NET Core, Angular, Node.js, React, desarrollo web' } = Astro.props
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { title, description, image = lang === 'en' ? '/og-image-en.jpg' : '/og-image.jpg', keywords = 'desarrollador web, full stack developer, programador Argentina, ASP.NET Core, Angular, Node.js, React, desarrollo web' } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
+const esURL = new URL(homePath.es, Astro.site);
+const enURL = new URL(homePath.en, Astro.site);
 
 ---
 
 <!doctype html>
-<html lang="es" class="min-h-screen">
+<html lang={lang} class="min-h-screen">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,11 +47,12 @@ const socialImage = new URL(image, Astro.site);
 		<meta name="googlebot" content="index, follow" />
 		<meta name="bingbot" content="index, follow" />
 		<meta name="revisit-after" content="7 days" />
-		<meta name="language" content="es-AR" />
+		<meta name="language" content={lang === 'en' ? 'en' : 'es-AR'} />
 		<meta name="audience" content="all" />
 		<link rel="canonical" href={canonicalURL} />
-		<link rel="alternate" hreflang="es-AR" href={canonicalURL} />
-		<link rel="alternate" hreflang="es" href={canonicalURL} />
+		<link rel="alternate" hreflang="es" href={esURL} />
+		<link rel="alternate" hreflang="en" href={enURL} />
+		<link rel="alternate" hreflang="x-default" href={esURL} />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
@@ -56,8 +63,9 @@ const socialImage = new URL(image, Astro.site);
 		<meta property="og:image:type" content="image/jpeg" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Juan Cruz Martínez - Software Engineer. Construyo sistemas web que se usan en producción." />
-		<meta property="og:locale" content="es_AR" />
+		<meta property="og:image:alt" content={t('meta.ogAlt')} />
+		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_AR'} />
+		<meta property="og:locale:alternate" content={lang === 'en' ? 'es_AR' : 'en_US'} />
 		<meta property="og:site_name" content="Juan Cruz Martínez - Software Engineer" />
 		
 		<!-- Twitter / X -->
@@ -153,7 +161,7 @@ const socialImage = new URL(image, Astro.site);
 		<div class="fixed inset-0 z-[-2] bg-jota-night bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(96,165,250,0.28),transparent),radial-gradient(ellipse_40%_40%_at_90%_60%,rgba(20,184,166,0.10),transparent)]"></div>
 		<div class="circuit-bg fixed inset-0 z-[-1] pointer-events-none" aria-hidden="true"></div>
 		<!-- Botón de ir arriba -->
-	<button class="fixed bottom-[92px] right-[30px] items-center justify-center rounded-full border border-jota-teal/50 bg-jota-navy/80 text-jota-steel shadow-lg shadow-black/40 backdrop-blur-md hover:border-jota-teal hover:text-jota-ice" id="myBtn" aria-label="Volver arriba">
+	<button class="fixed bottom-[92px] right-[30px] items-center justify-center rounded-full border border-jota-teal/50 bg-jota-navy/80 text-jota-steel shadow-lg shadow-black/40 backdrop-blur-md hover:border-jota-teal hover:text-jota-ice" id="myBtn" aria-label={t('top.label')}>
 		<svg class="size-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6" /></svg>
 	</button>
 	

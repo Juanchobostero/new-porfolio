@@ -1,10 +1,30 @@
 ---
+import { getLangFromUrl } from '../i18n/ui';
+
 const unne = 'https://www.unne.edu.ar/'
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <section class="flex flex-col md:flex-row gap-12 justify-center items-center">
-    <div 
+    <div
         class="[&>p]:mb-5 [&>p]:leading-relaxed [&>p>strong]:text-yellow-400 [&>p>strong]:font-semibold [&>p>strong>a]:hover:text-sky-300 [&>p>strong>a]:transition-colors text-pretty order-2 md:order-1">
+        {lang === 'en' ? (
+        <>
+        <p>
+            I'm Juan Cruz Martínez, a <strong>Software Engineer with 6+ years of experience</strong> focused on
+            <strong>building and maintaining web applications</strong>, working across both <strong>frontend and backend</strong>
+            in production environments and distributed teams.
+        </p>
+
+        <p>
+            I hold a
+            <strong><a class="text-yellow-400 text-decoration-line: none; hover:text-sky-300 transition-colors duration-300" href={unne} target="_blank" rel="noopener noreferrer">degree in Information Systems from UNNE</a></strong>,
+            I've built <strong>multiple projects from scratch</strong>, and I specialize in
+            <strong>ASP.NET Core, Angular and Node.js</strong>, with PostgreSQL/MySQL databases and cloud deployments (GCP). Currently focused on <strong><em class="italic">improving processes and business rules</em> to increase revenue and reduce costs.</strong> <strong><em class="italic">Working remotely</em></strong> with global and local teams.
+        </p>
+        </>
+        ) : (
+        <>
         <p>
             Me llamo Juan Cruz Martínez. <strong>Software Engineer con +6 años de experiencia</strong> especializado en 
             <strong>desarrollo y mantenimiento de aplicaciones web</strong>, trabajando tanto en <strong>frontend como backend</strong> 
@@ -17,11 +37,13 @@ const unne = 'https://www.unne.edu.ar/'
             he desarrollado <strong>múltiples proyectos desde cero</strong> y me especializo en tecnologías como
             <strong>ASP.NET Core, Angular y Node.js</strong>, con bases de datos PostgreSQL/MySQL y despliegues en la nube (GCP). Actualmente enfocado en <strong><em class="italic">mejorar procesos y reglas de negocio</em> para aumentar ganancias y reducir costos.</strong> <strong><em class="italic">Trabajo remoto</em></strong> para equipos globales y locales.
         </p>
+        </>
+        )}
     </div>
 
-    <img 
-        src="/photo.webp" 
-        alt="Foto de perfil de Juan Cruz Martínez - Software Engineer"
+    <img
+        src="/photo.webp"
+        alt={lang === 'en' ? 'Profile photo of Juan Cruz Martínez - Software Engineer' : 'Foto de perfil de Juan Cruz Martínez - Software Engineer'}
         class="rounded-full size-64 order-1 md:order-2 shadow-2xl shadow-yellow-400/20 ring-2 ring-yellow-400/30 hover:shadow-yellow-400/40 transition-all duration-300"
         width="256"
         height="256"

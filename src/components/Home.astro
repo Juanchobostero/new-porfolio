@@ -1,0 +1,299 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useTranslations, type Lang } from '../i18n/ui';
+import SectionContainer from './SectionContainer.astro'
+import LinkedinIcon from './icons/Linkedin.astro'
+import GitHubIcon from './icons/GitHub.astro'
+import MailIcon from './icons/Mail.astro'
+import CVIcon from './icons/CV.astro'
+import Experience from './Experience.astro';
+import Briefcase from './icons/Briefcase.astro';
+import CodeIcon from './icons/Code.astro'
+import Projects from './Projects.astro';
+import Profile from './icons/Profile.astro';
+import AboutMe from './AboutMe.astro'
+import WorkWithMe from './WorkWithMe.astro';
+import ThreeJSBadge from './ThreeJSBadge.astro';
+import HeroScene from './HeroScene.astro';
+import { generateBreadcrumbSchema, generateOrganizationSchema } from '../utils/projectSchema';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const breadcrumbSchema = generateBreadcrumbSchema();
+const organizationSchema = generateOrganizationSchema();
+---
+
+<Layout 
+	title={t('meta.title')}
+	description={t('meta.description')}
+	keywords={t('meta.keywords')}
+>
+	<main class="px-2 tracking-tight">
+		<div class="relative isolate -mt-24 pt-24">
+		<HeroScene />
+		<SectionContainer class="py-16 pb-20">
+			<div class="flex items-center gap-x-4 mb-6">
+				<img
+					src="/logo.webp"
+					alt="Logo JOTADEV"
+					width="96"
+					height="96"
+					class="hero-logo size-16 lg:size-24 rounded-full ring-2 ring-jota-teal/70"
+				/>
+				<a
+					href="https://www.linkedin.com/in/martinezjc93/"
+					target="_blank"
+					rel="noopener"
+					class="flex items-center h-10 [&_.credential-container]:!h-10"
+				>
+					<ThreeJSBadge>{t('hero.available')}</ThreeJSBadge>
+				</a>
+			</div>
+			<h1 class="text-3xl lg:text-5xl font-bold flex flex-wrap gap-x-4 pb-4">
+				<span class="text-jota-steel whitespace-nowrap">Juan Cruz</span>
+				<span class="bg-gradient-to-r from-jota-ice to-gray-300 bg-clip-text text-transparent">Martínez<span class="text-jota-yellow">.</span></span>
+			</h1>
+			<p class="font-mono text-jota-cyan text-sm lg:text-base mb-6">
+				<span class="text-jota-yellow">&lt;</span>jotadev<span class="text-jota-yellow"> /&gt;</span>
+			</p>
+
+			<div class="mb-8 tracking-normal">
+				<h2 class="text-2xl lg:text-3xl font-semibold text-jota-yellow text-balance max-w-[700px] mb-3">
+					{t('hero.headline')}
+				</h2>
+				<p class="text-lg lg:text-xl text-gray-200 text-pretty max-w-[640px] mb-3">
+					{t('hero.subtitle')}
+				</p>
+				<p class="text-base lg:text-lg text-jota-cyan font-medium">
+					{t('hero.location')}
+				</p>
+	
+				<nav class="flex flex-wrap items-center gap-3 mt-10" aria-label={t('hero.links')}>
+					<a
+						href="#contacto"
+						data-contact-modal
+						class="inline-flex items-center gap-x-2 rounded-full bg-jota-yellow px-6 py-2.5 font-semibold text-jota-navy shadow-lg shadow-jota-yellow/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-jota-yellow/40"
+					>
+						{t('hero.cta')}
+						<svg class="size-4" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0-6-6m6 6-6 6" /></svg>
+					</a>
+					<a
+						href="#proyectos"
+						class="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-6 py-2.5 font-medium backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-jota-teal/60 hover:bg-white/10"
+					>
+						{t('hero.projects')}
+					</a>
+
+					<span class="hidden sm:block h-8 w-px bg-white/15 mx-1" aria-hidden="true"></span>
+
+					<div class="flex items-center gap-2">
+						<a href="https://www.linkedin.com/in/martinezjc93/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" class="hero-icon">
+							<LinkedinIcon class="size-5" aria-hidden="true"/>
+						</a>
+						<a href="https://github.com/Juanchobostero" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" class="hero-icon">
+							<GitHubIcon class="size-5" aria-hidden="true"/>
+						</a>
+						<a href="mailto:juancruzmart93@gmail.com" aria-label={t('hero.email')} title="juancruzmart93@gmail.com" class="hero-icon">
+							<MailIcon class="size-5" aria-hidden="true"/>
+						</a>
+						<a
+							href="#cv"
+							id="cv-preview-btn"
+							aria-label={t('hero.cvLabel')}
+							title={t('hero.cv')}
+							class="hero-icon"
+						>
+							<CVIcon class="size-5" aria-hidden="true"/>
+						</a>
+					</div>
+				</nav>
+			</div>
+
+		</SectionContainer>
+		</div>
+
+		<SectionContainer 
+			id="experiencia" 
+			class="p-4 sm:p-6 rounded-2xl bg-jota-navy/60 backdrop-blur-sm shadow-lg shadow-black/40"
+		>
+			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+				<Briefcase class="size-7 text-jota-yellow"/>
+				{t('section.experience')}
+			</h2>
+			<Experience />
+		</SectionContainer>
+
+
+		<SectionContainer id="trabaja-conmigo" class="p-6 sm:p-16">
+			<WorkWithMe />
+		</SectionContainer>
+
+		<SectionContainer
+			id="proyectos"
+			wide
+			class="mb-16 p-4 sm:p-6 rounded-2xl bg-jota-navy/60 backdrop-blur-sm shadow-lg shadow-black/40"
+		>
+			<h2 class="text-3xl font-semibold mb-2 flex gap-x-3 items-center">
+				<CodeIcon class="size-7 text-jota-yellow"/>
+				{t('section.projects')}
+			</h2>
+			<p class="text-sm text-gray-400 mb-8 font-mono">
+				{t('section.projectsNote')}
+			</p>
+			<Projects />
+		</SectionContainer>
+
+		<SectionContainer id="sobre-mi">
+			<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+				<Profile class="size-7"/>	
+				{t('section.about')}
+			</h2>
+			
+			<AboutMe />
+		</SectionContainer>
+	</main>
+
+	<!-- Structured Data JSON-LD -->
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+</Layout>
+
+<style>
+	@keyframes reveal {
+		from {
+			opacity: 0;
+			transform: 0 100px;
+		}
+		to {
+			opacity: 1;
+			transform: 0 0;
+		}
+	}
+
+	h2 {
+		animation: reveal both;
+		animation-timeline: view();
+		animation-range: entry 20% cover 30%;
+	}
+
+	h1 {
+		text-wrap: balance;
+	}
+
+	.hero-logo {
+		box-shadow: 0 0 30px rgba(20, 184, 166, 0.35);
+		animation: float 6s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		50% { transform: translateY(-6px); }
+	}
+
+	.hero-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 9999px;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		background: rgba(255, 255, 255, 0.05);
+		transition: all 0.3s ease;
+	}
+
+	.hero-icon:hover {
+		transform: translateY(-2px);
+		border-color: rgba(20, 184, 166, 0.6);
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	#proyectos, #experiencia {
+		border: 1px solid rgba(20, 184, 166, 0.35);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-logo { animation: none; }
+	}
+</style>
+
+<script>
+	import Swal from "sweetalert2";
+
+	const isEnglish = document.documentElement.lang === "en";
+	
+	const cvPreviewBtn = document.getElementById("cv-preview-btn");
+	
+	if (cvPreviewBtn) {
+		cvPreviewBtn.addEventListener("click", function (e) {
+			e.preventDefault();
+			
+			Swal.fire({
+				title: isEnglish ? "Resume" : "Curriculum Vitae",
+				html: `
+					<style>
+						.cv-container {
+							width: 100%;
+							height: 70vh;
+							display: flex;
+							flex-direction: column;
+							gap: 1rem;
+						}
+						.cv-iframe {
+							width: 100%;
+							height: 100%;
+							border: 1px solid rgba(56, 189, 248, 0.3);
+							border-radius: 0.5rem;
+						}
+						.cv-download-btn {
+							display: inline-flex;
+							align-items: center;
+							justify-content: center;
+							gap: 0.5rem;
+							padding: 0.75rem 1.5rem;
+							background: rgba(56, 189, 248, 0.1);
+							border: 1px solid rgba(56, 189, 248, 0.5);
+							border-radius: 12px;
+							color: #38bdf8;
+							font-weight: 600;
+							text-decoration: none;
+							transition: all 0.3s ease;
+						}
+						.cv-download-btn:hover {
+							background: rgba(56, 189, 248, 0.2);
+							transform: scale(1.05);
+							box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+						}
+					</style>
+					<div class="cv-container">
+						<iframe 
+							src="/cv/CVMARTINEZJUANCRUZ.pdf" 
+							class="cv-iframe"
+							title="Curriculum Vitae"
+						></iframe>
+						<a 
+							href="/cv/CVMARTINEZJUANCRUZ.pdf" 
+							download="CV_JuanCruz_Martinez.pdf"
+							class="cv-download-btn"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+							</svg>
+							${isEnglish ? "Download resume" : "Descargar CV"}
+						</a>
+					</div>
+				`,
+				width: '90%',
+				background: '#000',
+				color: '#fff',
+				showConfirmButton: false,
+				showCloseButton: true,
+			});
+		});
+	}
+</script>
+

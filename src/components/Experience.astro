@@ -1,5 +1,8 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+import { getLangFromUrl } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
 const EXPERIENCE = [
     {
         date: "Jun 2022 - Actualidad",
@@ -8,7 +11,13 @@ const EXPERIENCE = [
         summary: "Sistema GIS que usan a diario cerca de 90 agentes de Catastro de Corrientes: nuevos módulos en ASP.NET Core y Angular.",
         description: "Mantenimiento y evolución de sistema web (GIS) utilizado a diario por cerca de 90 agentes de <a href='https://dgc.corrientes.gob.ar/webapp/' target='_blank' rel='noopener noreferrer' aria-label='Visitar sitio web de Dirección General de Catastro Corrientes' class='text-jota-steel hover:text-jota-ice underline transition-colors'>D.G. CATASTRO</a>, Corrientes - Argentina, durante toda la jornada laboral, además de usuarios externos con permisos y funciones propias. Desarrollo de nuevos módulos con ASP.NET Core y APIs REST (Auditoría, Saneamiento de Personas) y de un módulo de búsquedas con Angular integrando resultados de Apache Solr. Code reviews en GitHub, soporte técnico al equipo y despliegues a producción mediante Windows IIS.",
         current: true,
-        technologies: [".net", "angular", "solr", "postgresql", "mysql", "js", "postman", "git"]
+        technologies: [".net", "angular", "solr", "postgresql", "mysql", "js", "postman", "git"],
+        en: {
+            date: "Jun 2022 - Present",
+            title: "SyK S.A. - Corrientes, Argentina.",
+            summary: "GIS system used daily by around 90 staff at the Corrientes Land Registry: new modules in ASP.NET Core and Angular.",
+            description: "Maintenance and evolution of a web GIS system used daily by around 90 staff at <a href='https://dgc.corrientes.gob.ar/webapp/' target='_blank' rel='noopener noreferrer' aria-label='Visit the Corrientes Land Registry website' class='text-jota-steel hover:text-jota-ice underline transition-colors'>D.G. CATASTRO</a> (Corrientes Land Registry, Argentina) throughout the workday, plus external users with their own permissions and features. Built new modules with ASP.NET Core and REST APIs (Audit, Person Records Cleanup) and a search module in Angular powered by Apache Solr. Code reviews on GitHub, technical support for the team and production deployments on Windows IIS.",
+        }
     },
     {
         date: "Ago 2025 - Ene 2026",
@@ -17,7 +26,13 @@ const EXPERIENCE = [
         summary: "Nuevo frontend en Vue de Hub City Guides, backend en NestJS y deploys en Google Cloud.",
         description: "Desarrollo del nuevo frontend de <a href='https://hubcityguides.com/' target='_blank' rel='noopener noreferrer' aria-label='Visitar sitio web de Hub City Guides' class='text-jota-steel hover:text-jota-ice underline transition-colors'>Hub City Guides</a> (Vue.js, Figma). Integración completa con Google Calendar API en frontend y backend (NestJS). Implementación de inicio automático de tracking de tours con soporte mobile (Ionic + Android Studio). Gestión de despliegues cloud en producción con Google Cloud Platform, Cloud SQL y GitHub Actions.",
         current: false,
-        technologies: ["node", "nestjs", "vue", "mysql", "ionic", "gcp", "git"]
+        technologies: ["node", "nestjs", "vue", "mysql", "ionic", "gcp", "git"],
+        en: {
+            date: "Aug 2025 - Jan 2026",
+            title: "Barrilete Cósmico Lab (Spain) - Remote.",
+            summary: "New Vue frontend for Hub City Guides, NestJS backend and Google Cloud deployments.",
+            description: "Built the new frontend for <a href='https://hubcityguides.com/' target='_blank' rel='noopener noreferrer' aria-label='Visit the Hub City Guides website' class='text-jota-steel hover:text-jota-ice underline transition-colors'>Hub City Guides</a> (Vue.js, Figma). Full Google Calendar API integration across frontend and backend (NestJS). Implemented automatic tour tracking start with mobile support (Ionic + Android Studio). Managed production cloud deployments with Google Cloud Platform, Cloud SQL and GitHub Actions.",
+        }
     },
     {
         date: "May 2021 - May 2022",
@@ -26,7 +41,13 @@ const EXPERIENCE = [
         summary: "Dashboard de enlaces de respaldo para el Ministerio de Salud de Chile.",
         description: "Mantenimiento de dashboard de administración de enlaces de respaldo para el Ministerio de Salud de Chile (MINSAL), en equipo remoto distribuido.",
         current: false,
-        technologies: ["python", "html", "css", "js", "postgresql", "git"]
+        technologies: ["python", "html", "css", "js", "postgresql", "git"],
+        en: {
+            date: "May 2021 - May 2022",
+            title: "TecSystems (Chile) - Remote.",
+            summary: "Backup link dashboard for Chile's Ministry of Health.",
+            description: "Maintenance of an admin dashboard for backup network links used by Chile's Ministry of Health (MINSAL), in a distributed remote team.",
+        }
     },
     {
         date: "Sep 2019 - May 2021",
@@ -35,16 +56,22 @@ const EXPERIENCE = [
         summary: "Liquidación de sueldos en PHP y PostgreSQL, y scripts de datos en Python.",
         description: "Mantenimiento del módulo de liquidación de sueldos y corrección de bugs (PHP, PostgreSQL). Scripts de corrección de datos en producción con Python y creación de informes SQL complejos.",
         current: false,
-        technologies: ["php", "postgresql", "python", "git"]
+        technologies: ["php", "postgresql", "python", "git"],
+        en: {
+            date: "Sep 2019 - May 2021",
+            title: "City of Corrientes - Argentina",
+            summary: "Payroll processing in PHP and PostgreSQL, plus data scripts in Python.",
+            description: "Maintenance of the payroll module and bug fixing (PHP, PostgreSQL). Python scripts to fix production data and complex SQL reports.",
+        }
     },
 ]
 ---
 
 <ol class="relative border-s border-gray-700 dark:border-gray-600">
     {
-        EXPERIENCE.map((experience, index) => (
+        EXPERIENCE.map(({ en, ...experience }, index) => (
             <li class="mb-8 ms-4">            
-                <ExperienceItem {...experience} open={index === 0}/>
+                <ExperienceItem {...experience} {...(lang === 'en' ? en : {})} open={index === 0}/>
             </li>
         ))
     }          

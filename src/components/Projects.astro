@@ -15,6 +15,10 @@ import LinkButton from "./LinkButton.astro"
 import GitHub from "./icons/GitHub.astro"
 import Web from "./icons/Web.astro"
 import AstroIcon from "./icons/AstroIcon.astro"
+import { getLangFromUrl, useTranslations } from "../i18n/ui"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 
 const TAGS = {
     JAVASCRIPT: {
@@ -72,6 +76,7 @@ const TAGS = {
     },
     NOTIFICATIONS: {
         name: "Notificaciones",
+        nameEn: "Notifications",
         class: "bg-amber-500/20 border border-amber-500/50 text-amber-300",
         icon: Notification
     },
@@ -101,30 +106,35 @@ const TAGS = {
 const STATUS = {
     PRODUCTION: {
         label: "En producción",
+        labelEn: "In production",
         class: "text-emerald-300 border-emerald-400/50",
         dot: "bg-emerald-400",
         live: true
     },
     ONLINE: {
         label: "Online",
+        labelEn: "Online",
         class: "text-jota-cyan border-jota-cyan/50",
         dot: "bg-jota-cyan",
         live: true
     },
     FINAL_STAGE: {
         label: "Etapa final",
+        labelEn: "Final stage",
         class: "text-jota-yellow border-jota-yellow/50",
         dot: "bg-jota-yellow",
         live: true
     },
     FINISHED: {
         label: "Finalizado",
+        labelEn: "Finished",
         class: "text-gray-300 border-gray-400/40",
         dot: "bg-gray-400",
         live: false
     },
     MERGED: {
         label: "PR aceptada",
+        labelEn: "PR merged",
         class: "text-purple-300 border-purple-400/50",
         dot: "bg-purple-400",
         live: false
@@ -137,6 +147,11 @@ const PROJECTS  = [
         description: 'Conecta a vecinos con técnicos verificados para servicios a domicilio: el cliente pide el servicio, el técnico recibe la notificación y el pago se hace por Mercado Pago. Incluye paneles para cliente, técnico y administrador, y seguimiento SEO con Google Search Console.',
         link: 'https://www.taitasoluciones.com.ar/',
         image: '/projects/taita.webp',
+        en: {
+            title: "Taita Soluciones - Platform for booking home repair technicians",
+            description: "Connects neighbors with verified technicians for home services: the client requests a service, the technician gets notified and payment goes through Mercado Pago. Includes dashboards for clients, technicians and admins, plus SEO tracking with Google Search Console.",
+            statusNote: "Ongoing improvements",
+        },
         tags: [TAGS.ASTRO, TAGS.NODE, TAGS.SUPABASE, TAGS.SEARCH_CONSOLE, TAGS.MERCADOPAGO, TAGS.NOTIFICATIONS],
         status: STATUS.PRODUCTION,
         statusNote: 'Mejoras continuas',
@@ -147,6 +162,11 @@ const PROJECTS  = [
         description: 'Un estudio de agrimensura carga los datos de cada expediente una sola vez (mensuras, deslindes, divisiones) y la plataforma genera automáticamente los PDF oficiales: Nota de Elevación, Acta de Mensura y Citación a Linderos. Backend sobre Supabase/PostgreSQL.',
         link: 'https://nica-two.vercel.app',
         image: '/projects/nica.webp',
+        en: {
+            title: "NICA Agrimensura - Case management platform for land surveying",
+            description: "A land surveying firm enters each case's data once (surveys, boundary demarcations, subdivisions) and the platform automatically generates the official PDFs: Elevation Note, Survey Record and Neighbor Summons. Backend on Supabase/PostgreSQL.",
+            statusNote: "Private use",
+        },
         tags: [TAGS.ASTRO, TAGS.NODE, TAGS.SUPABASE, TAGS.PDF],
         status: STATUS.PRODUCTION,
         statusNote: 'Uso privado'
@@ -156,6 +176,11 @@ const PROJECTS  = [
         description: 'Presenta a Sinergia Pro (ingeniería, construcción y energía solar en el NEA) con sus servicios, su equipo y un mapa de obras realizadas, y guía cada visita hacia el pedido de presupuesto. Las obras nuevas se agregan en Markdown y las fotos se optimizan solas (AVIF/WebP).',
         link: 'https://sinergia-pro.vercel.app/',
         image: '/projects/sinergia-pro.webp',
+        en: {
+            title: "Sinergia Pro - Corporate Website",
+            description: "Presents Sinergia Pro (engineering, construction and solar energy in northeastern Argentina) with its services, team and a map of completed projects, guiding every visit toward a quote request. New projects are added in Markdown and photos are optimized automatically (AVIF/WebP).",
+            statusNote: "Pending link to sinergiapro.com.ar",
+        },
         tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.CSS],
         status: STATUS.FINAL_STAGE,
         statusNote: 'Pendiente de vincular sinergiapro.com.ar'
@@ -165,6 +190,11 @@ const PROJECTS  = [
         description: 'Sitio de Andrea Fredes, fotógrafa en Corrientes: cada tipo de sesión con sus precios, historias reales y reserva de fecha por WhatsApp. Servicios, precios y preguntas frecuentes se actualizan desde archivos de contenido, sin tocar el código.',
         link: 'https://af-studio-roan.vercel.app/',
         image: '/projects/af-studio.webp',
+        en: {
+            title: "AF Studio Creativo - Photography Website",
+            description: "Website for Andrea Fredes, a photographer in Corrientes: every session type with its pricing, real stories and date booking via WhatsApp. Services, prices and FAQs are updated from content files, without touching the code.",
+            statusNote: "Pending link to andreafredes.com.ar",
+        },
         tags: [TAGS.ASTRO, TAGS.TYPESCRIPT, TAGS.CSS],
         status: STATUS.FINAL_STAGE,
         statusNote: 'Pendiente de vincular andreafredes.com.ar'
@@ -174,6 +204,11 @@ const PROJECTS  = [
         description: 'Sitio institucional de una empresa de instalaciones eléctricas de baja tensión de Corrientes: presenta servicios, proyectos ejecutados, clientes y equipo, con acceso directo al contacto.',
         link: 'https://www.ohmingelectromecanica.com.ar/',
         image: '/projects/ohm.webp',
+        en: {
+            title: "OHM Ingeniería Electromecánica - Corporate Website",
+            description: "Corporate website for a low-voltage electrical installation company in Corrientes: services, completed projects, clients and team, with direct access to contact.",
+            statusNote: "Client's own domain",
+        },
         tags: [TAGS.ASTRO, TAGS.NODE],
         status: STATUS.PRODUCTION,
         statusNote: 'Dominio propio del cliente'
@@ -184,6 +219,11 @@ const PROJECTS  = [
         link: 'https://renamify.vercel.app/',
         github: 'https://github.com/Juanchobostero/renamify',
         image: '/projects/renamify.webp',
+        en: {
+            title: "Renamify - Bulk file renamer",
+            description: "Rename up to 400 images at once: set a base name and download them numbered in a .zip. Everything runs in the browser, with no servers or libraries, so your files never leave your computer.",
+            statusNote: "Free · no sign-up",
+        },
         tags: [TAGS.ASTRO, TAGS.NODE],
         status: STATUS.ONLINE,
         statusNote: 'Gratuito · sin registro'
@@ -193,6 +233,11 @@ const PROJECTS  = [
         description: 'Sistema con login para que el equipo de un partido cargue los resultados de cada mesa y sus certificados, y consulte los resultados generales por partido. Usado en las elecciones 2025 de Corrientes. Backend en Express y MongoDB, dockerizado y con tests.',
         link: 'https://conteo-elecciones-app.vercel.app/',
         image: '/projects/carga-elecciones.webp',
+        en: {
+            title: "2025 election results entry and dashboard - Corrientes, Argentina",
+            description: "Login-protected system for a political party's team to enter the results of each polling station and its certificates, and check overall results by party. Used in the 2025 Corrientes elections. Express and MongoDB backend, dockerized and tested.",
+            statusNote: "Used in the 2025 elections",
+        },
         tags: [TAGS.MONGO, TAGS.EXPRESS, TAGS.REACTJS, TAGS.NODE, TAGS.ASTRO],
         status: STATUS.FINISHED,
         statusNote: 'Utilizado en las elecciones 2025'
@@ -203,6 +248,10 @@ const PROJECTS  = [
         link: 'https://qr-code-generator-three-fawn.vercel.app/',
         github: 'https://github.com/Juanchobostero/qr-code-generator',
         image: '/projects/qr-generator.webp',
+        en: {
+            title: "QR Code Generator",
+            description: "Paste a URL and get its QR code instantly. Built with Astro, React and Tailwind.",
+        },
         tags: [TAGS.NODE, TAGS.REACTJS, TAGS.CSS, TAGS.ASTRO],
         status: STATUS.ONLINE
     },
@@ -212,6 +261,10 @@ const PROJECTS  = [
         link: 'https://stack-game-2d.vercel.app/',
         github: 'https://github.com/Juanchobostero/stack-game-2d',
         image: '/projects/stack-game.webp',
+        en: {
+            title: "STACK GAME 2D",
+            description: "A 2D block-stacking game: click or press the spacebar to stack as high as you can. Based on a project by midudev and rebuilt with Astro components.",
+        },
         tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.ASTRO],
         status: STATUS.ONLINE
     },
@@ -221,6 +274,11 @@ const PROJECTS  = [
         link: 'https://svgl.app/',
         github: 'https://github.com/Juanchobostero/svgl',
         image: '/projects/svgl.webp',
+        en: {
+            title: "Contribution to the community project <a href='https://svgl.app/' target='_blank' rel='noopener noreferrer' aria-label='Visit the svgl website' class='text-jota-steel hover:text-jota-ice underline transition-colors'>SVGL</a>",
+            description: "Open source contribution to SVGL, the SVG logo library: raised its accessibility score from 90 to 95, and the PR was reviewed and approved by its creator, <a href='https://github.com/pheralb' target='_blank' rel='noopener noreferrer' aria-label='Visit Pablo Hdez's GitHub profile' class='text-jota-steel hover:text-jota-ice underline transition-colors'>Pablo Hdez</a>. <a href='https://github.com/Juanchobostero/svgl/commits/main/' target='_blank' rel='noopener noreferrer' aria-label='View the repository commits' class='text-jota-steel hover:text-jota-ice underline transition-colors'>View commit</a>",
+            statusNote: "Open source project",
+        },
         tags: [TAGS.NODE, TAGS.GITHUB],
         status: STATUS.MERGED,
         statusNote: 'Proyecto open source'
@@ -230,7 +288,7 @@ const PROJECTS  = [
 
 <section class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 {
-    PROJECTS.map(({ title, description, tags, github, image, link, status, statusNote, featured }) => (
+    PROJECTS.map(({ en, ...project }) => ({ ...project, ...(lang === 'en' ? en : {}) })).map(({ title, description, tags, github, image, link, status, statusNote, featured }) => (
         <article class:list={["project", { "md:col-span-2": featured }]}>
             <div class="tilt-card group" data-tilt>
                 <div class:list={["card-content flex flex-col", { "md:grid md:grid-cols-2 md:gap-6 md:items-center": featured }]}>
@@ -238,7 +296,7 @@ const PROJECTS  = [
                         <img
                             class="w-full aspect-video rounded-xl object-cover object-top border border-white/10"
                             src={image}
-                            alt={`${title.replace(/<[^>]+>/g, '')} - Portfolio Juan Cruz Martínez | Desarrollador Full Stack`}
+                            alt={`${title.replace(/<[^>]+>/g, '')} - ${t('projects.imageAlt')}`}
                             loading="lazy"
                             width="800"
                             height="450"
@@ -249,7 +307,7 @@ const PROJECTS  = [
                                 {status.live && <span class={`absolute inline-flex size-full rounded-full opacity-75 animate-ping ${status.dot}`}></span>}
                                 <span class={`relative inline-flex size-2 rounded-full ${status.dot}`}></span>
                             </span>
-                            {status.label}
+                            {lang === 'en' ? status.labelEn : status.label}
                         </span>
                     </div>
 
@@ -263,7 +321,7 @@ const PROJECTS  = [
                                     <li>
                                         <span class={`flex items-center gap-x-1 text-xs ${tag.class} py-1 px-2 rounded-md`}>
                                             {"icon" in tag && <tag.icon class="size-4" />}
-                                            {tag.name}
+                                            {lang === 'en' && 'nameEn' in tag ? tag.nameEn : tag.name}
                                         </span>
                                     </li>
                                 ))
@@ -274,13 +332,13 @@ const PROJECTS  = [
                             {link && (
                                 <LinkButton href={link} variant="primary">
                                     <Web class="size-5" />
-                                    Visitar sitio
+                                    {t('projects.visit')}
                                 </LinkButton>
                             )}
                             {github && (
                                 <LinkButton href={github} variant="secondary">
                                     <GitHub class="size-5" />
-                                    Código
+                                    {t('projects.code')}
                                 </LinkButton>
                             )}
                         </footer>

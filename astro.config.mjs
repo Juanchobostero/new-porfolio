@@ -13,7 +13,11 @@ export default defineConfig({
       entryLimit: 45000,
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date()
+      lastmod: new Date(),
+      i18n: {
+        defaultLocale: 'es',
+        locales: { es: 'es-AR', en: 'en-US' }
+      }
     })
   ],
   trailingSlash: 'never',
